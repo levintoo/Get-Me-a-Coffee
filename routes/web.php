@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Dashboard\DashboardComponent;
 use App\Http\Livewire\HomeComponent;
 use Illuminate\Support\Facades\Route;
 
@@ -18,3 +19,4 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 Route::get('/', HomeComponent::class);
+Route::get('/dashboard', DashboardComponent::class);
