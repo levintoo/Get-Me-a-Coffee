@@ -1,20 +1,17 @@
-<main id="main">
-    <div class="bg-elements">
-        <span class="bg-wave"></span>
-        <span class="fish-1"></span>
-        <div class="container position-relative">
-            <span class="diver-1"></span>
-            <span class="diver-2"></span>
-            <span class="turtle-1"></span>
-            <span class="trash-1"></span>
-            <span class="trash-2"></span>
-            <span class="trash-3"></span>
-            <span class="fish-2"></span>
+<body id="bodysunset">
+{{--<div id="notificationWrap2" class="bg-sunset-red text-center text-white font-weight-bold py-2 overflow-hidden text-center">--}}
+{{--    <p class="m-0 px-1 text-uppercase font-sm">JOIN IN WITH #TEAMUSERNAME AND TRACK YOUR PROGRESS&emsp;<a class="text-white btn btn-white-outline" href="https://actionnetwork.org/forms/teamseas-signup" target="_blank">SIGN UP</a></p>--}}
+{{--</div>--}}
+<header id="header">
+    <div id="navbar-header" class="navbar">
+        <div id="menuBar" class="w-100">
+            <div class="navbar-logo"></div>
+            <div class="navbar-menu-button"><button type="button" class="navbar-button" data-toggle="modal" data-target="#menuMain"><img src="{{ asset('assets/images/logo.png') }}" /></button></div>
         </div>
-        <span class="coral-1"></span>
-        <span class="coral-2"></span>
-        <span class="bg-bottom"></span>
     </div>
+</header>
+
+<main id="main">
     <section id="sectionTop">
         <div class="section-inner">
             <div class="container">
@@ -24,10 +21,10 @@
                             <div class="card">
                                 <div id="donateStep1" class="frm-step active" data-step="1">
                                     <div class="card-header">
-                                        <h4 class="card-title text-center text-uppercase font-lg">Join <span id="joinHeadline_TeamName">#TeamSeas</span></h4>
+                                        <h4 class="card-title text-center text-uppercase font-lg">Join <span id="joinHeadline_TeamName">#TeamUsername</span></h4>
                                     </div>
                                     <div class="card-body text-center py-2">
-                                        <h4 class="donate-headline">Every $1 is one less pound of trash in the ocean</h4>
+                                        <h4 class="donate-headline">Every $1 is one cup of coffee for levin</h4>
                                         <div class="row align-items-stretch">
                                             <div class="col mb-3 px-1">
                                                 <div class="custom-control custom-checkbox h-100">
@@ -69,9 +66,8 @@
                                             <button type="button" class="btn btn-link text-dark text-uppercase" data-toggle="modal" data-target="#faqModal"><u>FAQ</u></button>
                                         </div>
                                     </div>
-                                    <img class="large-ribbon" src="assets/images/large-ribbon.png" data-toggle="tooltip" data-custom-class="font-sm" title="To make your donation a gift, select the check box on the next screen. You'll receive a personalized certificate you can share to give the gift of trash removal!" />
                                 </div>
-                                <div id="donateStep2" class="frm-step" data-step="2">
+                                <div id="donateStep2" class="frm-step active" data-step="2">
                                     <div class="card-header">
                                         <h4 class="card-title text-center text-blue-dark">DETAILS</h4>
                                     </div>
@@ -80,10 +76,6 @@
                                             <label class="form-label text-blue-dark m-0" for="inputName">Display Name<sup>*</sup></label>
                                             <input type="text" class="form-control _req" id="inputName" placeholder="Display Name" maxlength="50">
                                             <small class="text-danger"></small>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-label text-blue-dark m-0" for="inputTeamName">Team Name <span class="d-inline-block bg-grey rounded-circle text-white px-1 font-sm" data-toggle="tooltip" data-placement="bottom" title="Add your team to show the world what your crew can do!" data-custom-class="font-sm">?</span></label>
-                                            <input type="text" class="form-control" id="inputTeamName" placeholder="Team Name (Optional)" style="width: 100%;" maxlength="50">
                                         </div>
                                         <div class="form-group">
                                             <label class="form-label text-blue-dark m-0" for="inputEmail">Email Address<sup>*</sup></label>
@@ -114,7 +106,7 @@
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input-custom" type="checkbox" id="is_gift">
-                                            <label class="form-check-label align-text-top" for="is_gift">My donation is a gift for someone <span class="ml-2" data-toggle="tooltip" data-custom-class="font-sm" title="To make your donation a gift, select the check box. You'll receive a personalized certificate you can share to give the gift of trash removal!"><img src="https://assets01.teamassets.net/assets/svg/orange-gift-bow.svg" width="20" /></span><br><small><em>We’ll send a certificate to your email address, which you can forward along or print. <a href="#" data-toggle="modal" data-target="#giftExModal">(here's an example)</a> </em></small></label>
+                                            <label class="form-check-label align-text-top" for="is_gift">My donation is a gift for someone <span class="ml-2" data-toggle="tooltip" data-custom-class="font-sm" title="To make your donation a gift, select the check box. You'll receive a personalized certificate you can share to give the gift of trash removal!"><img src="{{ asset('assets/svg/orange-gift-bow.svg') }}" width="20" /></span><br><small><em>We’ll send a certificate to your email address, which you can forward along or print. <a href="#" data-toggle="modal" data-target="#giftExModal">(here's an example)</a> </em></small></label>
                                         </div>
                                         <div id="giftFields" class="d-none">
                                             <hr>
@@ -146,10 +138,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="donateStep3" class="frm-step" data-step="3">
+                                <div id="donateStep3" class="frm-step active" data-step="3">
                                     <div id="ccPreloader" class="order-preload-cover d-none">
                                         <div class="order-preload-container">
-                                            <div class="order-preload-body"><img src="../assets01.teamassets.net/assets/images/teamseas-tm-logo.png" alt="Processing Your Order!" />
+                                            <div class="order-preload-body"><img src="{{ asset('assets/images/tm-logo.png') }}" alt="Processing Your Order!" />
                                                 <div class="lds-ellipsis"><span></span></div>
                                             </div>
                                         </div>
@@ -217,17 +209,17 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="donateStep4" class="frm-step" data-step="4">
+                                <div id="donateStep4" class="frm-step active" data-step="4">
                                     <div class="card-body text-center py-1 px-2">
                                         <h1 class="text-orange font-xxl font-weight-bold text-uppercase my-2">Thank You!</h1>
                                         <p class="font-sm">#TeamSeas is a movement fueled by our power to inspire each other—every donation counts and every voice matters. Thank you for floating a brighter future!</p>
                                         <div class="my-3">
                                             <div class="thank-you-card mt-0">
-                                                <p class="mb-2"><img src="../assets01.teamassets.net/assets/images/teamseas-logo.png" width="60"/></p>
+                                                <p class="mb-2"><img src="{{ asset('assets/images/logo.png') }}" width="60"/></p>
                                                 <p class="font-weight-700 text-white text-uppercase mt-1 mb-0">I joined #teamseas</p>
                                                 <p class="font-weight-800 font-lg text-blue-dark text-uppercase m-0" id="ty_display_name"></p>
                                                 <p class="font-weight-700 text-blue-dark text-uppercase m-0" id="ty_team_name"></p>
-                                                <p class="m-0"><img id="ty_badge" src="../assets01.teamassets.net/assets/images/tier-3-badge.png" width="65"/></p>
+                                                <p class="m-0"><img id="ty_badge" src="{{ asset('assets/images/tier-3-badge.png') }}" width="65"/></p>
                                                 <p class="font-weight-700 text-white text-uppercase mt-1 mb-0">$<span id="ty_amount">0</span> donation</p>
                                                 <p class="font-weight-light font-sm text-white text-uppercase mb-1" id="ty_message"></p>
                                                 <p class="font-weight-light font-xs text-white text-uppercase" id="ty_date_time"></p>
@@ -255,454 +247,41 @@
         </div>
     </section>
 
-    <section id="section1">
-        <div class="section-inner">
-            <div class="container">
-                <div class="row align-items-stretch mt-3">
-                    <div class="col-md-6 d-flex flex-column mb-3">
-                        <div class="mb-4 d-block d-md-none">
-                            <a href="https://store.teamseas.org/" target="_blank">
-                                <img src="../assets01.teamassets.net/assets/images/shop-teamseas3.png" class="w-100" />
-                            </a>
-                        </div>
-                        <div class="card flex-grow-1">
-                            <div class="card-body p-3">
-                                <div class="d-flex justify-content-between align-items-center flex-wrap">
-                                    <ul class="nav nav-pills justify-content-center leaderboard-tabs font-sm font-weight-500 text-uppercase mb-3">
-                                        <li class="nav-item"><a class="nav-link active lb-trigger" data-toggle="tab" data-lb-key="recent" data-lb-elem="lbRecent" href="#tabRecent">Most Recent</a></li>
-                                        <li class="nav-item"><a class="nav-link lb-trigger" data-toggle="tab" data-lb-key="most" data-lb-elem="lbMost" href="#tabMost">Most Trash</a></li>
-                                        <li class="nav-item"><a class="nav-link lb-trigger" data-toggle="tab" data-lb-key="teams_most_donations" data-lb-elem="lbTeams" href="#tabTeams">Top Teams</a></li>
-                                    </ul>
-                                    <div class="mb-3"><a href="search-donors/index.html" class="btn btn-blue-lighter search-box"></a></div>
-                                </div>
-                                <div class="tab-content">
-                                    <div class="tab-pane fade show active" id="tabRecent" role="tabpanel">
-                                        <div id="lbRecent"></div>
-                                    </div>
-                                    <div class="tab-pane fade" id="tabMost" role="tabpanel">
-                                        <div id="lbMost"></div>
-                                    </div>
-                                    <div class="tab-pane fade" id="tabTeams" role="tabpanel">
-                                        <div id="lbTeams"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer text-center text-md-right bg-transparent">
-                                <div>
-                                    <a href="all-donors/index.html" class="btn btn-outline-primary text-uppercase">See All</a>
-                                </div>
-                                <div><small class="disclaimer text-muted"><em>*we reserve the right to remove offensive language</em></small></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 d-flex flex-column mb-3">
-                        <div class="mb-4 d-none d-md-block">
-                            <a href="https://store.teamseas.org/" target="_blank">
-                                <img src="../assets01.teamassets.net/assets/images/shop-teamseas3.png" class="w-100" />
-                            </a>
-                        </div>
-                        <div class="card flex-grow-1">
-                            <div class="card-header px-3 pt-3 pb-0 bg-white">
-                                <div class="border-bottom border-thick border-grey d-flex flex-wrap align-items-center justify-content-between">
-                                    <div class="mr-2 mb-1">
-                                        <span class="text-blue text-uppercase font-weight-500 font-md">#TeamSeas Social</span>
-                                    </div>
-                                    <div class="ml-2 mb-1 text-right">
-                                        <a href="https://www.facebook.com/TeamSeas/" class="social-box social-fb bg-blue mx-1" target="_blank"></a>
-                                        <a href="https://www.instagram.com/teamseas/" class="social-box social-insta bg-blue mx-1" target="_blank"></a>
-                                        <a href="https://twitter.com/teamseas" class="social-box social-twt bg-blue mx-1" target="_blank"></a>
-                                        <a href="https://www.reddit.com/r/TeamSeas/" class="social-box social-redd bg-blue mx-1" target="_blank"></a>
-                                        <a href="https://www.tiktok.com/@teamseas" class="social-box social-tt bg-blue mx-1" target="_blank"></a>
-                                        <a href="https://youtube.com/c/teamseas" class="social-box social-yt bg-blue mx-1" target="_blank"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body social-card p-3">
-                                <div class="social-wrapper">
-                                    <div class="tintup" data-id="ts_landing_page" data-columns="2" data-expand="true"  data-count="12" data-noButtons="true" data-paginate="true" data-personalization-id="1079231" style="height:300px;width:100%;"></div>
-                                </div>
-                            </div>
-                            <div class="card-footer text-center text-md-right bg-transparent">
-                                <a href="social/index.html" class="btn btn-outline-primary text-uppercase">See All</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="section2">
-        <div class="bg-elements">
-            <div class="container position-relative">
-                <span class="diver-3"></span>
-                <span class="diver-4"></span>
-                <span class="fish-3"></span>
-                <span class="fish-4"></span>
-                <span class="fish-5"></span>
-                <span class="squid-1"></span>
-                <span class="turtle-2"></span>
-            </div>
-        </div>
-        <div class="section-inner">
-            <div class="container text-center">
-                <h2 class="font-xxl text-white text-uppercase font-weight-800">How it Works</h2>
-                <p class="text-white">#TeamSeas will be one of the biggest, baddest, most-impactful cleanup projects of all time—and here’s how we’re doing it. Scroll on to see our cutting-edge river Interceptors, info on locally-organized cleanups, ghost-gear removal efforts and professional expeditions to areas where we can have the greatest conservation impact!</p>
-            </div>
-
-            <div class="container">
-                <div class="d-flex justify-content-center my-3">
-                    <ul class="nav nav-pills justify-content-center timeline-tabs font-md font-weight-500 text-uppercase mb-3">
-                        <li class="nav-item"><a class="nav-link link-beaches active" data-toggle="tab" href="#tabBeaches">Beaches</a></li>
-                        <li class="nav-item"><a class="nav-link link-rivers" data-toggle="tab" href="#tabRivers">Rivers</a></li>
-                        <li class="nav-item"><a class="nav-link link-oceans" data-toggle="tab" href="#tabOceans">Oceans</a></li>
-                    </ul>
-                </div>
-
-                <div class="tab-content">
-                    <div class="tab-pane fade show active" id="tabOceans" role="tabpanel">
-                        <p class="text-center mb-5"><img src="../assets01.teamassets.net/assets/images/logo-ocean-conservancy.png" width="240"></p>
-                        <div class="row">
-                            <div class="col-8 col-sm-6 offset-sm-3 offset-2">
-                                <div class="video-wrapper">
-                                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/gAm8eNL8XjQ?rel=0&amp;showinfo=0&amp;modestbranding=1&amp;enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="timeline-wrapper">
-                            <div class="timeline-line-center"></div>
-                            <!--TIMELINE BOX RIGHT-->
-                            <div class="timeline-box timeline-right">
-                                <div class="row no-gutters my-4 justify-content-center align-items-strech">
-                                    <div class="col-md-5 order-md-0 d-none d-md-block text-right">
-                                        <div class="timeline-box-icon d-inline-flex h-100 align-items-center">
-                                            <img src="../assets01.teamassets.net/assets/images/icon-the-big-idea.png" alt="beach cleanups" width="190" />
-                                        </div>
-                                    </div>
-                                    <div class="col-2 col-md-1 order-0 order-md-1"><span class="timeline-box-ball"></span></div>
-                                    <div class="col-10 col-md-5 order-2">
-                                        <h3 class="timeline-box-title font-weight-bolder text-uppercase mb-1">The Big Idea</h3>
-                                        <div class="card p-4">
-                                            <p class="m-0">Lost, abandoned and discarded fishing gear – or ghost gear – is some of the deadliest ocean trash, and super tricky to recover. Luckily the experts with Ocean Conservancy’s Global Ghost Gear Initiative® have
-                                                been removing ghost gear from waters all around the world for years.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--TIMELINE BOX LEFT-->
-                            <div class="timeline-box timeline-left">
-                                <div class="row no-gutters my-4 justify-content-center align-items-strech">
-                                    <div class="col-10 col-md-5 order-1 order-md-0">
-                                        <h3 class="timeline-box-title font-weight-bolder text-uppercase mb-1">MAPPING</h3>
-                                        <div class="card p-4">
-                                            <p class="m-0">Ocean Conservancy will work with its Global Ghost Gear Initiative® members and partners on the water to identify ghost gear graveyards around the world.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="col-2 col-md-1 order-0 order-md-1"><span class="timeline-box-ball"></span></div>
-                                    <div class="col-md-5 order-md-2 d-none d-md-block">
-                                        <div class="timeline-box-icon d-inline-flex h-100 align-items-center">
-                                            <img src="../assets01.teamassets.net/assets/images/icon-mapping.png" alt="mapping" width="190" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--TIMELINE BOX RIGHT-->
-                            <div class="timeline-box timeline-right">
-                                <div class="row no-gutters my-4 justify-content-center align-items-strech">
-                                    <div class="col-md-5 order-md-0 d-none d-md-block text-right">
-                                        <div class="timeline-box-icon d-inline-flex h-100 align-items-center">
-                                            <img src="../assets01.teamassets.net/assets/images/icon-extraction.png" alt="removal" width="190" />
-                                        </div>
-                                    </div>
-                                    <div class="col-2 col-md-1 order-0 order-md-1"><span class="timeline-box-ball"></span></div>
-                                    <div class="col-10 col-md-5 order-2">
-                                        <h3 class="timeline-box-title font-weight-bolder text-uppercase mb-1">REMOVAL</h3>
-                                        <div class="card p-4">
-                                            <p class="m-0">Specially trained experts will grapple or float the gear to the surface, where the gear will be hooked onto boat cranes and lifted out of the ocean. (Yes, it’s a very cool process.)</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--TIMELINE BOX LEFT-->
-                            <div class="timeline-box timeline-left">
-                                <div class="row no-gutters my-4 justify-content-center align-items-strech">
-                                    <div class="col-10 col-md-5 order-1 order-md-0">
-                                        <h3 class="timeline-box-title font-weight-bolder text-uppercase mb-1">RECYCLING [if applicable]</h3>
-                                        <div class="card p-4">
-                                            <p class="m-0">TeamSeas will work with local authorities to make sure any labeled, working gear is returned to local fishers. Remaining gear will be recycled– when possible – and the remainder properly disposed of.</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-2 col-md-1 order-0 order-md-1"><span class="timeline-box-ball"></span></div>
-                                    <div class="col-md-5 order-md-2 d-none d-md-block">
-                                        <div class="timeline-box-icon d-inline-flex h-100 align-items-center">
-                                            <img src="../assets01.teamassets.net/assets/images/icon-recycling.png" alt="recycling" width="190" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 text-center my-5">
-                            <a href="https://oceanconservancy.org/blog/2021/10/29/teamseas-will-transformational-ocean-lets-go/" target="_blank" class="btn btn-outline-white learn-more-btn">Learn More</a>
-                        </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="tabBeaches" role="tabpanel">
-                        <p class="text-center mb-5"><img src="../assets01.teamassets.net/assets/images/logo-ocean-conservancy.png" width="240"></p>
-                        <div class="row">
-                            <div class="col-8 col-sm-6 offset-sm-3 offset-2">
-                                <div class="video-wrapper">
-                                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/gAm8eNL8XjQ?rel=0&amp;showinfo=0&amp;modestbranding=1&amp;enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="timeline-wrapper">
-                            <div class="timeline-line-center"></div>
-                            <!--TIMELINE BOX RIGHT-->
-                            <div class="timeline-box timeline-right">
-                                <div class="row no-gutters my-4 justify-content-center align-items-strech">
-                                    <div class="col-md-5 order-md-0 d-none d-md-block text-right">
-                                        <div class="timeline-box-icon d-inline-flex h-100 align-items-center">
-                                            <img src="../assets01.teamassets.net/assets/images/icon-the-big-idea.png" alt="capture" width="190" />
-                                        </div>
-                                    </div>
-                                    <div class="col-2 col-md-1 order-0 order-md-1"><span class="timeline-box-ball"></span></div>
-                                    <div class="col-10 col-md-5 order-2">
-                                        <h3 class="timeline-box-title font-weight-bolder text-uppercase mb-1">The Big Idea</h3>
-                                        <div class="card p-4">
-                                            <p class="m-0">With YOUR HELP, #TeamSeas will work with Ocean Conservancy and its partners to remove millions of pounds of plastic and trash from beaches all around the world. We’ll also send professional crews to clean up some of the most iconic, vulnerable ocean spaces.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--TIMELINE BOX LEFT-->
-                            <div class="timeline-box timeline-left">
-                                <div class="row no-gutters my-4 justify-content-center align-items-strech">
-                                    <div class="col-10 col-md-5 order-1 order-md-0">
-                                        <h3 class="timeline-box-title font-weight-bolder text-uppercase mb-1">Local Collection</h3>
-                                        <div class="card p-4">
-                                            <p class="m-0">Here’s where you can get dirty! Fight side-by-side with #TeamSeas for cleaner coastal communities.</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-2 col-md-1 order-0 order-md-1"><span class="timeline-box-ball"></span></div>
-                                    <div class="col-md-5 order-md-2 d-none d-md-block">
-                                        <div class="timeline-box-icon d-inline-flex h-100 align-items-center">
-                                            <img src="../assets01.teamassets.net/assets/images/icon-local-collection.png" alt="accumulation" width="190" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--TIMELINE BOX RIGHT-->
-                            <div class="timeline-box timeline-right">
-                                <div class="row no-gutters my-4 justify-content-center align-items-strech">
-                                    <div class="col-md-5 order-md-0 d-none d-md-block text-right">
-                                        <div class="timeline-box-icon d-inline-flex h-100 align-items-center">
-                                            <img src="../assets01.teamassets.net/assets/images/icon-costal-collection.png" alt="extraction" width="190" />
-                                        </div>
-                                    </div>
-                                    <div class="col-2 col-md-1 order-0 order-md-1"><span class="timeline-box-ball"></span></div>
-                                    <div class="col-10 col-md-5 order-2">
-                                        <h3 class="timeline-box-title font-weight-bolder text-uppercase mb-1">The International Coastal Cleanup Network Mapping</h3>
-                                        <div class="card p-4">
-                                            <p class="m-0">Ocean Conservancy will use the best available science and work with its International Coastal Cleanup local partners around the world to identify places where cleanups will have the greatest impact.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--TIMELINE BOX LEFT-->
-                            <div class="timeline-box timeline-left">
-                                <div class="row no-gutters my-4 justify-content-center align-items-strech">
-                                    <div class="col-10 col-md-5 order-1 order-md-0">
-                                        <h3 class="timeline-box-title font-weight-bolder text-uppercase mb-1">Removal</h3>
-                                        <div class="card p-4">
-                                            <p class="m-0">#TeamSeas will partner with volunteers like you to remove millions of pounds of trash from the world’s beaches and weigh the total trash collected at the end of each cleanup.</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-2 col-md-1 order-0 order-md-1"><span class="timeline-box-ball"></span></div>
-                                    <div class="col-md-5 order-md-2 d-none d-md-block">
-                                        <div class="timeline-box-icon d-inline-flex h-100 align-items-center">
-                                            <img src="../assets01.teamassets.net/assets/images/icon-extraction.png" alt="recycling" width="190" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--TIMELINE BOX RIGHT-->
-                            <div class="timeline-box timeline-right">
-                                <div class="row no-gutters my-4 justify-content-center align-items-strech">
-                                    <div class="col-md-5 order-md-0 d-none d-md-block text-right">
-                                        <div class="timeline-box-icon d-inline-flex h-100 align-items-center">
-                                            <img src="../assets01.teamassets.net/assets/images/icon-recycling.png" alt="extraction" width="190" />
-                                        </div>
-                                    </div>
-                                    <div class="col-2 col-md-1 order-0 order-md-1"><span class="timeline-box-ball"></span></div>
-                                    <div class="col-10 col-md-5 order-2">
-                                        <h3 class="timeline-box-title font-weight-bolder text-uppercase mb-1">Recycling [if applicable]</h3>
-                                        <div class="card p-4">
-                                            <p class="m-0">TeamSeas will work with local authorities to make sure collected trash is properly disposed of and, where local facilities exist, we’ll recycle all accepted materials.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 text-center my-5">
-                            <a href="https://oceanconservancy.org/blog/2021/10/29/teamseas-will-transformational-ocean-lets-go/" target="_blank" class="btn btn-outline-white learn-more-btn">Learn More</a>
-                        </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="tabRivers" role="tabpanel">
-                        <p class="text-center mb-5"><img src="../assets01.teamassets.net/assets/images/TOC_logoTM_Stacked_TOCblue.png" width="240"></p>
-                        <div class="row">
-                            <div class="col-8 col-sm-6 offset-sm-3 offset-2">
-                                <div class="video-wrapper">
-                                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/pXDx6DjNLDU?rel=0&amp;showinfo=0&amp;modestbranding=1&amp;enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="timeline-wrapper">
-                            <div class="timeline-line-center"></div>
-                            <!--TIMELINE BOX RIGHT-->
-                            <div class="timeline-box timeline-right">
-                                <div class="row no-gutters my-4 justify-content-center align-items-strech">
-                                    <div class="col-md-5 order-md-0 d-none d-md-block text-right">
-                                        <div class="timeline-box-icon d-inline-flex h-100 align-items-center">
-                                            <img src="../assets01.teamassets.net/assets/images/icon-the-big-idea.png" alt="seas cleanups" width="190" />
-                                        </div>
-                                    </div>
-                                    <div class="col-2 col-md-1 order-0 order-md-1"><span class="timeline-box-ball"></span></div>
-                                    <div class="col-10 col-md-5 order-2">
-                                        <h3 class="timeline-box-title font-weight-bolder text-uppercase mb-1">The Big Idea</h3>
-                                        <div class="card p-4">
-                                            <p class="m-0">Rivers are a major source of ocean plastic pollution, with research showing that 1% of rivers account for nearly 80% of pollution flowing from rivers. #TeamSeas will work with The Ocean Cleanup to tackle trash from these rivers with their Interceptor technologies.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--TIMELINE BOX LEFT-->
-                            <div class="timeline-box timeline-left">
-                                <div class="row no-gutters my-4 justify-content-center align-items-strech">
-                                    <div class="col-10 col-md-5 order-1 order-md-0">
-                                        <h3 class="timeline-box-title font-weight-bolder text-uppercase mb-1">The River Interceptor</h3>
-                                        <div class="card p-4">
-                                            <p class="m-0">The Ocean Cleanup has developed technologies for river pollution called Interceptors, which have removed over 2 million pounds to date! One of their key technology solutions, The Interceptor™, is solar-powered and can collect trash autonomously.</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-2 col-md-1 order-0 order-md-1"><span class="timeline-box-ball"></span></div>
-                                    <div class="col-md-5 order-md-2 d-none d-md-block">
-                                        <div class="timeline-box-icon d-inline-flex h-100 align-items-center">
-                                            <img src="../assets01.teamassets.net/assets/images/icon-seas-mapping.png" alt="mapping" width="190" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--TIMELINE BOX RIGHT-->
-                            <div class="timeline-box timeline-right">
-                                <div class="row no-gutters my-4 justify-content-center align-items-strech">
-                                    <div class="col-md-5 order-md-0 d-none d-md-block text-right">
-                                        <div class="timeline-box-icon d-inline-flex h-100 align-items-center">
-                                            <img src="../assets01.teamassets.net/assets/images/icon-capture.png" alt="removal" width="190" />
-                                        </div>
-                                    </div>
-                                    <div class="col-2 col-md-1 order-0 order-md-1"><span class="timeline-box-ball"></span></div>
-                                    <div class="col-10 col-md-5 order-2">
-                                        <h3 class="timeline-box-title font-weight-bolder text-uppercase mb-1">Research</h3>
-                                        <div class="card p-4">
-                                            <p class="m-0">Every river is unique, and for that reason, together with local partners, The Ocean Cleanup’s team will first conduct research to determine the most efficient solution to clean that specific river.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--TIMELINE BOX LEFT-->
-                            <div class="timeline-box timeline-right">
-                                <div class="row no-gutters my-4 justify-content-center align-items-strech">
-                                    <div class="col-10 col-md-5 order-1 order-md-0">
-                                        <h3 class="timeline-box-title font-weight-bolder text-uppercase mb-1">Collect Trash</h3>
-                                        <div class="card p-4">
-                                            <p class="m-0">After conducting research and setting up the necessary local partnerships, it’s time to deploy and start intercepting trash! </p>
-                                        </div>
-                                    </div>
-                                    <div class="col-2 col-md-1 order-0 order-md-1"><span class="timeline-box-ball"></span></div>
-                                    <div class="col-md-5 order-md-2 d-none d-md-block">
-                                        <div class="timeline-box-icon d-inline-flex h-100 align-items-center">
-                                            <img src="../assets01.teamassets.net/assets/images/icon-conveyor-belt.png" alt="recycling" width="190" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--TIMELINE BOX RIGHT-->
-                            <div class="timeline-box timeline-right">
-                                <div class="row no-gutters my-4 justify-content-center align-items-strech">
-                                    <div class="col-md-5 order-md-0 d-none d-md-block text-right">
-                                        <div class="timeline-box-icon d-inline-flex h-100 align-items-center">
-                                            <img src="../assets01.teamassets.net/assets/images/icon-shuttle.png" alt="removal" width="190" />
-                                        </div>
-                                    </div>
-                                    <div class="col-2 col-md-1 order-0 order-md-1"><span class="timeline-box-ball"></span></div>
-                                    <div class="col-10 col-md-5 order-2">
-                                        <h3 class="timeline-box-title font-weight-bolder text-uppercase mb-1">Empty and Repeat</h3>
-                                        <div class="card p-4">
-                                            <p class="m-0">The collected trash is brought to shore to be properly disposed of by local waste management and then cleanup continues.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--TIMELINE BOX LEFT-->
-                            <div class="timeline-box timeline-right">
-                                <div class="row no-gutters my-4 justify-content-center align-items-strech">
-                                    <div class="col-10 col-md-5 order-1 order-md-0">
-                                        <h3 class="timeline-box-title font-weight-bolder text-uppercase mb-1">Going Forward</h3>
-                                        <div class="card p-4">
-                                            <p class="m-0">Even though the Interceptors aren’t a permanent solution, they are a safety net until waste management on land improves and we’re able to stop plastic from polluting our rivers. The Interceptors deployed with the help of #TeamSeas will keep cleaning even after the campaign comes to a close.</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-2 col-md-1 order-0 order-md-1"><span class="timeline-box-ball"></span></div>
-                                    <div class="col-md-5 order-md-2 d-none d-md-block">
-                                        <div class="timeline-box-icon d-inline-flex h-100 align-items-center">
-                                            <img src="../assets01.teamassets.net/assets/images/icon-dumpster.png" alt="recycling" width="190" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 text-center my-5">
-                            <a href="https://theoceancleanup.com/teamseas/" target="_blank" class="btn btn-outline-white learn-more-btn">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <footer id="footer">
-        <div class="bg-elements">
-            <span class="diver-5"></span>
-        </div>
         <div class="section-inner">
             <div class="container pt-5">
-                <div class="footer-fish text-center">
-                    <img src="../assets01.teamassets.net/assets/images/angler-fish.png" width="370" />
-                </div>
-            </div>
-        </div>
-        <div class="container pb-5 foot-link-container">
-            <div class="footer-links d-flex justify-content-between py-2 flex-wrap">
-                <p class="text-center"><span class="btn btn-outline-white" data-toggle="modal" data-target="#faqModal">FAQ</span></p>
-                <p class="text-center"><span class="btn btn-outline-white" data-toggle="modal" data-target="#contactModal">Contact Us</span></p>
-                <p class="text-center"><span class="btn btn-outline-white" data-toggle="modal" data-target="#pressModal">Press Inquiries</span></p>
-                <p class="text-center"><a class="btn btn-outline-white" href="https://store.teamseas.org/" target="_blank">Store</a></p>
-                <p class="text-center"><a class="btn btn-outline-white" href="https://teamtrees.org/" target="_blank">#TeamTrees</a></p>
+                    <div class="container text-center">
+                        <div class="brand-wrapper">
+                            <div class="brand-inner">
+                                <h4 class="text-white font-weight-light page-headline">You did it! Now let’s keep going. Come back anytime you feel like supporting username more!</h4>
+                            </div>
+                        </div>
+                    </div>
+
             </div>
         </div>
         <div class="container foot-link-container">
             <div class="row justify-content-center">
                 <div class="col-6">
                     <div class="mb-5 d-flex justify-content-around text-center">
-                        <a class="text-muted text-uppercase mx-1" href="terms-of-use/index.html" target="_blank">TERMS</a>
-                        <a class="text-muted text-uppercase mx-1" href="privacy-policy/index.html" target="_blank">PRIVACY</a>
-                        <a class="text-muted text-uppercase mx-1" href="coppa-policy/index.html" target="_blank">Children’s Privacy Policy</a>
+                        <a class="text-muted text-uppercase mx-1" href="terms-of-use/index.html" target="_blank">Contact</a>
+                        <a class="text-muted text-uppercase mx-1" href="privacy-policy/index.html" target="_blank">About</a>
+                        <a class="text-muted text-uppercase mx-1" href="coppa-policy/index.html" target="_blank">Privacy Policy</a>
                     </div>
                 </div>
             </div>
+
+{{--            <div class="footer-links d-flex justify-content-between py-2 flex-wrap">--}}
+{{--                <p class="text-center"><span class="btn btn-outline-white" data-toggle="modal" data-target="#faqModal">FAQ</span></p>--}}
+{{--                <p class="text-center"><span class="btn btn-outline-white" data-toggle="modal" data-target="#contactModal">Contact Us</span></p>--}}
+{{--                <p class="text-center"><span class="btn btn-outline-white" data-toggle="modal" data-target="#pressModal">Press Inquiries</span></p>--}}
+{{--                <p class="text-center"><a class="btn btn-outline-white" href="https://store.teamseas.org/" target="_blank">Store</a></p>--}}
+{{--                <p class="text-center"><a class="btn btn-outline-white" href="https://teamtrees.org/" target="_blank">#TeamTrees</a></p>--}}
+{{--            </div>--}}
         </div>
     </footer>
 </main>
+<!-- Javascript -->
+<script src="{{ asset('assets/js/autocomplete.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/sweetalert2.js') }}?v=1.0.0"></script>
+</body>
