@@ -1,47 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<!-- Mirrored from admin.pixelstrap.com/zeta/theme/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Mar 2022 13:17:35 GMT -->
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zeta admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
-    <meta name="keywords" content="admin template, Zeta admin template, dashboard template, flat admin template, responsive admin template, web app">
-    <meta name="author" content="pixelstrap">
-    <link rel="icon" href="{{ asset('dashboard/assetsimages/logo/favicon-icon.png') }}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ asset('images/logo/favicon-icon.png') }}" type="image/x-icon">
-    <title>Zeta admin dashboard </title>
-    <!-- Google font-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+    <link rel="icon" href="{{ asset('assets/dashboard/mages/logo/favicon-icon.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('assets/dashboard/mages/logo/favicon-icon.png') }}" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/css/vendors/font-awesome.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard/css/vendors/font-awesome.css') }}">
     <!-- ico-font-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/css/vendors/icofont.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard/css/vendors/icofont.css') }}">
     <!-- Themify icon-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/css/vendors/themify.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard/css/vendors/themify.css') }}">
     <!-- Flag icon-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/css/vendors/flag-icon.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard/css/vendors/flag-icon.css') }}">
     <!-- Feather icon-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/css/vendors/feather-icon.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard/css/vendors/feather-icon.css') }}">
     <!-- Plugins css start-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/css/vendors/scrollbar.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/css/vendors/animate.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/css/vendors/date-picker.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/css/vendors/photoswipe.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard/css/vendors/scrollbar.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard/css/vendors/animate.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard/css/vendors/date-picker.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard/css/vendors/photoswipe.css') }}">
     <!-- Plugins css Ends-->
     <!-- Bootstrap css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/css/vendors/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard/css/vendors/bootstrap.css') }}">
     <!-- App css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/css/style.css') }}">
-    <link id="color" rel="stylesheet" href="{{ asset('dashboard/assets/css/color-1.css') }}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard/css/style.css') }}">
+    <link id="color" rel="stylesheet" href="{{ asset('assets/dashboard/css/color-1.css') }}" media="screen">
     <!-- Responsive css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/css/responsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard/css/responsive.css') }}">
+    @livewireStyles
+
 </head>
 <body>
-{{$slot}}
 <!-- Loader starts-->
 <div class="loader-wrapper">
     <div class="loader">
@@ -63,7 +60,7 @@
     <div class="page-header">
         <div class="header-wrapper row m-0">
             <div class="header-logo-wrapper col-auto p-0">
-                <div class="logo-wrapper"><a href="index-2.html"><img class="img-fluid" src="../assets/images/logo/logo.png" alt=""></a></div>
+                <div class="logo-wrapper"><a href="index-2.html"><img class="img-fluid" src="{{ asset('assets/dashboard/images/logo/logo.png') }}" alt=""></a></div>
                 <div class="toggle-sidebar">
                     <div class="status_toggle sidebar-toggle d-flex">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -134,7 +131,7 @@
                             </div>
                             <ul class="custom-scrollbar">
                                 <li>
-                                    <div class="media"><img class="img-fluid b-r-5 me-3 img-50" src="../assets/images/banner-1.jpg" alt="">
+                                    <div class="media"><img class="img-fluid b-r-5 me-3 img-50" src="{{ asset('assets/dashboard/images/banner-1.jpg') }}" alt="">
                                         <div class="media-body">
                                             <h5> <a href="product.html">Black shirt with jecket</a></h5>
                                             <p class="f-w-700">$500</p>
@@ -146,7 +143,7 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="media"><img class="img-fluid b-r-5 me-3 img-50" src="../assets/images/product-4.png" alt="">
+                                    <div class="media"><img class="img-fluid b-r-5 me-3 img-50" src="{{ asset('assets/dashboard/images/product-4.png') }}" alt="">
                                         <div class="media-body">
                                             <h5> <a href="product.html">Yellow white shirt.</a></h5>
                                             <p class="f-w-700">$500</p>
@@ -158,7 +155,7 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="media"><img class="img-fluid b-r-5 me-3 img-50" src="../assets/images/product-6.jpg" alt="">
+                                    <div class="media"><img class="img-fluid b-r-5 me-3 img-50" src="{{ asset('assets/dashboard/images/product-6.jpg') }}" alt="">
                                         <div class="media-body">
                                             <h5> <a href="product.html">Nike Black shoes !</a></h5>
                                             <p class="f-w-700">$500</p>
@@ -249,7 +246,7 @@
                             <ul class="custom-scrollbar">
                                 <li>
                                     <div class="media">
-                                        <div class="notification-img bg-light-primary"><img src="../assets/images/avtar/man.png" alt=""></div>
+                                        <div class="notification-img bg-light-primary"><img src="{{ asset('assets/dashboard/images/avtar/man.png') }}" alt=""></div>
                                         <div class="media-body">
                                             <h5> <a class="f-14 m-0" href="user-profile.html">Allie Grater</a></h5>
                                             <p>Lorem ipsum dolor sit amet...</p><span>10:20</span>
@@ -259,7 +256,7 @@
                                 </li>
                                 <li>
                                     <div class="media">
-                                        <div class="notification-img bg-light-secondary"><img src="../assets/images/avtar/teacher.png" alt=""></div>
+                                        <div class="notification-img bg-light-secondary"><img src="{{ asset('assets/dashboard/images/avtar/teacher.png') }}" alt=""></div>
                                         <div class="media-body">
                                             <h5> <a class="f-14 m-0" href="user-profile.html">Olive Yew</a></h5>
                                             <p>Lorem ipsum dolor sit amet...</p><span>09:20</span>
@@ -269,7 +266,7 @@
                                 </li>
                                 <li>
                                     <div class="media">
-                                        <div class="notification-img bg-light-info"><img src="../assets/images/avtar/teenager.png" alt=""></div>
+                                        <div class="notification-img bg-light-info"><img src="{{ asset('assets/dashboard/images/avtar/teenager.png') }}" alt=""></div>
                                         <div class="media-body">
                                             <h5> <a class="f-14 m-0" href="user-profile.html">Peg Legge</a></h5>
                                             <p>Lorem ipsum dolor sit amet...</p><span>07:20</span>
@@ -279,7 +276,7 @@
                                 </li>
                                 <li>
                                     <div class="media">
-                                        <div class="notification-img bg-light-success"><img src="../assets/images/avtar/chinese.png" alt=""></div>
+                                        <div class="notification-img bg-light-success"><img src="{{ asset('assets/dashboard/images/avtar/chinese.png') }}" alt=""></div>
                                         <div class="media-body">
                                             <h5> <a class="f-14 m-0" href="user-profile.html">Teri Dactyl</a></h5>
                                             <p>Lorem ipsum dolor sit amet...</p><span>05:20</span>
@@ -342,15 +339,15 @@
         <!-- Page Sidebar Start-->
         <div class="sidebar-wrapper">
             <div>
-                <div class="logo-wrapper"><a href="index-2.html"><img class="img-fluid for-light" src="../assets/images/logo/small-logo.png" alt=""><img class="img-fluid for-dark" src="../assets/images/logo/small-white-logo.png" alt=""></a>
+                <div class="logo-wrapper"><a href="index-2.html"><img class="img-fluid for-light" src="{{ asset('assets/dashboard/images/logo/small-logo.png') }}" alt=""><img class="img-fluid for-dark" src="{{ asset('assets/dashboard/images/logo/small-white-logo.png') }}" alt=""></a>
                     <div class="back-btn"><i class="fa fa-angle-left"></i></div>
                 </div>
-                <div class="logo-icon-wrapper"><a href="index-2.html"><img class="img-fluid" src="../assets/images/logo-icon.png" alt=""></a></div>
+                <div class="logo-icon-wrapper"><a href="index-2.html"><img class="img-fluid" src="{{ asset('assets/dashboard/images/logo-icon.png') }}" alt=""></a></div>
                 <nav class="sidebar-main">
                     <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
                     <div id="sidebar-menu">
                         <ul class="sidebar-links" id="simple-bar">
-                            <li class="back-btn"><a href="index-2.html"><img class="img-fluid" src="../assets/images/logo-icon.png" alt=""></a>
+                            <li class="back-btn"><a href="index-2.html"><img class="img-fluid" src="{{ asset('assets/dashboard/images/logo-icon.png') }}" alt=""></a>
                                 <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true">        </i></div>
                             </li>
                             <li class="sidebar-list">
@@ -1104,7 +1101,7 @@
                                     </svg><span>Support Ticket</span></a></li>
                         </ul>
                         <div class="sidebar-img-section">
-                            <div class="sidebar-img-content"><img class="img-fluid" src="../assets/images/side-bar.png" alt="">
+                            <div class="sidebar-img-content"><img class="img-fluid" src="{{ asset('assets/dashboard/images/side-bar.png') }}" alt="">
                                 <h4>Need Help ?</h4><a class="txt" href="https://pixelstrap.freshdesk.com/support/home">Raise ticket at "support@pixelstrap.com"</a><a class="btn btn-secondary" href="https://themeforest.net/user/pixelstrap/portfolio">Buy Now</a>
                             </div>
                         </div>
@@ -1114,343 +1111,9 @@
             </div>
         </div>
         <!-- Page Sidebar Ends-->
-        <div class="page-body">
-            <div class="container-fluid">
-                <div class="page-title">
-                    <div class="row">
-                        <div class="col-12 col-sm-6">
-                            <h3>Default</h3>
-                        </div>
-                        <div class="col-12 col-sm-6">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"> <a class="home-item" href="index-2.html"><i data-feather="home"></i></a></li>
-                                <li class="breadcrumb-item"> Dashboard</li>
-                                <li class="breadcrumb-item active"> Default</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Container-fluid starts-->
-            <div class="container-fluid default-dash">
-                <div class="row">
-                    <div class="col-xl-6 col-md-6 dash-xl-50">
-                        <div class="card profile-greeting">
-                            <div class="card-body">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <div class="greeting-user">
-                                            <h1>Hello, Harry Mendez</h1>
-                                            <p>Welcome back, your dashboard is ready!</p><a class="btn btn-outline-white_color" href="blog-single.html">Get Started<i class="icon-arrow-right">                           </i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cartoon-img"><img class="img-fluid" src="http://admin.pixelstrap.com/zeta/assets/images/images.svg" alt=""></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6 dash-xl-50">
-                        <div class="card pb-0 o-hidden earning-card">
-                            <div class="card-header earning-back"></div>
-                            <div class="card-body p-0">
-                                <div class="earning-content"><img class="img-fluid" src="../assets/images/avatar.jpg" alt=""><a href="blog-single.html">
-                                        <h4>Today's Earning</h4></a><span>(Mon 15 - Sun 21)</span>
-                                    <h6>$573.67</h6>
-                                    <div id="earning-chart"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6 dash-xl-50">
-                        <div class="card weekly-column">
-                            <div class="card-body p-0">
-                                <div id="weekly-chart"> </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6 dash-31 dash-xl-50">
-                        <div class="card news-update">
-                            <div class="card-header card-no-border">
-                                <div class="header-top">
-                                    <h5 class="m-0">News &amp; Update</h5>
-                                    <div class="icon-box onhover-dropdown"><i data-feather="more-horizontal"></i>
-                                        <div class="icon-box-show onhover-show-div">
-                                            <ul>
-                                                <li> <a>
-                                                        Today</a></li>
-                                                <li> <a>
-                                                        Yesterday</a></li>
-                                                <li> <a>
-                                                        Tommorow</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body pt-0">
-                                <div class="table-responsive custom-scrollbar">
-                                    <table class="table table-bordernone">
-                                        <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="media"><img class="img-fluid me-3 b-r-5" src="../assets/images/dashboard/rectangle-26.jpg" alt="">
-                                                    <div class="media-body"><a href="blog-single.html">
-                                                            <h5>Google Project Apply Reviwe</h5></a>
-                                                        <p>Today's News Headlines, Breaking...</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td><span class="badge badge-light-theme-light font-theme-light">1 day ago</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="media"> <img class="img-fluid me-3 b-r-5" src="../assets/images/dashboard/rectangle-27.jpg" alt="">
-                                                    <div class="media-body"><a href="blog-single.html">
-                                                            <h5>Business Logo Create</h5></a>
-                                                        <p>Check out the latest news from...</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td><span class="badge badge-light-theme-light font-theme-light">2 weeks ago</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="media"><img class="img-fluid me-3 b-r-5" src="../assets/images/dashboard/rectangle-28.jpg" alt="">
-                                                    <div class="media-body"><a href="blog-single.html">
-                                                            <h5>Business Project Research</h5></a>
-                                                        <p>News in English: Get all Breaking...</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td><span class="badge badge-light-theme-light font-theme-light">3 day ago</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="media"><img class="img-fluid me-3 b-r-5" src="../assets/images/dashboard/rectangle-29.jpg" alt="">
-                                                    <div class="media-body"><a href="blog-single.html">
-                                                            <h5>Recruitment in it Department</h5></a>
-                                                        <p>Technology and Indian Business News...</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td><span class="badge badge-light-theme-light font-theme-light">2 hours ago</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="media"><img class="img-fluid me-3 b-r-5" src="../assets/images/dashboard/rectangle-28.jpg" alt="">
-                                                    <div class="media-body"><a href="blog-single.html">
-                                                            <h5>Business Project Research</h5></a>
-                                                        <p>News in English: Get all Breaking...</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td><span class="badge badge-light-theme-light font-theme-light">3 day ago</span></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6 dash-35 dash-xl-50">
-                        <div class="card ongoing-project">
-                            <div class="card-header card-no-border">
-                                <div class="media media-dashboard">
-                                    <div class="media-body">
-                                        <h5 class="mb-0">Ongoing Projects         </h5>
-                                    </div>
-                                    <div class="icon-box onhover-dropdown"><i data-feather="more-horizontal"></i>
-                                        <div class="icon-box-show onhover-show-div">
-                                            <ul>
-                                                <li> <a>
-                                                        Done</a></li>
-                                                <li> <a>
-                                                        Pending</a></li>
-                                                <li> <a>
-                                                        Rejected</a></li>
-                                                <li> <a>In Progress</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body pt-0">
-                                <div class="table-responsive custom-scrollbar">
-                                    <table class="table table-bordernone">
-                                        <thead>
-                                        <tr>
-                                            <th> <span>Name </span></th>
-                                            <th> <span>Date</span></th>
-                                            <th> <span>Project </span></th>
-                                            <th> <span>Status   </span></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="media">
-                                                    <div class="square-box me-2"><img class="img-fluid b-r-5" src="../assets/images/avtar/boy.png" alt=""></div>
-                                                    <div class="media-body ps-2">
-                                                        <div class="avatar-details"><a href="product-page.html">
-                                                                <h6>Gary</h6></a><span> UK Desig Team</span></div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="img-content-box">
-                                                <h6>12 May 2020</h6><span>In 6 Days</span>
-                                            </td>
-                                            <td>
-                                                <h6>Product Design</h6><span>$7,800</span>
-                                            </td>
-                                            <td>
-                                                <div class="badge badge-light-primary">Done</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="media">
-                                                    <div class="square-box me-2"><img class="img-fluid b-r-5" src="../assets/images/avtar/girl.png" alt=""></div>
-                                                    <div class="media-body ps-2">
-                                                        <div class="avatar-details"><a href="product-page.html">
-                                                                <h6>Ralph Waters</h6></a><span> UX Ninjas</span></div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="img-content-box">
-                                                <h6>06 May 2020</h6><span>Overdue</span>
-                                            </td>
-                                            <td>
-                                                <h6>Concept Design</h6><span>$670</span>
-                                            </td>
-                                            <td>
-                                                <div class="badge badge-light-secondary">Pending</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="media">
-                                                    <div class="square-box me-2"><img class="img-fluid b-r-5" src="../assets/images/avtar/man.png" alt=""></div>
-                                                    <div class="media-body ps-2">
-                                                        <div class="avatar-details"><a href="product-page.html">
-                                                                <h6>Edwin Day</h6></a><span> SF Dev Team</span></div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="img-content-box">
-                                                <h6>28 Sep 2020</h6><span>in 4 Months</span>
-                                            </td>
-                                            <td>
-                                                <h6>UX Consulting</h6><span>$7,889</span>
-                                            </td>
-                                            <td>
-                                                <div class="badge badge-light-danger">Rejected</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="media">
-                                                    <div class="square-box me-2"><img class="img-fluid b-r-5" src="../assets/images/avtar/woman.png" alt=""></div>
-                                                    <div class="media-body ps-2">
-                                                        <div class="avatar-details"><a href="product-page.html">
-                                                                <h6>Gary</h6></a><span> UK Desig Team</span></div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="img-content-box">
-                                                <h6>12 May 2020</h6><span>In 6 Days</span>
-                                            </td>
-                                            <td>
-                                                <h6>Product Design</h6><span>Toyota</span>
-                                            </td>
-                                            <td>
-                                                <div class="badge badge-light-info">In Progress</div>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6 dash-31 dash-xl-50">
-                        <div class="card recent-activity">
-                            <div class="card-header card-no-border">
-                                <div class="media media-dashboard">
-                                    <div class="media-body">
-                                        <h5 class="mb-0">Recent Activity      </h5>
-                                    </div>
-                                    <div class="icon-box onhover-dropdown"><i data-feather="more-horizontal"></i>
-                                        <div class="icon-box-show onhover-show-div">
-                                            <ul>
-                                                <li> <a>
-                                                        Latest </a></li>
-                                                <li> <a>
-                                                        Earlist</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body pt-0">
-                                <div class="table-responsive custom-scrollbar">
-                                    <table class="table table-bordernone">
-                                        <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="media">
-                                                    <div class="square-box me-2"><img class="img-fluid b-r-5" src="../assets/images/avtar/teacher.png" alt=""></div>
-                                                    <div class="media-body"><a href="user-profile.html">
-                                                            <h5>Alana Brady added new event</h5></a>
-                                                        <p class="font-primary">Sunday Cooking Class</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td><span class="badge badge-light-theme-light font-theme-light">2 hours ago   </span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="media">
-                                                    <div class="square-box me-2"><img class="img-fluid b-r-5" src="../assets/images/avtar/teenager.png" alt=""></div>
-                                                    <div class="media-body"><a href="user-profile.html">
-                                                            <h5>Lena Burton added new</h5></a>
-                                                        <p>Comment on <span class="font-primary">Vegetarian food fest</span></p>
-                                                        <div class="activity-msg"> <span class="activity-msg-box">
-                                       Again this was our mistake, we are truly sorry for not adhering to a strictly non animal product event.</span></div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>   <span class="badge badge-light-theme-light font-theme-light">10 jul 2020</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="media">
-                                                    <div class="square-box me-2"><img class="img-fluid b-r-5" src="../assets/images/avtar/chinese.png" alt=""></div>
-                                                    <div class="media-body image-swipe"><a href="user-profile.html">
-                                                            <h5>Max Simmons attached 2</h5></a>
-                                                        <p>photos to <span class="font-primary">Food photography Class</span></p>
-                                                        <div class="my-gallery" itemscope="">
-                                                            <div class="row gallery">
-                                                                <figure class="inner-img ms-3" itemprop="associatedMedia" itemscope=""><a href="../assets/images/dashboard/img-26.jpg" itemprop="contentUrl" data-size="600x600"><img class="img-fluid img-40" src="../assets/images/dashboard/img-26.jpg" itemprop="thumbnail" alt="Image description"></a>
-                                                                    <figcaption itemprop="caption description">Photos 1</figcaption>
-                                                                </figure>
-                                                                <figure class="inner-img ms-3" itemprop="associatedMedia" itemscope=""><a href="../assets/images/dashboard/image-20.jpg" itemprop="contentUrl" data-size="600x600"><img class="img-fluid img-40" src="../assets/images/dashboard/image-20.jpg" itemprop="thumbnail" alt="Image description"></a>
-                                                                    <figcaption itemprop="caption description">Photos 2
-                                            <td> <span class="badge badge-light-theme-light font-theme-light">22 Jun 2020</span></td>
-                                            </figcaption>
-                                            </figure>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </td>
-                    </tr>
-                    </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+        {{$slot}}
     </div>
-    <div class="col-xl-6 col-lg-12 dash-xl-100">
+    <div class="col-xsl-6 col-lg-12 dash-xl-100">
         <div class="card total-transactions">
             <div class="row m-0">
                 <div class="col-md-6 col-sm-6 p-0">
@@ -1587,45 +1250,49 @@
 </footer>
 </div>
 </div>
+
+@stack('modals')
+
+@livewireScripts
 <!-- latest jquery-->
-<script src="{{ asset('assets/dashboard/ssets/js/jquery-3.5.1.min.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/jquery-3.5.1.min.js') }}"></script>
 <!-- Bootstrap js-->
-<script src="{{ asset('assets/dashboard/ssets/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
 <!-- feather icon js-->
-<script src="{{ asset('assets/dashboard/assets/js/icons/feather-icon/feather.min.js') }}"></script>
-<script src="{{ asset('assets/dashboard/assets/js/icons/feather-icon/feather-icon.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/icons/feather-icon/feather.min.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/icons/feather-icon/feather-icon.js') }}"></script>
 <!-- scrollbar js-->
-<script src="{{ asset('assets/dashboard/assets/js/scrollbar/simplebar.js') }}"></script>
-<script src="{{ asset('assets/dashboard/assets/js/scrollbar/custom.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/scrollbar/simplebar.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/scrollbar/custom.js') }}"></script>
 <!-- Sidebar jquery-->
-<script src="{{ asset('assets/dashboard/assets/js/config.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/config.js') }}"></script>
 <!-- Plugins JS start-->
-<script src="{{ asset('assets/dashboard/assets/js/sidebar-menu.js') }}"></script>
-<script src="{{ asset('assets/dashboard/assets/js/chart/knob/knob.min.js') }}"></script>
-<script src="{{ asset('assets/dashboard/assets/js/chart/knob/knob-chart.js') }}"></script>
-<script src="{{ asset('assets/dashboard/assets/js/chart/apex-chart/apex-chart.js') }}"></script>
-<script src="{{ asset('assets/dashboard/assets/js/chart/apex-chart/stock-prices.js') }}"></script>
-<script src="{{ asset('assets/dashboard/assets/js/notify/bootstrap-notify.min.js') }}"></script>
-<script src="{{ asset('assets/dashboard/assets/js/dashboard/default.js') }}"></script>
-<script src="{{ asset('assets/dashboard/assets/js/notify/index.js') }}"></script>
-<script src="{{ asset('assets/dashboard/assets/js/datepicker/date-picker/datepicker.js') }}"></script>
-<script src="{{ asset('assets/dashboard/assets/js/datepicker/date-picker/datepicker.en.js') }}"></script>
-<script src="{{ asset('assets/dashboard/assets/js/datepicker/date-picker/datepicker.custom.js') }}"></script>
-<script src="{{ asset('assets/dashboard/assets/js/photoswipe/photoswipe.min.js') }}"></script>
-<script src="{{ asset('assets/dashboard/assets/js/photoswipe/photoswipe-ui-default.min.js') }}"></script>
-<script src="{{ asset('assets/dashboard/assets/js/photoswipe/photoswipe.js') }}"></script>
-<script src="{{ asset('assets/dashboard/assets/js/typeahead/handlebars.js') }}"></script>
-<script src="{{ asset('assets/dashboard/assets/js/typeahead/typeahead.bundle.js') }}"></script>
-<script src="{{ asset('assets/dashboard/assets/js/typeahead/typeahead.custom.js') }}"></script>
-<script src="{{ asset('assets/dashboard/assets/js/typeahead-search/handlebars.js') }}"></script>
-<script src="{{ asset('assets/dashboard/assets/js/typeahead-search/typeahead-custom.js') }}"></script>
-<script src="{{ asset('assets/dashboard/assets/js/height-equal.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/sidebar-menu.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/chart/knob/knob.min.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/chart/knob/knob-chart.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/chart/apex-chart/apex-chart.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/chart/apex-chart/stock-prices.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/notify/bootstrap-notify.min.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/dashboard/default.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/notify/index.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/datepicker/date-picker/datepicker.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/datepicker/date-picker/datepicker.en.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/datepicker/date-picker/datepicker.custom.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/photoswipe/photoswipe.min.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/photoswipe/photoswipe-ui-default.min.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/photoswipe/photoswipe.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/typeahead/handlebars.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/typeahead/typeahead.bundle.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/typeahead/typeahead.custom.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/typeahead-search/handlebars.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/typeahead-search/typeahead-custom.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/height-equal.js') }}"></script>
 <!-- Plugins JS Ends-->
 <!-- Theme js-->
 <script src="{{ asset('assets/dashboard/js/script.js') }}"></script>
 <script src="{{ asset('assets/dashboard/js/theme-customizer/customizer.js') }}"></script>
 <!-- login js-->
 <!-- Plugin used-->
+@stack('scripts')
 </body>
-
 </html>
