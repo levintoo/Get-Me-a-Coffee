@@ -2,6 +2,7 @@
 
 namespace App\Actions\Fortify;
 
+use App\Helpers\Helper;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -22,14 +23,27 @@ class CreateNewUser implements CreatesNewUsers
     {
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'unique:users', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone' => ['required','regex:/^([0-9\s\-\+\(\)]*)$/','min:10', 'max:255'],
+            'national_id' => ['required', 'numeric', 'unique:users', 'max:255'],
+            'category' => ['required', 'string', 'max:255'],
+            'about' => ['required', 'max:2048'],
             'password' => $this->passwordRules(),
-            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
+            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
 
         return User::create([
+            'userid' => Helper::IDGenerator(new User(),'user_id',5,'GMAC'),
             'name' => $input['name'],
+            'username'=> $input['username'],
+            'phone' => $input['phone'],
+            'national_id' => $input['national_id'],
+            'category' => $input['category'],
+            'about' => $input['about'],
             'email' => $input['email'],
+            'utype' => 'USR',
+            'status' => '0',
             'password' => Hash::make($input['password']),
         ]);
     }

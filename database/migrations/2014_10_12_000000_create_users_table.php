@@ -15,7 +15,14 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('userid',255);
+            $table->string('name',255);
+            $table->string('username',255);
+            $table->string('phone',255)->unique();
+            $table->string('national_id',255)->unique();
+            $table->string('category',255);
+            $table->string('about',2048);
+            $table->string('utype',255)->default('USR')->comment('USR for user and ADM for admin and Sec for secretary');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

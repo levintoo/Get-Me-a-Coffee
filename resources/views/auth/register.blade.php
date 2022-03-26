@@ -19,6 +19,47 @@
                 </div>
 
                 <div class="mb-3">
+                    <x-jet-label value="{{ __('Userame') }}" />
+
+                    <x-jet-input class="{{ $errors->has('username') ? 'is-invalid' : '' }}" type="text" name="username"
+                                 :value="old('username')" required autofocus autocomplete="username" />
+                    <x-jet-input-error for="username"></x-jet-input-error>
+                </div>
+
+                <div class="mb-3">
+                    <x-jet-label value="{{ __('Phone') }}" />
+
+                    <x-jet-input class="{{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone"
+                                 :value="old('phone')" required autofocus autocomplete="[phone]" />
+                    <x-jet-input-error for="phone"></x-jet-input-error>
+                </div>
+
+                <div class="mb-3">
+                    <x-jet-label value="{{ __('ID') }}" />
+
+                    <x-jet-input class="{{ $errors->has('national_id') ? 'is-invalid' : '' }}" type="number" name="national_id"
+                                 :value="old('national_id')" required autofocus autocomplete="national_id" />
+                    <x-jet-input-error for="national_id"></x-jet-input-error>
+                </div>
+
+                <div class="mb-3">
+                    <x-jet-label value="{{ __('About') }}" />
+
+                    <x-jet-input class="{{ $errors->has('about') ? 'is-invalid' : '' }}" type="text" name="about"
+                                 :value="old('about')" required autofocus autocomplete="about" />
+                    <x-jet-input-error for="about"></x-jet-input-error>
+                </div>
+
+                <div class="mb-3">
+                    <x-jet-label value="{{ __('Category') }}" />
+
+                    <x-jet-input class="{{ $errors->has('category') ? 'is-invalid' : '' }}" type="text" name="category"
+                                 :value="old('category')" required autofocus autocomplete="category" />
+                    <x-jet-input-error for="category"></x-jet-input-error>
+                </div>
+
+
+                <div class="mb-3">
                     <x-jet-label value="{{ __('Email') }}" />
 
                     <x-jet-input class="{{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email"
