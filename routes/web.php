@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Livewire\Dashboard\DashboardComponent;
+use App\Http\Livewire\DonorDetails;
 use App\Http\Livewire\HomeComponent;
+use App\Http\Livewire\PaymentDetails;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,5 +20,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/welcome', function () {
     return view('welcome');
 });
-Route::get('/', HomeComponent::class);
-Route::get('/dashboard', DashboardComponent::class)->name('dashboard');
+Route::get('/{username}', HomeComponent::class);
+Route::get('/dashboard/{username}', DashboardComponent::class)->name('dashboard');
