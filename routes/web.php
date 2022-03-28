@@ -21,4 +21,4 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 Route::get('/{username}', HomeComponent::class);
-Route::get('/dashboard/{username}', DashboardComponent::class)->name('dashboard');
+Route::get('/dashboard', DashboardComponent::class)->name('dashboard');
