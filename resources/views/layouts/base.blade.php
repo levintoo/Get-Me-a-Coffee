@@ -33,6 +33,7 @@
     @livewireScripts
     <script src="{{ asset('assets/js/autocomplete.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/sweetalert2.js') }}?v=1.0.0"></script>
+    <script src="{{ asset('assets/dashboard/js/jquery-3.5.1.min.js') }}"></script>
     @stack('scripts')
 </body>
 

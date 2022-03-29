@@ -20,19 +20,19 @@
                                             <div class="col mb-3 px-1">
                                                 <div class="custom-control custom-checkbox h-100" wire:click="doSomething">
                                                     <input name="pounds" value="{{$pounds}}" type="radio" class="custom-control-input" id="checkPounds5">
-                                                    <label class="custom-control-label text-uppercase h-100 d-flex align-items-center justify-content-center" for="checkPounds5">{{$pounds}}<br>Pounds</label>
+                                                    <label id="donateAmount5" class="custom-control-label text-uppercase h-100 d-flex align-items-center justify-content-center" for="checkPounds5">{{$pounds}}<br>Pounds</label>
                                                 </div>
                                             </div>
                                             <div class="col mb-3 px-1">
                                                 <div class="custom-control custom-checkbox h-100">
                                                     <input name="pounds" value="20" type="radio" checked class="custom-control-input active-donation-amount" id="checkPounds20">
-                                                    <label class="custom-control-label text-uppercase h-100 d-flex align-items-center justify-content-center" for="checkPounds20">20<br>Pounds</label>
+                                                    <label id="donateAmount20" class="custom-control-label text-uppercase h-100 d-flex align-items-center justify-content-center" for="checkPounds20">20<br>Pounds</label>
                                                 </div>
                                             </div>
                                             <div class="col mb-3 px-1">
                                                 <div class="custom-control custom-checkbox h-100">
                                                     <input name="pounds" value="50" type="radio" class="custom-control-input" id="checkPounds50">
-                                                    <label class="custom-control-label text-uppercase h-100 d-flex align-items-center justify-content-center" for="checkPounds50">50<br>Pounds</label>
+                                                    <label id="donateAmount50" class="custom-control-label text-uppercase h-100 d-flex align-items-center justify-content-center" for="checkPounds50">50<br>Pounds</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -40,11 +40,11 @@
                                             <div class="col mb-1 px-1">
                                                 <div class="custom-control custom-checkbox h-100">
                                                     <input name="pounds" value="100" type="radio" class="custom-control-input" id="checkPounds100">
-                                                    <label class="custom-control-label text-uppercase h-100 d-flex align-items-center justify-content-center" for="checkPounds100">100<br>Pounds</label>
+                                                    <label id="donateAmount100" class="custom-control-label text-uppercase h-100 d-flex align-items-center justify-content-center" for="checkPounds100">100<br>Pounds</label>
                                                 </div>
                                             </div>
                                             <div class="col-8 mb-1 px-1">
-                                                <input name="other_amount" value="" type="text" class="form-control custom-control h-100" maxlength="10" placeholder="Other Amount">
+                                                <input id="donateAmountOther" name="other_amount" value="" type="text" class="form-control custom-control h-100" maxlength="10" placeholder="Other Amount">
                                             </div>
                                             <div class="col-12 mb-2">
                                                 <small class="text-muted"><em>We take crypto! You will see the options on step 3</em></small>
@@ -272,3 +272,44 @@
         </div>
     </footer>
 </main>
+@push('scripts')
+<script>
+    document.getElementById("donateAmount5").onclick = function() {
+        myFunction(5)
+    };
+    document.getElementById("donateAmount20").onclick = function() {
+        myFunction(20)
+    };
+    document.getElementById("donateAmount50").onclick = function() {
+        myFunction(50)
+    };
+    document.getElementById("donateAmount100").onclick = function() {
+        myFunction(100)
+    };
+
+    var el = document.getElementById("donateAmountOther");
+    el.addEventListener("change", doSomething, false);
+
+    function doSomething() {
+        // fetch amount in the input
+        var amount = document.getElementById("donateAmountOther").value;
+        myFunction(amount)
+    }
+
+    function myFunction(amount) {
+        // update input with selected amount
+        document.getElementById("donateAmountOther").value = amount;
+    }
+
+    document.getElementById("donateBtnStep1").onclick = function() {
+        var value = document.getElementById("donateAmountOther").value;
+        if (value != "") {
+            console.log("you will pay " + value);
+            // make ajax request
+        } else {
+            alert("You must select an amount")
+        }
+    };
+
+</script>
+@endpush

@@ -7,6 +7,7 @@ use Livewire\Component;
 class HomeComponent extends Component
 {
     public $pounds;
+    public $username;
     public function mount()
     {
         $this->pounds = 100;
@@ -14,7 +15,7 @@ class HomeComponent extends Component
 
     public function render()
     {
-        return view('livewire.home-component', ['pounds' => $this->pounds])->layout('layouts.base');
+        return view('livewire.home-component', ['pounds' => $this->pounds,'username'  => $this->username])->layout('layouts.base');
     }
     public function doSomething()
     {
