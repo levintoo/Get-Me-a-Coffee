@@ -3,7 +3,7 @@
 use App\Http\Livewire\Dashboard\DashboardComponent;
 use App\Http\Livewire\DonorDetails;
 use App\Http\Livewire\HomeComponent;
-use App\Http\Livewire\PaymentDetails;
+// use App\Http\Livewire\PaymentDetails;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,4 +21,6 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 Route::get('/{username}', HomeComponent::class);
+Route::post('/donation/amount', [HomeComponent::class, 'doSomething'])->name('amount');
+Route::get('/details/{username}', DonorDetails::class);
 Route::get('/dashboard', DashboardComponent::class)->name('dashboard');

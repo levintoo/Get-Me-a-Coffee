@@ -2,24 +2,22 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Http\Request;
 use Livewire\Component;
 
 class HomeComponent extends Component
 {
-    public $pounds;
     public $username;
-    public function mount()
+    public function mount($username)
     {
-        $this->pounds = 100;
+        $this->username=$username;
     }
-
     public function render()
     {
-        return view('livewire.home-component', ['pounds' => $this->pounds,'username'  => $this->username])->layout('layouts.base');
+        return view('livewire.home-component',['username' => $this->username])->layout('layouts.base');
     }
-    public function doSomething()
+    public function doSomething(Request $request)
     {
-        session()->flash('message', "value reduced to 5");
-        $this->pounds = 5;
+        return $request;
     }
 }
