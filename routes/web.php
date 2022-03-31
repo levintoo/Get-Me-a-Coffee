@@ -23,7 +23,9 @@ Route::get('/welcome', function () {
 });
 Route::get('/{username}', HomeComponent::class);
 Route::post('/donation/amount', [HomeComponent::class, 'doSomething'])->name('amount');
-Route::get('/donor-details/{username}', DonorDetails::class);
-Route::get('/donation-payment/{username}', PaymentDetails::class);
-Route::get('/donation-credit', DonationCredit::class);
-Route::get('/dashboard', DashboardComponent::class)->name('dashboard');
+Route::get('/donation/details', DonorDetails::class)->name('donation-details');
+Route::post('/donation/details/dosomething', [DonorDetails::class, 'doSomething'])->name('donation-details.submit');
+Route::get('/donation/payment', PaymentDetails::class)->name('donation-payment');
+Route::post('/donation/payment/dosomething', [PaymentDetails::class, 'doSomething'])->name('donation-payment.submit');
+Route::get('/donation/credit', DonationCredit::class)->name('donation.credits');
+Route::get('/dashboard/home', DashboardComponent::class)->name('dashboard');

@@ -4,13 +4,17 @@
             <div class="container">
                 <div class="row justify-content-center pt-2">
                     <div class="col-12 col-sm-10 col-md-5 col-lg-5">
-                        <form id="donateFrm">
+                        <form id="donateFrm" method="POST" action="{{ route('donation-details.submit') }}">
+                            @csrf
                             <div class="card">
                                 <div id="donateStep2" class="frm-step active" data-step="2">
                                     <div class="card-header">
                                         <h4 class="card-title text-center text-blue-dark">DETAILS</h4>
                                     </div>
                                     <div class="card-body text-left">
+                                        @if(Session::has('message'))
+                                            <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
+                                        @endif
                                         <div class="form-group">
                                             <label class="form-label text-blue-dark m-0" for="inputName">Display Name<sup>*</sup></label>
                                             <input type="text" class="form-control _req" id="inputName" placeholder="Display Name" maxlength="50">
@@ -68,10 +72,10 @@
                                         <div class="form-group py-3">
                                             <div class="d-flex justify-content-around flex-wrap">
                                                 <div class="mx-1 mb-2">
-                                                    <button type="button" class="btn btn-large btn-outline-orange text-uppercase frm-step-back-btn" data-step="2">BACK</button>
+                                                    <button wire:click="redirectBack" type="button" class="btn btn-large btn-outline-orange text-uppercase frm-step-back-btn" data-step="2">BACK</button>
                                                 </div>
                                                 <div class="mx-1 mb-2">
-                                                    <button id="donateBtnStep2" type="button" class="btn btn-large btn-orange text-uppercase frm-step-btn" data-step="2">NEXT</button>
+                                                    <button id="donateBtnStep2" type="submit" class="btn btn-large btn-orange text-uppercase frm-step-btn" data-step="2">NEXT</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -153,7 +157,7 @@
         if (value != "") {
             console.log("you will pay " + value);
             // make ajax request
-        
+
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': "{{ csrf_token() }}"

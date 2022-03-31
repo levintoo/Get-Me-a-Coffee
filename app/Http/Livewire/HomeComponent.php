@@ -18,6 +18,6 @@ class HomeComponent extends Component
     }
     public function doSomething(Request $request)
     {
-        return $request;
+        return redirect()->route('donation-details');
     }
 }

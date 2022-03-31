@@ -4,7 +4,8 @@
             <div class="container">
                 <div class="row justify-content-center pt-2">
                     <div class="col-12 col-sm-10 col-md-5 col-lg-5">
-                        <form id="donateFrm">
+                        <form id="donateFrm" method="POST" action="{{ route('donation-payment.submit') }}">
+                            @csrf
                             <div class="card">
                                 <div id="donateStep3" class="frm-step active" data-step="3">
                                     <div id="ccPreloader" class="order-preload-cover d-none">
@@ -54,7 +55,7 @@
                                                     <div id="card-element" class="mt-1"></div>
                                                     <div class="form-group py-3">
                                                         <div class="mx-1 mb-4">
-                                                            <button id="stripeCC_PaymentSubmitBtn" type="button" class="btn btn-large btn-block btn-orange text-uppercase">COMPLETE <div class="spinner hidden" id="spinner"></div></button>
+                                                            <button id="stripeCC_PaymentSubmitBtn" type="submit" class="btn btn-large btn-block btn-orange text-uppercase">COMPLETE <div class="spinner hidden" id="spinner"></div></button>
                                                         </div>
                                                         <div class="mx-1 text-center">
                                                             <button type="button" class="btn btn-large btn-outline-orange text-uppercase frm-step-back-btn" data-step="3">BACK</button>
@@ -153,7 +154,7 @@
         if (value != "") {
             console.log("you will pay " + value);
             // make ajax request
-        
+
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': "{{ csrf_token() }}"
