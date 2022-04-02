@@ -15,24 +15,28 @@
                                         @if(Session::has('message'))
                                             <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
                                         @endif
-                                        <div class="form-group">
+
+                                            <div class="alert alert-success" role="alert">{{$amount}}Name is:{{$username}}</div>
+                                            <input type="hidden" name="username" value="{{$username}}" wire:model="username">
+                                            <input type="hidden" name="amount" value="{{$amount}}" wire:model="amount">
+                                            <div class="form-group">
                                             <label class="form-label text-blue-dark m-0" for="inputName">Display Name<sup>*</sup></label>
-                                            <input type="text" class="form-control _req" id="inputName" placeholder="Display Name" maxlength="50">
-                                            <small class="text-danger"></small>
+                                            <input type="text" class="form-control _req" name="inputName" id="inputName" placeholder="Display Name" maxlength="50">
+                                                <small class="text-danger"></small>
                                         </div>
                                         <div class="form-group">
                                             <label class="form-label text-blue-dark m-0" for="inputEmail">Email Address<sup>*</sup></label>
-                                            <input type="email" class="form-control _req" id="inputEmail" placeholder="Email" required>
+                                            <input type="email" class="form-control _req" id="inputEmail" name="inputEmail" placeholder="Email" required>
                                             <small class="text-danger"></small>
                                         </div>
                                         <div class="form-group">
                                             <label class="form-label text-blue-dark m-0" for="inputPhone">Mobile Phone</label>
-                                            <input type="text" class="form-control" id="inputPhone" placeholder="Mobile Phone (optional)">
+                                            <input type="text" class="form-control" id="inputPhone" name="inputPhone" placeholder="Mobile Phone (optional)">
                                             <p class="font-sm">By providing your mobile number, you agree to receive text messages from #TeamSeas</p>
                                         </div>
                                         <div class="form-group">
                                             <label class="form-label text-blue-dark m-0" for="inputMessage">Message</label>
-                                            <textarea class="form-control dark-border" maxlength="140" id="inputMessage" rows="3" placeholder="Message (140 characters max)"></textarea>
+                                            <textarea class="form-control dark-border" maxlength="140" id="inputMessage" name="inputMessage" rows="3" placeholder="Message (140 characters max)"></textarea>
                                         </div>
                                         <p class="text-muted"><small><em><sup>*</sup>indicates a required field</em></small></p>
                                         <div class="form-group">
@@ -55,17 +59,17 @@
                                             <hr>
                                             <div class="form-group">
                                                 <label class="form-label text-blue-dark m-0" for="gifted_to_name">To</label>
-                                                <input type="text" class="form-control" id="gifted_to_name" placeholder="Enter recipient name or nickname...">
+                                                <input type="text" class="form-control" id="gifted_to_name" name="gifted_to_name" placeholder="Enter recipient name or nickname...">
                                                 <small class="text-danger"></small>
                                             </div>
                                             <div class="form-group">
                                                 <label class="form-label text-blue-dark m-0" for="gifted_by_name">From</label>
-                                                <input type="text" class="form-control" id="gifted_by_name" placeholder="Sender name or nickname...">
+                                                <input type="text" class="form-control" id="gifted_by_name" name="gifted_by_name" placeholder="Sender name or nickname...">
                                                 <small class="text-danger"></small>
                                             </div>
                                             <div class="form-group">
                                                 <label class="form-label text-blue-dark m-0" for="gift_message">Include A Gift Message</label>
-                                                <textarea class="form-control dark-border" maxlength="140" id="gift_message" rows="3" placeholder="My #TeamSeas Message (140 characters max)"></textarea>
+                                                <textarea class="form-control dark-border" maxlength="140" id="gift_message" name="gift_message" rows="3" placeholder="My #TeamSeas Message (140 characters max)"></textarea>
                                                 <small>optional; to be included on your certificate</small>
                                             </div>
                                         </div>

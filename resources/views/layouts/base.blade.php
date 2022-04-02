@@ -11,7 +11,7 @@
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/style-sunset.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/images/logo.png') }}" rel="icon" />
-    <title>#TeamUsername</title>
+    <title>Get me a coffee || Support your favourite creators with a cup of coffee</title>
     @livewireStyles
 </head>
 

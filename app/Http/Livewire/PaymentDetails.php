@@ -15,4 +15,8 @@ class PaymentDetails extends Component
     {
         return redirect()->route('donation.credits');
     }
+    public function goBack(Request $request)
+    {
+        return redirect()->route('donation-payment');
+    }
 }

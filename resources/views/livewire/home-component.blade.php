@@ -21,6 +21,7 @@
                                             <div class="col mb-3 px-1">
                                                 <div class="custom-control custom-checkbox h-100">
                                                     <input name="pounds" value="5" type="radio" class="custom-control-input" id="checkPounds5">
+                                                    <input type="hidden" name="username" value="{{$username}}" wire:model="username">
                                                     <label id="donateAmount5" class="custom-control-label text-uppercase h-100 d-flex align-items-center justify-content-center" for="checkPounds5">5<br>Pounds</label>
                                                 </div>
                                             </div>

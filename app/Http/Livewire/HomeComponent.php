@@ -10,14 +10,22 @@ class HomeComponent extends Component
     public $username;
     public function mount($username)
     {
-        $this->username=$username;
+        $this->username = $username;
     }
+
+    public function doSomething(Request $request )
+    {
+        if($request->other_amount != "")
+        {
+            $amount = $request->other_amount;
+        }else{
+            $amount = $request->pounds;
+        }
+        return redirect()->route('donation-details',['amount' => $amount,'username' => $request->username]);
+    }
+
     public function render()
     {
         return view('livewire.home-component',['username' => $this->username])->layout('layouts.base');
-    }
-    public function doSomething(Request $request)
-    {
-        return redirect()->route('donation-details');
     }
 }

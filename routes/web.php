@@ -23,9 +23,10 @@ Route::get('/welcome', function () {
 });
 Route::get('/{username}', HomeComponent::class);
 Route::post('/donation/amount', [HomeComponent::class, 'doSomething'])->name('amount');
-Route::get('/donation/details', DonorDetails::class)->name('donation-details');
+Route::get('/donation/details/{username}/{amount}', DonorDetails::class)->name('donation-details');
 Route::post('/donation/details/dosomething', [DonorDetails::class, 'doSomething'])->name('donation-details.submit');
 Route::get('/donation/payment', PaymentDetails::class)->name('donation-payment');
 Route::post('/donation/payment/dosomething', [PaymentDetails::class, 'doSomething'])->name('donation-payment.submit');
+Route::post('/donation/payment/back', [PaymentDetails::class, 'goBack'])->name('donation-payment.back');
 Route::get('/donation/credit', DonationCredit::class)->name('donation.credits');
 Route::get('/dashboard/home', DashboardComponent::class)->name('dashboard');
