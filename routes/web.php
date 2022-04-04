@@ -29,4 +29,5 @@ Route::get('/donation/payment', PaymentDetails::class)->name('donation-payment')
 Route::post('/donation/payment/dosomething', [PaymentDetails::class, 'doSomething'])->name('donation-payment.submit');
 Route::post('/donation/payment/back', [PaymentDetails::class, 'goBack'])->name('donation-payment.back');
 Route::get('/donation/credit', DonationCredit::class)->name('donation.credits');
-Route::get('/dashboard/home', DashboardComponent::class)->name('dashboard');
+Route::get('/dashboard', DashboardComponent::class)->name('dashboard');
+

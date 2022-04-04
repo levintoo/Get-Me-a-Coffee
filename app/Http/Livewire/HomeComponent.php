@@ -26,6 +26,9 @@ class HomeComponent extends Component
 
     public function render()
     {
+        if($this->username = "dashboard"){
+            return view('livewire.dashboard.dashboard-component')->layout('layouts.app');
+        }
         return view('livewire.home-component',['username' => $this->username])->layout('layouts.base');
     }
 }
