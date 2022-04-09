@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Illuminate\Http\Request;
 use Livewire\Component;
+use Illuminate\Support\Facades\Session;
 
 class HomeComponent extends Component
 {
@@ -12,23 +13,22 @@ class HomeComponent extends Component
     {
         $this->username = $username;
     }
-
     public function doSomething(Request $request )
     {
         if($request->other_amount != "")
         {
             $amount = $request->other_amount;
+            session::put('amount',$amount);
         }else{
             $amount = $request->pounds;
+            session::put('amount',$amount);
         }
-        return redirect()->route('donation-details',['amount' => $amount,'username' => $request->username]);
+        Session::put('username',$request->username);
+        return redirect()->route('donation-details');
     }
 
     public function render()
     {
-        if($this->username = "dashboard"){
-            return view('livewire.dashboard.dashboard-component')->layout('layouts.app');
-        }
-        return view('livewire.home-component',['username' => $this->username])->layout('layouts.base');
+        return view('livewire.home-component')->layout('layouts.base');
     }
 }

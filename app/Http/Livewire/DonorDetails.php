@@ -8,17 +8,16 @@ use Livewire\Component;
 
 class DonorDetails extends Component
 {
-    public $username;
-    public $amount;
-    public function mount($username, $amount)
-    {
-        $this->username = $username;
-        $this->amount = $amount;
+    public function mount()
+    {   
+        $this->username = session()->get('username');
+        $this->username != "" ? "" : redirect('/');
+        $this->amount = session()->get('amount');
+        $this->amount != "" ? "" : redirect('/');
     }
-
     public function render()
     {
-        return view('livewire.donor-details',['username' => $this->username,'amount' => $this->amount])->layout('layouts.base');
+        return view('livewire.donor-details')->layout('layouts.base');
     }
     public function doSomething(Request $request)
     {
