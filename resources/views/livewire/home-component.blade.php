@@ -9,7 +9,7 @@
                             <div class="card">
                                 <div id="donateStep1" class="frm-step active" data-step="1">
                                     <div class="card-header">
-                                        <h4 class="card-title text-center text-uppercase font-lg">Join <span id="joinHeadline_TeamName">#Team {{$username}}</span></h4>
+                                        <h4 class="card-title text-center text-uppercase font-lg">GET ME A COFFEE</h4>
                                     </div>
                                     <div class="card-body text-center py-2">
                                         @if(Session::has('message'))
@@ -49,7 +49,7 @@
                                                 <input id="donateAmountOther" name="other_amount" value="" type="text" class="form-control custom-control h-100" maxlength="10" placeholder="Other Amount">
                                             </div>
                                             <div class="col-12 mb-2">
-                                                <small class="text-muted"><em>We take crypto! You will see the options on step 3</em></small>
+                                                <small class="text-muted"><em>amsd</em></small>
                                             </div>
                                         </div>
                                         <div class="form-group py-1 mb-1">
@@ -74,8 +74,7 @@
                 <div class="container text-center">
                     <div class="brand-wrapper">
                         <div class="brand-inner">
-                            <h4 class="text-white font-weight-light page-headline">You did it! Now let’s keep going. Come back anytime you feel like supporting username more!</h4>
-                        </div>
+                     </div>
                     </div>
                 </div>
 
@@ -137,7 +136,7 @@
             console.log("you will pay " + value);
             // make ajax request
         } else {
-            alert("You must select an amount")
+            console.log("You must select an amount")
         }
     };
 </script>
