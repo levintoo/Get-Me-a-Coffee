@@ -22,7 +22,6 @@
                                         @if(Session::has('message'))
                                             <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
                                         @endif
-
                                             <div class="alert alert-success" role="alert">{{$amount}}$ donation for {{$username}}</div>
                                             <input type="hidden" name="username" value="{{$username}}" wire:model="username">
                                             <input type="hidden" name="amount" value="{{$amount}}" wire:model="amount">

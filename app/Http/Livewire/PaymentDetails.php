@@ -11,9 +11,10 @@ class PaymentDetails extends Component
     {
         return view('livewire.payment-details')->layout('layouts.base');
     }
-    public function doSomething(Request $request)
+    public function store(Request $request)
     {
-        return redirect()->route('donation.credits');
+        return $request;
+        // return redirect()->route('donation.credits');
     }
     public function goBack(Request $request)
     {

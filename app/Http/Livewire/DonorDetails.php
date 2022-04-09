@@ -19,9 +19,14 @@ class DonorDetails extends Component
     {
         return view('livewire.donor-details')->layout('layouts.base');
     }
-    public function doSomething(Request $request)
+    public function store(Request $request)
     {
-        return $request;
+        // return $request;
+        Session::put('inputName', $request->inputName);
+        Session::put('inputEmail', $request->inputEmail);
+        Session::put('inputPhone', $request->inputPhone);
+        Session::put('inputMessage', $request->inputMessage);
+        $request->name_hidden != "" ? Session::put('name_hidden', "") :Session::put('name_hidden', $request->name_hidden);
         return redirect()->route('donation-payment');
     }
     public function redirectBack()

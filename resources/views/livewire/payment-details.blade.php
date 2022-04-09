@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="row justify-content-center pt-2">
                     <div class="col-12 col-sm-10 col-md-5 col-lg-5">
-                        <form id="donateFrm" method="POST" action="{{ route('donation-payment.submit') }}">
+                        <form id="donateFrm" method="POST" action="{{ route('donation-payment.store') }}">
                             @csrf
                             <div class="card">
                                 <div id="donateStep3" class="frm-step active" data-step="3">
@@ -48,9 +48,16 @@
                                             <div id="paymentProcessorContainer">
                                                 <div class="payment-processor active" data-processor="stripe">
                                                     <div id="payment-request-button" class="mt-4"></div>
+                                                    <input type="hidden" name="amount" value="{{session()->get('amount')}}">
+                                                    <input type="hidden" name="username" value="{{session()->get('username')}}">
+                                                    <input type="hidden" name="inputMessage" value="{{session()->get('inputMessage')}}">
+                                                    <input type="hidden" name="inputPhone" value="{{session()->get('inputPhone')}}">
+                                                    <input type="hidden" name="inputEmail" value="{{session()->get('inputEmail')}}">
+                                                    <input type="hidden" name="inputName" value="{{session()->get('inputName')}}">
+                                                    <input type="hidden" name="name_hidden" value="{{session()->get('name_hidden')}}">
                                                     <div class="form-group mt-4">
                                                         <label class="form-label text-blue-dark m-0" for="nameOnCard">Name On Card<sup>*</sup></label>
-                                                        <input type="text" name="name" id="nameOnCard" placeholder="Name On Card*" class="form-control">
+                                                        <input type="text" name="nameOnCard" id="nameOnCard" placeholder="Name On Card*" class="form-control">
                                                     </div>
                                                     <div id="card-element" class="mt-1"></div>
                                                     <div class="form-group py-3">
@@ -92,8 +99,7 @@
                 <div class="container text-center">
                     <div class="brand-wrapper">
                         <div class="brand-inner">
-                            <h4 class="text-white font-weight-light page-headline">You did it! Now let’s keep going. Come back anytime you feel like supporting username more!</h4>
-                        </div>
+               </div>
                     </div>
                 </div>
 
@@ -110,68 +116,11 @@
                 </div>
             </div>
 
-            {{-- <div class="footer-links d-flex justify-content-between py-2 flex-wrap">--}}
-            {{-- <p class="text-center"><span class="btn btn-outline-white" data-toggle="modal" data-target="#faqModal">FAQ</span></p>--}}
-            {{-- <p class="text-center"><span class="btn btn-outline-white" data-toggle="modal" data-target="#contactModal">Contact Us</span></p>--}}
-            {{-- <p class="text-center"><span class="btn btn-outline-white" data-toggle="modal" data-target="#pressModal">Press Inquiries</span></p>--}}
-            {{-- <p class="text-center"><a class="btn btn-outline-white" href="https://store.teamseas.org/" target="_blank">Store</a></p>--}}
-            {{-- <p class="text-center"><a class="btn btn-outline-white" href="https://teamtrees.org/" target="_blank">#TeamTrees</a></p>--}}
-            {{-- </div>--}}
         </div>
     </footer>
 </main>
 @push('scripts')
 <script>
-    document.getElementById("donateAmount5").onclick = function() {
-        myFunction(5)
-    };
-    document.getElementById("donateAmount20").onclick = function() {
-        myFunction(20)
-    };
-    document.getElementById("donateAmount50").onclick = function() {
-        myFunction(50)
-    };
-    document.getElementById("donateAmount100").onclick = function() {
-        myFunction(100)
-    };
-
-    var el = document.getElementById("donateAmountOther");
-    el.addEventListener("change", doSomething, false);
-
-    function doSomething() {
-        // fetch amount in the input
-        var amount = document.getElementById("donateAmountOther").value;
-        myFunction(amount)
-    }
-
-    function myFunction(amount) {
-        // update input with selected amount
-        document.getElementById("donateAmountOther").value = amount;
-    }
-
-    document.getElementById("donateBtnStep1").onclick = function() {
-        var value = document.getElementById("donateAmountOther").value;
-        if (value != "") {
-            console.log("you will pay " + value);
-            // make ajax request
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                }
-            });
-            $.ajax({
-                type: "POST",
-                url: "",
-                data: {
-                    amount: 200,
-                },
-            }).done(function(data) {
-                console.log("success");
-            });
-        } else {
-            alert("You must select an amount")
-        }
-    };
+   
 </script>
 @endpush
