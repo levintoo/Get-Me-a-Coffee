@@ -26,7 +26,7 @@ class DonorDetails extends Component
         Session::put('inputEmail', $request->inputEmail);
         Session::put('inputPhone', $request->inputPhone);
         Session::put('inputMessage', $request->inputMessage);
-        $request->name_hidden != "" ? Session::put('name_hidden', "") :Session::put('name_hidden', $request->name_hidden);
+        $request->name_hidden != "" ? Session::put('name_hidden', $request->name_hidden) : Session::put('name_hidden', "");
         return redirect()->route('donation-payment');
     }
     public function redirectBack()
