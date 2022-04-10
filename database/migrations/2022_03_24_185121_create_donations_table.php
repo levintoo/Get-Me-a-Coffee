@@ -28,6 +28,7 @@ class CreateDonationsTable extends Migration
             $table->string('status')->default('0')->comment('');
             $table->date('donated_at')->format('Y/m/d H:i:s');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

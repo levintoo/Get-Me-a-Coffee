@@ -23,6 +23,7 @@ class CreateDonationTransactionsTable extends Migration
             $table->string('purpose',256)->comment('donation,withdrawal');
             $table->integer('status')->default('0')->comment('0 for waiting 1 for completed 2 for failed 3 for cancelled 4 for rejected')->unsigned();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

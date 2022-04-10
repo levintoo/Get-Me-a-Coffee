@@ -21,6 +21,7 @@ class CreateAccountsTable extends Migration
             $table->bigInteger('prev_mpesa_amount')->unsigned()->default('0');
             $table->bigInteger('mpesa_amount')->unsigned()->default('0');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
