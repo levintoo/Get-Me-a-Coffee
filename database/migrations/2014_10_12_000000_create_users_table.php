@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('category',255);
             $table->string('about',2048);
             $table->string('utype',255)->default('USR')->comment('USR for user and ADM for admin and Sec for secretary');
+            $table->string('status',255)->default('0')->comment('0 for created and 1 for completed and 3 for other');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
