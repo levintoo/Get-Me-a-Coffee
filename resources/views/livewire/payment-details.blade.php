@@ -53,13 +53,13 @@
 
                                                 <div class="payment-processor active" data-processor="stripe">
                                                     <div id="payment-request-button" class="mt-4"></div>
-                                                    <input type="hidden" name="amount" value="{{session()->get('amount')}}">
+                                                    <!-- <input type="hidden" name="amount" value="{{session()->get('amount')}}">
                                                     <input type="hidden" name="username" value="{{session()->get('username')}}">
                                                     <input type="hidden" name="inputMessage" value="{{session()->get('inputMessage')}}">
                                                     <input type="hidden" name="inputPhone" value="{{session()->get('inputPhone')}}">
                                                     <input type="hidden" name="inputEmail" value="{{session()->get('inputEmail')}}">
                                                     <input type="hidden" name="inputName" value="{{session()->get('inputName')}}">
-                                                    <input type="hidden" name="name_hidden" value="{{session()->get('name_hidden')}}">
+                                                    <input type="hidden" name="name_hidden" value="{{session()->get('name_hidden')}}"> -->
                                                     <div class="form-group mt-4">
                                                         <label class="form-label text-blue-dark m-0" for="nameOnCard">Name On Card<sup>*</sup></label>
                                                         <input type="text" name="nameOnCard" id="nameOnCard" placeholder="Name On Card*" class="form-control">
@@ -129,10 +129,11 @@
 </main>
 @push('scripts')
 <script>
+
     function loadMpesaForm() {
         var down = document.getElementById("paymentProcessorContainer");
         down.innerHTML = `
-        <div class="payment-processor active" data-processor="stripe">
+        <div class="payment-processor active" data-processor="mpesa">
                                                    
                                                     <div class="form-group mt-4">
                                                         <label class="form-label text-blue-dark m-0" for="nameOnCard">Phone number<sup>*</sup></label>
@@ -155,6 +156,8 @@
     document.getElementById('loadStripeForm').classList.remove("active");
     document.getElementById('loadMpesaForm').classList.add("active");
     };
+
+
     function loadPaypalForm() {
         var down = document.getElementById("paymentProcessorContainer");
         down.innerHTML = `
@@ -193,6 +196,7 @@
     document.getElementById('loadStripeForm').classList.add("active");
     document.getElementById('loadMpesaForm').classList.remove("active");
     };
+
     function loadCryptoForm() {
         var down = document.getElementById("paymentProcessorContainer");
         down.innerHTML = `
@@ -203,5 +207,6 @@
     document.getElementById('loadStripeForm').classList.remove("active");
     document.getElementById('loadMpesaForm').classList.remove("active");
     };
+
 </script>
 @endpush

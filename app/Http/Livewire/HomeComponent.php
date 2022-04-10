@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Livewire\Component;
 use Illuminate\Support\Facades\Session;
@@ -12,7 +13,13 @@ class HomeComponent extends Component
     public function mount($username)
     {
         $this->username = $username;
+        $user = User::where('username', $this->username)->first();
+        if ($user === null) {
+            session::flash('danger-message','The user does not exist');
+            return redirect('/');
+        } 
     }
+
     public function doSomething(Request $request )
     {
         if($request->other_amount != "")

@@ -12,10 +12,12 @@
                                         <h4 class="card-title text-center text-uppercase font-lg">Get Me A Coffee</h4>
                                     </div>
                                     <div class="card-body text-center py-2">
-                                        @if(Session::has('message'))
-                                        <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
+                                    @if(Session::has('message'))
+                                            <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
                                         @endif
-
+                                        @if(Session::has('danger-message'))
+                                            <div class="alert alert-danger" role="alert">{{Session::get('danger-message')}}</div>
+                                        @endif
                                         <h4 class="donate-headline">Every $1 is one cup of coffee for </h4>
                                         <div class="row">
 
