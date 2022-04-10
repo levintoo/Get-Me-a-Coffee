@@ -12,8 +12,11 @@
                                         <h4 class="card-title text-center text-uppercase font-lg">Get Me A Coffee</h4>
                                     </div>
                                     <div class="card-body text-center py-2">
+                                    <div class="alert alert-success" role="alert">{{ Auth::user()->username }}
+                                        </div>
                                     @if(Session::has('message'))
-                                            <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
+                                            <div class="alert alert-success" role="alert">{{ Auth::user()->username }}jh
+                                                {{Session::get('message')}}</div>
                                         @endif
                                         @if(Session::has('danger-message'))
                                             <div class="alert alert-danger" role="alert">{{Session::get('danger-message')}}</div>
