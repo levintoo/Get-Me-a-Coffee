@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Livewire\Dashboard\DashboardComponent;
-use App\Http\Livewire\DonorDetails;
+use App\Http\Livewire\DonationDetails;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\IndexPageComponent;
 use App\Http\Livewire\PaymentDetails;
@@ -24,8 +24,8 @@ Route::get('/welcome', function () {
 });
 Route::get('/', IndexPageComponent::class);
 Route::post('/donation/amount', [HomeComponent::class, 'doSomething'])->name('amount');
-Route::get('/donation/details', DonorDetails::class)->name('donation-details');
-Route::post('/donation/details/store', [DonorDetails::class, 'store'])->name('donation-details.submit');
+Route::get('/donation/details', DonationDetails::class)->name('donation-details');
+Route::post('/donation/details/store', [DonationDetails::class, 'store'])->name('donation-details.submit');
 Route::get('/donation/payment', PaymentDetails::class)->name('donation-payment');
 Route::post('/donation/payment/store', [PaymentDetails::class, 'store'])->name('donation-payment.store');
 Route::post('/donation/payment/back', [PaymentDetails::class, 'goBack'])->name('donation-payment.back');

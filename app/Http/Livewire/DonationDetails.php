@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
-class DonorDetails extends Component
+class DonationDetails extends Component
 {
     public function mount()
     {   
@@ -17,7 +17,7 @@ class DonorDetails extends Component
     }
     public function render()
     {
-        return view('livewire.donor-details')->layout('layouts.base');
+        return view('livewire.donation-details')->layout('layouts.base');
     }
     public function store(Request $request)
     {
