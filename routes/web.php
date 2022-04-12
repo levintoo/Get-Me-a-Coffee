@@ -32,7 +32,8 @@ Route::post('/donation/payment/store', [PaymentDetails::class, 'store'])->name('
 Route::post('/donation/payment/back', [PaymentDetails::class, 'goBack'])->name('donation-payment.back');
 Route::get('/donation/credit', DonationCredit::class)->name('donation.credits');
 Route::get('/register/step-two', TwoStepRegisterComponent::class)->name('resgister-step-two');
-Route::post('/register/otp-validate', [TwoStepRegisterComponent::class , 'validateOTP'])->name('resgister-otp-validate');
+Route::post('/register/otp-generate', [TwoStepRegisterComponent::class , 'generateOTP'])->name('generateOTP');
+Route::post('/register/otp-validate', [TwoStepRegisterComponent::class , 'validateOTP'])->name('validateOTP');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {

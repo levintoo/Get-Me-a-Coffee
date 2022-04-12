@@ -32,9 +32,9 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
-
+        $uid = Helper::IDGenerator(new User(),'userid',4,'GMAC');
         return User::create([
-            'userid' => Helper::IDGenerator(new User(),'user_id',5,'GMAC'),
+            'userid' => $uid,
             'name' => $input['name'],
             'username'=> $input['username'],
             'phone' => $input['phone'],
