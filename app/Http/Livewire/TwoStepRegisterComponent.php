@@ -50,10 +50,9 @@ class TwoStepRegisterComponent extends Component
                 return redirect()->back();
             }
             else{
-                User::where('userid', Auth::user()->userid)->first()->update([
-                    'status' => "1",
-                ]);
-//                return Auth::user()->userid;
+                $user = User::where('userid', Auth::user()->userid)->first();
+                    $user->status= "1";
+                    $user->save();
                 return redirect()->route('dashboard');
             }
         }
