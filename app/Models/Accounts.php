@@ -10,4 +10,16 @@ class Accounts extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'userid',
+        'prev_amount',
+        'amount'
+    ];
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Helpers\Helper;
+use App\Models\Accounts;
 use App\Models\User;
 use Livewire\Component;
 use Illuminate\Http\Request;
@@ -50,6 +51,7 @@ class TwoStepRegisterComponent extends Component
                 return redirect()->back();
             }
             else{
+                $this->addUser();
                 $user = User::where('userid', Auth::user()->userid)->first();
                     $user->status= "1";
                     $user->save();
@@ -57,6 +59,16 @@ class TwoStepRegisterComponent extends Component
             }
         }
     }
+
+    public function addUser()
+    {
+        $account = new Accounts;
+        $account->userid = Auth::user()->userid;
+        $account->amount = 0;
+        $account->prev_amount = 0;
+        $account->save();
+    }
+
     public function render()
     {
         return view('livewire.two-step-register-component')->layout('layouts.guest');

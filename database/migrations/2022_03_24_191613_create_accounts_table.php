@@ -16,10 +16,8 @@ class CreateAccountsTable extends Migration
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
             $table->string('userid');
-            $table->bigInteger('prev_paypal_amount')->unsigned()->default('0');
-            $table->bigInteger('paypal_amount')->unsigned()->default('0');
-            $table->bigInteger('prev_mpesa_amount')->unsigned()->default('0');
-            $table->bigInteger('mpesa_amount')->unsigned()->default('0');
+            $table->bigInteger('prev_amount')->unsigned()->default('0');
+            $table->bigInteger('amount')->unsigned()->default('0');
             $table->timestamps();
             $table->softDeletes();
         });

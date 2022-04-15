@@ -9,7 +9,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"> <a class="home-item" href="index-2.html"><i data-feather="home"></i></a></li>
                         <li class="breadcrumb-item"> Dashboard</li>
-                        <li class="breadcrumb-item active"> Default</li>
+                        <li class="breadcrumb-item active"> Default {{$account}}</li>
                     </ol>
                 </div>
             </div>
