@@ -13,11 +13,11 @@ class HomeComponent extends Component
     public function mount($username)
     {
         $this->username = $username;
-        $user = User::where('username', $this->username)->first();
+        $user = User::where('username', $this->username)->where('status', '1')->first();
         if ($user === null) {
-            session::flash('danger-message','The user does not exist');
+            session::flash('danger-message','The user does not exist or is not verified yet');
             return redirect('/');
-        } 
+        }
     }
 
     public function doSomething(Request $request )
