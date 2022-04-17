@@ -21,7 +21,7 @@ class CreateDonationsTable extends Migration
             $table->string('email',100)->unique();
             $table->string('phone_number',100);
             $table->string('message',250);
-            $table->string('anonymous',100);
+            $table->string('anonymous',100)->comment("0 for none 1 for anonymous");
             $table->string('mode_of_payment',100);
             $table->string('transaction_id');
             $table->bigInteger('amount')->unsigned();
