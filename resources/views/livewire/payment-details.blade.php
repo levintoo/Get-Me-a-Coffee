@@ -4,6 +4,7 @@
             <div class="container">
                 <div class="row justify-content-center pt-2">
                     <div class="col-12 col-sm-10 col-md-5 col-lg-5">
+                        <x-jet-validation-errors class="mb-3 rounded-0" />
                         <form id="donateFrm" method="POST" action="{{ route('donation-payment.store') }}">
                             @csrf
                             <div class="card">
@@ -51,15 +52,42 @@
                                             <div id="paymentProcessorContainer">
                                                 <div id="GFG_DOWN"></div>
 
-                                                <div class="payment-processor active" data-processor="stripe">
-                                                    <div id="payment-request-button" class="mt-4"></div>
-                                                    <!-- <input type="hidden" name="amount" value="{{session()->get('amount')}}">
+                                                <div class="payment-processor active" data-processor="mpesa">
+
+                                                    <input type="hidden" name="amount" value="{{session()->get('amount')}}">
                                                     <input type="hidden" name="username" value="{{session()->get('username')}}">
                                                     <input type="hidden" name="inputMessage" value="{{session()->get('inputMessage')}}">
                                                     <input type="hidden" name="inputPhone" value="{{session()->get('inputPhone')}}">
                                                     <input type="hidden" name="inputEmail" value="{{session()->get('inputEmail')}}">
                                                     <input type="hidden" name="inputName" value="{{session()->get('inputName')}}">
-                                                    <input type="hidden" name="name_hidden" value="{{session()->get('name_hidden')}}"> -->
+                                                    <input type="hidden" name="name_hidden" value="{{session()->get('name_hidden')}}">
+
+                                                    <div class="form-group mt-4">
+                                                        <label class="form-label text-blue-dark m-0" for="mpesaNumber">Mpesa number<sup>*</sup></label>
+                                                        <input type="text" name="mpesaNumber" id="mpesaNumber" placeholder="Mpesa number*" class="form-control">
+                                                    </div>
+                                                    <div id="card-element" class="mt-1"></div>
+                                                    <div class="form-group py-3">
+                                                        <div class="mx-1 mb-4">
+                                                            <button id="stripeCC_PaymentSubmitBtn" type="submit" class="btn btn-large btn-block btn-orange text-uppercase">COMPLETE <div class="spinner hidden" id="spinner"></div></button>
+                                                        </div>
+                                                        <div class="mx-1 text-center">
+                                                            <button type="button" class="btn btn-large btn-outline-orange text-uppercase frm-step-back-btn" data-step="3">BACK</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="payment-processor" data-processor="stripe">
+                                                    <div id="payment-request-button" class="mt-4"></div>
+                                                    <input type="hidden" name="amount" value="{{session()->get('amount')}}">
+                                                    <input type="hidden" name="username" value="{{session()->get('username')}}">
+                                                    <input type="hidden" name="inputMessage" value="{{session()->get('inputMessage')}}">
+                                                    <input type="hidden" name="inputPhone" value="{{session()->get('inputPhone')}}">
+                                                    <input type="hidden" name="inputEmail" value="{{session()->get('inputEmail')}}">
+                                                    <input type="hidden" name="inputName" value="{{session()->get('inputName')}}">
+                                                    <input type="hidden" name="name_hidden" value="{{session()->get('name_hidden')}}">
+
                                                     <div class="form-group mt-4">
                                                         <label class="form-label text-blue-dark m-0" for="nameOnCard">Name On Card<sup>*</sup></label>
                                                         <input type="text" name="nameOnCard" id="nameOnCard" placeholder="Name On Card*" class="form-control">
@@ -75,19 +103,20 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="payment-processor" data-processor="pay_pal">
-                                                    <div id="paypal-button-container" class="mt-4"></div>
-                                                    <div class="form-group py-3">
-                                                        <div class="mx-1 text-center">
-                                                            <button type="button" class="btn btn-large btn-outline-orange text-uppercase frm-step-back-btn" data-step="3">BACK</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
 
-                                                <div class="payment-processor" data-processor="crypto">
-                                                    <div class="form-group py-3">
-                                                    </div>
-                                                </div>
+{{--                                                <div class="payment-processor" data-processor="pay_pal">--}}
+{{--                                                    <div id="paypal-button-container" class="mt-4"></div>--}}
+{{--                                                    <div class="form-group py-3">--}}
+{{--                                                        <div class="mx-1 text-center">--}}
+{{--                                                            <button type="button" class="btn btn-large btn-outline-orange text-uppercase frm-step-back-btn" data-step="3">BACK</button>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+
+{{--                                                <div class="payment-processor" data-processor="crypto">--}}
+{{--                                                    <div class="form-group py-3">--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
 
                                             </div>
                                         </div>
@@ -132,12 +161,19 @@
 
     function loadMpesaForm() {
         var down = document.getElementById("paymentProcessorContainer");
-        down.innerHTML = `
-        <div class="payment-processor active" data-processor="mpesa">
-                                                   
+        down.innerHTML = `                                                <form class="payment-processor active" data-processor="mpesa">
+<h1>Loaded</h1>
+                                                    <input type="hidden" name="amount" value="{{session()->get('amount')}}">
+                                                    <input type="hidden" name="username" value="{{session()->get('username')}}">
+                                                    <input type="hidden" name="inputMessage" value="{{session()->get('inputMessage')}}">
+                                                    <input type="hidden" name="inputPhone" value="{{session()->get('inputPhone')}}">
+                                                    <input type="hidden" name="inputEmail" value="{{session()->get('inputEmail')}}">
+                                                    <input type="hidden" name="inputName" value="{{session()->get('inputName')}}">
+                                                    <input type="hidden" name="name_hidden" value="{{session()->get('name_hidden')}}">
+
                                                     <div class="form-group mt-4">
-                                                        <label class="form-label text-blue-dark m-0" for="nameOnCard">Phone number<sup>*</sup></label>
-                                                        <input type="text" name="nameOnCard" id="nameOnCard" placeholder="Phone number*" class="form-control">
+                                                        <label class="form-label text-blue-dark m-0" for="mpesaNumber">Mpesa number<sup>*</sup></label>
+                                                        <input type="text" name="mpesaNumber" id="mpesaNumber" placeholder="Mpesa number*" class="form-control">
                                                     </div>
                                                     <div id="card-element" class="mt-1"></div>
                                                     <div class="form-group py-3">
@@ -148,9 +184,7 @@
                                                             <button type="button" class="btn btn-large btn-outline-orange text-uppercase frm-step-back-btn" data-step="3">BACK</button>
                                                         </div>
                                                     </div>
-                                                </div>
-
-    `
+                                                </form>`
     document.getElementById('loadCryptoForm').classList.remove("active");
     document.getElementById('loadPaypalForm').classList.remove("active");
     document.getElementById('loadStripeForm').classList.remove("active");
@@ -160,24 +194,19 @@
 
     function loadPaypalForm() {
         var down = document.getElementById("paymentProcessorContainer");
-        down.innerHTML = `
-        <h1>Paypal</h1>
+        down.innerHTML = `<div class="payment-processor active" data-processor="pay_pal">
+                                                    <div id="payment-request-button" class="mt-4"></div>
+                                                    <input type="hidden" name="amount" value="{{session()->get('amount')}}">
+                                                    <input type="hidden" name="username" value="{{session()->get('username')}}">
+                                                    <input type="hidden" name="inputMessage" value="{{session()->get('inputMessage')}}">
+                                                    <input type="hidden" name="inputPhone" value="{{session()->get('inputPhone')}}">
+                                                    <input type="hidden" name="inputEmail" value="{{session()->get('inputEmail')}}">
+                                                    <input type="hidden" name="inputName" value="{{session()->get('inputName')}}">
+                                                    <input type="hidden" name="name_hidden" value="{{session()->get('name_hidden')}}">
 
-    `
-    document.getElementById('loadCryptoForm').classList.remove("active");
-    document.getElementById('loadPaypalForm').classList.add("active");
-    document.getElementById('loadStripeForm').classList.remove("active");
-    document.getElementById('loadMpesaForm').classList.remove("active");
-    };
-
-    function loadStripeForm() {
-        var down = document.getElementById("paymentProcessorContainer");
-        down.innerHTML = `
-        <div class="payment-processor active" data-processor="stripe">
-                                                
                                                     <div class="form-group mt-4">
-                                                        <label class="form-label text-blue-dark m-0" for="nameOnCard">Name on Card<sup>*</sup></label>
-                                                        <input type="text" name="nameOnCard" id="nameOnCard" placeholder="Name on card*" class="form-control">
+                                                        <label class="form-label text-blue-dark m-0" for="nameOnCard">Paypal payment<sup>*</sup></label>
+                                                        <input type="submit" name="nameOnCard" value="paypal" id="nameOnCard" placeholder="Name On Card*" class="form-control">
                                                     </div>
                                                     <div id="card-element" class="mt-1"></div>
                                                     <div class="form-group py-3">
@@ -188,9 +217,39 @@
                                                             <button type="button" class="btn btn-large btn-outline-orange text-uppercase frm-step-back-btn" data-step="3">BACK</button>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div>`
+    document.getElementById('loadCryptoForm').classList.remove("active");
+    document.getElementById('loadPaypalForm').classList.add("active");
+    document.getElementById('loadStripeForm').classList.remove("active");
+    document.getElementById('loadMpesaForm').classList.remove("active");
+    };
 
-    `
+    function loadStripeForm() {
+        var down = document.getElementById("paymentProcessorContainer");
+        down.innerHTML = `<div class="payment-processor active" data-processor="stripe">
+        <h1>loaded</h1>
+                                                    <input type="hidden" name="amount" value="{{session()->get('amount')}}">
+                                                    <input type="hidden" name="username" value="{{session()->get('username')}}">
+                                                    <input type="hidden" name="inputMessage" value="{{session()->get('inputMessage')}}">
+                                                    <input type="hidden" name="inputPhone" value="{{session()->get('inputPhone')}}">
+                                                    <input type="hidden" name="inputEmail" value="{{session()->get('inputEmail')}}">
+                                                    <input type="hidden" name="inputName" value="{{session()->get('inputName')}}">
+                                                    <input type="hidden" name="name_hidden" value="{{session()->get('name_hidden')}}">
+
+                                                    <div class="form-group mt-4">
+                                                        <label class="form-label text-blue-dark m-0" for="nameOnCard">Name On Card<sup>*</sup></label>
+                                                        <input type="text" name="nameOnCard" id="nameOnCard" placeholder="Name On Card*" class="form-control">
+                                                    </div>
+                                                    <div id="card-element" class="mt-1"></div>
+                                                    <div class="form-group py-3">
+                                                        <div class="mx-1 mb-4">
+                                                            <button id="stripeCC_PaymentSubmitBtn" type="submit" class="btn btn-large btn-block btn-orange text-uppercase">COMPLETE <div class="spinner hidden" id="spinner"></div></button>
+                                                        </div>
+                                                        <div class="mx-1 text-center">
+                                                            <button type="button" class="btn btn-large btn-outline-orange text-uppercase frm-step-back-btn" data-step="3">BACK</button>
+                                                        </div>
+                                                    </div>
+                                                </div>`
     document.getElementById('loadCryptoForm').classList.remove("active");
     document.getElementById('loadPaypalForm').classList.remove("active");
     document.getElementById('loadStripeForm').classList.add("active");

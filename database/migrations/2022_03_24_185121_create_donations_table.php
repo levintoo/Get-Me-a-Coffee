@@ -25,7 +25,7 @@ class CreateDonationsTable extends Migration
             $table->string('mode_of_payment',100);
             $table->string('transaction_id');
             $table->bigInteger('amount')->unsigned();
-            $table->string('status')->default('0')->comment('');
+            $table->string('status')->default('0')->comment('0 for initiated, 1 for donated');
             $table->date('donated_at')->format('Y/m/d H:i:s');
             $table->timestamps();
             $table->softDeletes();

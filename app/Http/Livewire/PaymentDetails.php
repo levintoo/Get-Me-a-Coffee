@@ -44,15 +44,29 @@ class PaymentDetails extends Component
     }
     public function updated($fields)
     {
-//        $this->validateOnly($fields, [
-//            'otp' => 'required|numeric',
-//        ]);
+        $this->validateOnly($fields, [
+            'name_hidden' => ['string', 'max:255'],
+            'inputName' => ['required', 'string', 'max:255'],
+            'inputEmail' => ['required', 'string', 'email', 'max:255'],
+            'inputPhone' => ['required','regex:/^([0-9\s\-\+\(\)]*)$/','min:10', 'max:255'],
+            'inputMessage' => ['required', 'string', 'max:255'],
+            'amount' => ['required','numeric','max:255'],
+            'username' => ['required', 'string', 'max:255'],
+            'nameOnCard' => ['required', 'string', 'max:255']
+        ]);
     }
     public function store(Request $request)
     {
-//        $request->validate([
-//            '' => 'required|numeric:4',
-//        ]);
+        $request->validate([
+            'name_hidden' => 'string',
+            'inputName' => ['required', 'string', 'max:255'],
+            'inputEmail' => ['required', 'string', 'email', 'max:255'],
+            'inputPhone' => ['required','regex:/^([0-9\s\-\+\(\)]*)$/','min:10', 'max:255'],
+            'inputMessage' => ['required', 'string', 'max:255'],
+            'amount' => ['required','numeric','max:255'],
+            'username' => ['required', 'string', 'max:255'],
+            'nameOnCard' => ['required', 'string', 'max:255']
+        ]);
         return $request;
         // return redirect()->route('donation.credits');
     }
