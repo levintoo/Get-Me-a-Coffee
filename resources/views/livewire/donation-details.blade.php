@@ -11,6 +11,7 @@
             <div class="container">
                 <div class="row justify-content-center pt-2">
                     <div class="col-12 col-sm-10 col-md-5 col-lg-5">
+                        <x-jet-validation-errors class="mb-3 rounded-0" />
                         <form id="donateFrm" method="POST" action="{{ route('donation-details.submit') }}">
                             @csrf
                             <div class="card">
@@ -22,7 +23,7 @@
                                         @if(Session::has('message'))
                                             <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
                                         @endif
-                                            <div class="alert alert-success" role="alert">{{$amount}}$ donation for {{$username}}</div>
+                                            <div class="alert alert-success" role="alert">Fill the details to donate {{$amount}}$ for {{$username}}</div>
                                             <input type="hidden" name="username" value="{{$username}}" wire:model="username">
                                             <input type="hidden" name="amount" value="{{$amount}}" wire:model="amount">
                                             <div class="form-group">
@@ -36,12 +37,12 @@
                                             <small class="text-danger"></small>
                                         </div>
                                         <div class="form-group">
-                                            <label class="form-label text-blue-dark m-0" for="inputPhone">Mobile Phone</label>
-                                            <input type="text" class="form-control" id="inputPhone" name="inputPhone" placeholder="Mobile Phone (optional)">
+                                            <label class="form-label text-blue-dark m-0" for="inputPhone">Mobile Phone<sup>*</sup></label>
+                                            <input type="text" class="form-control" id="inputPhone" name="inputPhone" placeholder="Mobile Phone">
                                         </div>
                                         <div class="form-group">
-                                            <label class="form-label text-blue-dark m-0" for="inputMessage">Message</label>
-                                            <textarea id="message" class="form-control dark-border" maxlength="140" name="inputMessage" rows="3" placeholder="Message (140 characters max)"></textarea>
+                                            <label class="form-label text-blue-dark m-0" for="inputMessage">Message<sup>*</sup></label>
+                                            <textarea id="message" class="form-control dark-border" maxlength="140" name="inputMessage" rows="3" placeholder="Message (255 characters max)"></textarea>
                                             <p id="characterLeft" class="help-block ">You have reached the limit</p>
                                         </div>
                                         <p class="text-muted"><small><em><sup>*</sup>indicates a required field</em></small></p>
@@ -98,23 +99,23 @@
 </main>
 @push('scripts')
 <script>
-    $(document).ready(function(){ 
-    $('#characterLeft').text('140 characters left');
+    $(document).ready(function(){
+    $('#characterLeft').text('255 characters left');
     $('#message').keyup(function () {
-        var max = 140;
+        var max = 255;
         var len = $(this).val().length;
         if (len >= max) {
             $('#characterLeft').text('You have reached the limit');
             $('#characterLeft').addClass('red');
-            $('#btnSubmit').addClass('disabled');            
-        } 
+            $('#btnSubmit').addClass('disabled');
+        }
         else {
             var ch = max - len;
             $('#characterLeft').text(ch + ' characters left');
             $('#btnSubmit').removeClass('disabled');
-            $('#characterLeft').removeClass('red');            
+            $('#characterLeft').removeClass('red');
         }
-    });    
+    });
 });
 
 </script>

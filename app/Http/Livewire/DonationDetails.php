@@ -25,22 +25,25 @@ class DonationDetails extends Component
     {
         $this->validateOnly($fields, [
             'name_hidden' => 'string',
-            'inputName' => ['required', 'unique:users', 'string', 'max:255'],
-            'inputEmail' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'inputName' => ['required','string', 'max:255'],
+            'inputEmail' => ['required', 'string', 'email', 'max:255'],
             'inputPhone' => ['required','regex:/^([0-9\s\-\+\(\)]*)$/','min:10', 'max:255'],
             'inputMessage' => ['required', 'string', 'max:255'],
+            'amount' => ['required','numeric','max:255'],
+            'username' => ['required', 'string', 'max:255']
         ]);
     }
     public function store(Request $request)
     {
         $request->validate([
             'name_hidden' => 'string',
-            'inputName' => ['required', 'unique:users', 'string', 'max:255'],
-            'inputEmail' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'inputName' => ['required', 'string', 'max:255'],
+            'inputEmail' => ['required', 'string', 'email', 'max:255'],
             'inputPhone' => ['required','regex:/^([0-9\s\-\+\(\)]*)$/','min:10', 'max:255'],
             'inputMessage' => ['required', 'string', 'max:255'],
+            'amount' => ['required','numeric','max:255'],
+            'username' => ['required', 'string', 'max:255']
         ]);
-        // return $request;
         Session::put('inputName', $request->inputName);
         Session::put('inputEmail', $request->inputEmail);
         Session::put('inputPhone', $request->inputPhone);
