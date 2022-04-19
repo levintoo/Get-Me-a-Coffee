@@ -12,7 +12,7 @@
                                         <h4 class="card-title text-center text-uppercase font-lg">Get Me A Coffee</h4>
                                     </div>
                                     <div class="card-body text-center py-2">
-                                    @if(Session::has('message'))
+                                        @if(Session::has('message'))
                                             <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
                                         @endif
                                         @if(Session::has('danger-message'))
@@ -36,25 +36,25 @@
                                         <div class="datatable-inner table-responsive ps ps--active-x mt-3" style="overflow: auto; position: relative;">
                                             <table class="table datatable-table">
                                                 <thead class="datatable-header">
-                                                    <tr>
-                                                        <th style="cursor: pointer;" scope="col"><i data-mdb-sort="field_0" class="datatable-sort-icon fas fa-arrow-up"></i> Image</th>
-                                                        <th style="cursor: pointer;" scope="col"><i data-mdb-sort="field_1" class="datatable-sort-icon fas fa-arrow-up"></i> Name</th>
-                                                        <th style="cursor: pointer;" scope="col"><i data-mdb-sort="field_2" class="datatable-sort-icon fas fa-arrow-up"></i> Category</th>
-                                                    </tr>
+                                                <tr>
+                                                    <th style="cursor: pointer;" scope="col"><i data-mdb-sort="field_0" class="datatable-sort-icon fas fa-arrow-up"></i> Image</th>
+                                                    <th style="cursor: pointer;" scope="col"><i data-mdb-sort="field_1" class="datatable-sort-icon fas fa-arrow-up"></i> Name</th>
+                                                    <th style="cursor: pointer;" scope="col"><i data-mdb-sort="field_2" class="datatable-sort-icon fas fa-arrow-up"></i> Category</th>
+                                                </tr>
                                                 </thead>
                                                 <tbody class="datatable-body">
-                                                    @if($users == "")
-                                                        <tr scope="row" data-mdb-index="0">
-                                                            <td style="" class="" data-mdb-field="field_0" false="">
-                                                                <img width="100px" height="100px" class="img-fluid rounded" src="{{ asset('assets/dashboard/images/banner/1.jpg') }}" alt="">
-                                                            </td>
+                                                @if($users == "")
+                                                    <tr scope="row" data-mdb-index="0">
+                                                        <td style="" class="" data-mdb-field="field_0" false="">
+                                                            <img width="100px" height="100px" class="img-fluid rounded" src="{{ asset('assets/dashboard/images/banner/1.jpg') }}" alt="">
+                                                        </td>
 
-                                                            <td style="" class="" data-mdb-field="field_1" false=""><a href="/systemarchitect">Nothing to show</a></td>
+                                                        <td style="" class="" data-mdb-field="field_1" false=""><a href="/systemarchitect">Nothing to show</a></td>
 
-                                                            <td style="" class="" data-mdb-field="field_2" false="">Nothing to show</td>
+                                                        <td style="" class="" data-mdb-field="field_2" false="">Nothing to show</td>
 
-                                                        </tr>
-                                                        @else
+                                                    </tr>
+                                                @else
                                                     @foreach($users as $user)
                                                         <tr scope="row" data-mdb-index="1">
                                                             <td style="" class="" data-mdb-field="field_0" false="">
@@ -64,7 +64,7 @@
                                                             <td style="" class="" data-mdb-field="field_2" false="">{{$user->category}}</td>
                                                         </tr>
                                                     @endforeach
-                                                    @endif
+                                                @endif
 
                                                 </tbody>
                                             </table>
@@ -107,7 +107,7 @@
     </footer>
 </main>
 @push('scripts')
-<script>
+    <script>
 
-</script>
+    </script>
 @endpush

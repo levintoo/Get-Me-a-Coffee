@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Livewire\Dashboard\DashboardComponent;
+use App\Http\Livewire\DonateComponent;
 use App\Http\Livewire\DonationDetails;
 use App\Http\Livewire\HomeComponent;
-use App\Http\Livewire\IndexPageComponent;
 use App\Http\Livewire\PaymentDetails;
 use App\Http\Livewire\DonationCredit;
 use App\Http\Livewire\TwoStepRegisterComponent;
@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/welcome', function () {
     return view('welcome');
 });
-Route::get('/', IndexPageComponent::class);
+Route::get('/', DonateComponent::class);
 Route::post('/donation/amount', [HomeComponent::class, 'doSomething'])->name('amount');
 Route::get('/donation/details', DonationDetails::class)->name('donation-details');
 Route::post('/donation/details/store', [DonationDetails::class, 'store'])->name('donation-details.submit');

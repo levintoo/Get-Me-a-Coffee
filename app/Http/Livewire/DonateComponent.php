@@ -6,9 +6,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
-class IndexPageComponent extends Component
+class DonateComponent extends Component
 {
-
     public $search;
     public $name;
     public function mount()
@@ -17,7 +16,7 @@ class IndexPageComponent extends Component
     }
     public function search()
     {
-            session::flash('message','results found');
+        session::flash('message','results found');
     }
     public function render()
     {
@@ -27,6 +26,6 @@ class IndexPageComponent extends Component
         }else{
             $users = User::where('status','=','1')->where ( 'username', 'LIKE', '%' . $this->name . '%' )->orWhere ( 'name', 'LIKE', '%' . $this->name . '%' )->get();
         }
-        return view('livewire.index-page-component',['users'=>$users])->layout('layouts.base');
+        return view('livewire.donate-component',['users'=>$users])->layout('layouts.base');
     }
 }

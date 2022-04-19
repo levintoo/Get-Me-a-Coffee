@@ -20,8 +20,29 @@ class HomeComponent extends Component
         }
     }
 
+    public function updated($fields)
+    {
+            $this->validateOnly($fields, [
+                'other_amount' => 'numeric',
+                'pounds' => 'numeric'
+            ]);
+    }
+
     public function doSomething(Request $request )
     {
+        if($request->other_amount != "")
+        {
+            $request->validate([
+                'other_amount' => ['required','numeric','max:255'],
+                'username' => ['required', 'string', 'max:255']
+            ]);
+        }else{
+            $request->validate([
+                'pounds' => ['required','numeric','max:255'],
+                'username' => ['required', 'string', 'max:255']
+            ]);
+        }
+
         if($request->other_amount != "")
         {
             $amount = $request->other_amount;

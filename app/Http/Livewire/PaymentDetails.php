@@ -42,8 +42,17 @@ class PaymentDetails extends Component
     {
         return view('livewire.payment-details')->layout('layouts.base');
     }
+    public function updated($fields)
+    {
+//        $this->validateOnly($fields, [
+//            'otp' => 'required|numeric',
+//        ]);
+    }
     public function store(Request $request)
     {
+//        $request->validate([
+//            '' => 'required|numeric:4',
+//        ]);
         return $request;
         // return redirect()->route('donation.credits');
     }

@@ -12,7 +12,11 @@
                                         <h4 class="card-title text-center text-uppercase font-lg">GET ME A COFFEE</h4>
                                     </div>
                                     <div class="card-body text-center py-2">
-                                        @if(Session::has('message'))
+                                        <x-jet-validation-errors class="mb-3 rounded-0" />
+{{--                                        @error('other_amount')<div class="alert alert-danger" role="alert">{{$message}}</div>--}}
+{{--                                        @enderror--}}
+
+                                    @if(Session::has('message'))
                                         <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
                                         @endif
 
@@ -46,7 +50,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-8 mb-1 px-1">
-                                                <input id="donateAmountOther" name="other_amount" value="" type="text" class="form-control custom-control h-100" maxlength="10" placeholder="Other Amount">
+                                                <input id="donateAmountOther" name="other_amount" value="20" type="text" class="form-control custom-control h-100" maxlength="10" placeholder="Other Amount">
                                             </div>
                                             <div class="col-12 mb-2">
                                                 <small class="text-muted"><em>amsd</em></small>
