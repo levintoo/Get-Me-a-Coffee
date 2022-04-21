@@ -33,13 +33,13 @@ class HomeComponent extends Component
         if($request->other_amount != "")
         {
             $request->validate([
-                'other_amount' => ['required','numeric','max:255'],
+                'other_amount' => ['required','numeric'],
                 'username' => ['required', 'string', 'max:255']
             ]);
         }else{
             $request->validate([
-                'pounds' => ['required','numeric','max:255'],
-                'username' => ['required', 'string', 'max:255']
+                'pounds' => ['required','numeric'],
+                'username' => ['required', 'string']
             ]);
         }
 

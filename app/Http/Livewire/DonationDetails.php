@@ -29,7 +29,7 @@ class DonationDetails extends Component
             'inputEmail' => ['required', 'string', 'email', 'max:255'],
             'inputPhone' => ['required','regex:/^([0-9\s\-\+\(\)]*)$/','min:10', 'max:255'],
             'inputMessage' => ['required', 'string', 'max:255'],
-            'amount' => ['required','numeric','max:255'],
+            'amount' => ['required','numeric'],
             'username' => ['required', 'string', 'max:255']
         ]);
     }
@@ -41,7 +41,7 @@ class DonationDetails extends Component
             'inputEmail' => ['required', 'string', 'email', 'max:255'],
             'inputPhone' => ['required','regex:/^([0-9\s\-\+\(\)]*)$/','min:10', 'max:255'],
             'inputMessage' => ['required', 'string', 'max:255'],
-            'amount' => ['required','numeric','max:255'],
+            'amount' => ['required','numeric'],
             'username' => ['required', 'string', 'max:255']
         ]);
         Session::put('inputName', $request->inputName);
