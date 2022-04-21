@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Helpers\Helper;
+use App\Models\Accounts;
 use App\Models\Donations;
 use App\Models\DonationTransactions;
 use App\Models\User;
@@ -50,7 +51,7 @@ class PaymentDetails extends Component
             'inputEmail' => ['required', 'string', 'email', 'max:255'],
             'inputPhone' => ['required','regex:/^([0-9\s\-\+\(\)]*)$/','min:10', 'max:255'],
             'inputMessage' => ['required', 'string', 'max:255'],
-            'amount' => ['required','numeric','max:255'],
+            'amount' => ['required','numeric'],
             'username' => ['required', 'string', 'max:255'],
             'nameOnCard' => ['required', 'string', 'max:255']
         ]);
@@ -62,7 +63,7 @@ class PaymentDetails extends Component
             'inputEmail' => ['required', 'string', 'email', 'max:255'],
             'inputPhone' => ['required','regex:/^([0-9\s\-\+\(\)]*)$/','min:10', 'max:255'],
             'inputMessage' => ['required', 'string', 'max:255'],
-            'amount' => ['required','numeric','max:255'],
+            'amount' => ['required','numeric'],
             'username' => ['required', 'string', 'max:255'],
             'nameOnCard' => ['required', 'string', 'max:255']
         ]);
@@ -88,6 +89,7 @@ class PaymentDetails extends Component
         $donation->donated_at = Carbon::now();
         $donation->save();
         $this->fakeTransaction($donation);
+        $this->updateAccount($donation);
         $this->clearSessions();
         return $request;
         // return redirect()->route('donation.credits');
@@ -113,6 +115,15 @@ class PaymentDetails extends Component
         $transaction->purpose = 'donation';
         $transaction->status = '0';
         $transaction->save();
+    }
+    public function updateAccount($donation)
+    {
+        $user = Accounts::select('amount')->where('userid', $donation->userid)->first();
+        $newamount = $user->amount + $donation->amount;
+        Accounts::where('userid',$donation->userid)->update([
+            'prev_amount' => $user->amount,
+            'amount' => $newamount
+        ]);
     }
 
     public function goBack()
