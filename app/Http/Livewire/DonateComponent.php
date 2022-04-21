@@ -22,7 +22,7 @@ class DonateComponent extends Component
     {
         if(is_null($this->name))
         {
-            $users = User::where('status','=','1')->inRandomOrder()->limit(3)->get();
+            $users = User::where('status','=','1')->inRandomOrder()->limit(10)->get();
         }else{
             $users = User::where('status','=','1')->where ( 'username', 'LIKE', '%' . $this->name . '%' )->orWhere ( 'name', 'LIKE', '%' . $this->name . '%' )->get();
         }

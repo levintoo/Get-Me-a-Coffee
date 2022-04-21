@@ -316,7 +316,7 @@
                                 </svg>
                             </div>
                             <ul class="profile-dropdown onhover-show-div">
-                                <li><a href="user-profile.html"><i data-feather="user"></i><span>Account </span></a></li>
+                                <li><a href="user-profile.html"><i data-feather="user"></i><span>{{Auth::user()->username}}</span></a></li>
                                 <li><a href="email-application.html"><i data-feather="mail"></i><span>Inbox</span></a></li>
                                 <li><a href="kanban.html"><i data-feather="file-text"></i><span>Taskboard</span></a></li>
                                 <li><a href="edit-profile.html"><i data-feather="settings"></i><span>Settings</span></a></li>

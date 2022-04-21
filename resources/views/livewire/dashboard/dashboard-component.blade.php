@@ -24,7 +24,7 @@
                         <div class="media">
                             <div class="media-body">
                                 <div class="greeting-user">
-                                    <h1>Hello, Harry Mendez</h1>
+                                    <h1>Hello, {{$user->name}}</h1>
                                     <p>Welcome back, your dashboard is ready!</p><a class="btn btn-outline-white_color" href="blog-single.html">Get Started<i class="icon-arrow-right">                           </i></a>
                                 </div>
                             </div>
@@ -39,7 +39,7 @@
                     <div class="card-body p-0">
                         <div class="earning-content"><img class="img-fluid" src="{{ asset('assets/dashboard/images/avatar.jpg' ) }}" alt=""><a href="blog-single.html">
                                 <h4>Today's Earning</h4></a><span>(Mon 15 - Sun 21)</span>
-                            <h6>$573.67</h6>
+                            <h6>${{ number_format($todaysearning, 2)}}</h6>
                             <div id="earning-chart"></div>
                         </div>
                     </div>
