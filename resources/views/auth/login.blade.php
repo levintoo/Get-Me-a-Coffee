@@ -1,60 +1,66 @@
+@push('title')
+    <title>New dashboard </title>
+    @endpush
 <x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="col-12">
+                <div class="login-card">
 
-        <div class="card-body">
+                    <form class="theme-form login-form" method="POST" action="{{ route('login') }}">
+                            @csrf
+                        <h4>Login</h4>
+                        <h6>Welcome back! Log in to your account.</h6>
+                        <x-jet-validation-errors class="mb-3 rounded-0" />
 
-            <x-jet-validation-errors class="mb-3 rounded-0" />
-
-            @if (session('status'))
-                <div class="alert alert-success mb-3 rounded-0" role="alert">
-                    {{ session('status') }}
-                </div>
-            @endif
-
-            <form method="POST" action="{{ route('login') }}">
-                @csrf
-                <div class="mb-3">
-                    <x-jet-label value="{{ __('Email') }}" />
-
-                    <x-jet-input class="{{ $errors->has('email') ? 'is-invalid' : '' }}" type="email"
-                                 name="email" :value="old('email')" required />
-                    <x-jet-input-error for="email"></x-jet-input-error>
-                </div>
-
-                <div class="mb-3">
-                    <x-jet-label value="{{ __('Password') }}" />
-
-                    <x-jet-input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password"
-                                 name="password" required autocomplete="current-password" />
-                    <x-jet-input-error for="password"></x-jet-input-error>
-                </div>
-
-                <div class="mb-3">
-                    <div class="custom-control custom-checkbox">
-                        <x-jet-checkbox id="remember_me" name="remember" />
-                        <label class="custom-control-label" for="remember_me">
-                            {{ __('Remember Me') }}
-                        </label>
-                    </div>
-                </div>
-
-                <div class="mb-0">
-                    <div class="d-flex justify-content-end align-items-baseline">
-                        @if (Route::has('password.request'))
-                            <a class="text-muted me-3" href="{{ route('password.request') }}">
-                                {{ __('Forgot your password?') }}
-                            </a>
+                        @if (session('status'))
+                            <div class="alert alert-success mb-3 rounded-0" role="alert">
+                                {{ session('status') }}
+                            </div>
                         @endif
-
-                        <x-jet-button>
-                            {{ __('Log in') }}
-                        </x-jet-button>
-                    </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <div class="input-group"><span class="input-group-text"><i class="icon-email"></i></span>
+                                <input class="form-control" type="email {{ $errors->has('email') ? 'text-danger' : '' }}" placeholder="Test@gmail.com"
+                                       name="email" :value="old('email')" >
+                                <x-jet-input-error for="email"></x-jet-input-error>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <div class="input-group"><span class="input-group-text"><i class="icon-lock"></i></span>
+                                <input placeholder="*********"  class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password"
+                                       name="password" autocomplete="current-password">
+                                <div class="show-hide"><span class="show">                         </span></div>
+                                <x-jet-input-error for="password"></x-jet-input-error>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <input id="checkbox1" type="checkbox" name="remember" >
+                                <label for="checkbox1">Remember password</label>
+                            </div><a class="link" href="forget-password.html">Forgot password?</a>
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-primary btn-block" value="Sign in" type="submit"/>
+                        </div>
+                        <div class="login-social-title">
+                            <h5>Sign in with</h5>
+                        </div>
+                        <div class="form-group">
+                            <ul class="login-social">
+                                <li><a href="https://www.linkedin.com/" target="_blank"><i data-feather="linkedin"></i></a></li>
+                                <li><a href="https://twitter.com/" target="_blank"><i data-feather="twitter"></i></a></li>
+                                <li><a href="https://www.facebook.com/" target="_blank"><i data-feather="facebook"></i></a></li>
+                                <li><a href="https://www.instagram.com/" target="_blank"><i data-feather="instagram">                  </i></a></li>
+                            </ul>
+                        </div>
+                        <p>Don't have account?<a class="ms-2" href="/register">Create Account</a></p>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
-    </x-jet-authentication-card>
+    </div>
+
 </x-guest-layout>
+
