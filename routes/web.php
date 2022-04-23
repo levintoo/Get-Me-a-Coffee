@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Livewire\Dashboard\DashboardComponent;
+use App\Http\Livewire\Dashboard\Donationscomponent;
+use App\Http\Livewire\Dashboard\Transactionscomponent;
+use App\Http\Livewire\Dashboard\WalletComponent;
 use App\Http\Livewire\DonateComponent;
 use App\Http\Livewire\DonationDetails;
 use App\Http\Livewire\HomeComponent;
@@ -38,9 +41,13 @@ Route::post('/register/otp-validate', [TwoStepRegisterComponent::class , 'valida
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
-    Route::middleware(['registration_complete'])->group(function () {
+    Route::middleware(['registration_complete'])->prefix('dashboard')->group(function () {
 
-        Route::get('/dashboard', DashboardComponent::class)->name('dashboard');
+        Route::get('/', DashboardComponent::class)->name('dashboard');
+        Route::get('/wallet', WalletComponent::class)->name('wallet');
+        Route::get('/transactions', Transactionscomponent::class)->name('transactions');
+        Route::get('/donations', Donationscomponent::class)->name('donations');
+
         Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard2', function () {
             return view('dashboard');
         })->name('dashboard2');

@@ -319,16 +319,292 @@
                                                         </figure>
                                                         <figure class="inner-img ms-3" itemprop="associatedMedia" itemscope=""><a href="{{ asset('assets/dashboard/images/dashboard/image-20.jpg' ) }}" itemprop="contentUrl" data-size="600x600"><img class="img-fluid img-40" src="{{ asset('assets/dashboard/images/dashboard/image-20.jpg' ) }}" itemprop="thumbnail" alt="Image description"></a>
                                                             <figcaption itemprop="caption description">Photos 2
+                                                            </figcaption>
+                                                        </figure>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
                                     <td> <span class="badge badge-light-theme-light font-theme-light">22 Jun 2020</span></td>
-                                    </figcaption>
-                                    </figure>
+
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
-
-            </tbody>
-            </table>
+            <div class="col-xsl-6 col-lg-12 dash-xl-100">
+                <div class="card total-transactions">
+                    <div class="row m-0">
+                        <div class="col-md-6 col-sm-6 p-0">
+                            <div class="card-header card-no-border">
+                                <h5>Total Transactions</h5>
+                            </div>
+                            <div class="card-body pt-0">
+                                <div>
+                                    <div id="transaction-chart"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 p-0 report-sec">
+                            <div class="card-header card-no-border">
+                                <div class="header-top">
+                                    <h5 class="m-0">Report</h5>
+                                    <div class="icon-box onhover-dropdown"><i data-feather="more-horizontal"></i>
+                                        <div class="icon-box-show onhover-show-div">
+                                            <ul>
+                                                <li> <a>
+                                                        Today</a></li>
+                                                <li> <a>
+                                                        Yesterday</a></li>
+                                                <li> <a>
+                                                        Tommorow</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body pt-0">
+                                <div class="row">
+                                    <div class="col-6 report-main">
+                                        <div class="report-content text-center">
+                                            <p class="font-theme-light">This Week</p>
+                                            <h5>+86.53%</h5>
+                                            <div class="progress progress-round-primary">
+                                                <div class="progress-bar" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="report-content text-center">
+                                            <p class="font-theme-light">Last Week</p>
+                                            <h5>-34.50%</h5>
+                                            <div class="progress progress-round-secondary">
+                                                <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="media report-perfom">
+                                            <div class="media-body">
+                                                <p class="font-theme-light">Performance </p>
+                                                <h5 class="m-0">+93.82%</h5>
+                                            </div><a class="btn btn-primary" href="blog-single.html">New Report</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 dash-xl-50">
+                <div class="card yearly-chart">
+                    <div class="card-header card-no-border pb-0">
+                        <h5 class="pb-2">$3,500,000</h5>
+                        <h6 class="font-theme-light f-14 m-0">November 2021</h6>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div>
+                            <div id="yearly-chart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 dash-xl-50">
+                <div class="card bg-primary premium-access">
+                    <div class="card-body">
+                        <h6 class="f-22">Premium Access!</h6>
+                        <p>We add 20+ new features and update community in your project We add 20+ new features</p><a class="btn btn-outline-white_color" href="blog-single.html"> Try now for free</a>
+                    </div>
+                    <!-- Root element of PhotoSwipe. Must have class pswp.-->
+                    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="pswp__bg"></div>
+                        <div class="pswp__scroll-wrap">
+                            <div class="pswp__container">
+                                <div class="pswp__item"></div>
+                                <div class="pswp__item"></div>
+                                <div class="pswp__item"></div>
+                            </div>
+                            <div class="pswp__ui pswp__ui--hidden">
+                                <div class="pswp__top-bar">
+                                    <div class="pswp__counter"></div>
+                                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                                    <button class="pswp__button pswp__button--share" title="Share"></button>
+                                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                                    <div class="pswp__preloader">
+                                        <div class="pswp__preloader__icn">
+                                            <div class="pswp__preloader__cut">
+                                                <div class="pswp__preloader__donut"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                                    <div class="pswp__share-tooltip"></div>
+                                </div>
+                                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+                                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+                                <div class="pswp__caption">
+                                    <div class="pswp__caption__center"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+@push('scripts')
+    <script>
+        var options ={
+            series: [
+                {
+                    name:'Statistics',
+                    data:[500,600, 200, 700, 750, 500]
+                },
+                {
+                    name: 'Statistics',
+                    data: [800,800,800,800,800,800]
+                }
+            ],
+            chart:{
+                type:'bar',
+                height:230,
+                stacked:true,
+                stackType: '100%',
+                toolbar:{
+                    show:false,
+                }
+            },
+            plotOptions: {
+                bar:{
+                    horizontal: false,
+                    columnWidth: '20px',
+                    borderRadius: 5,
+                },
+            },
+            grid: {
+                show:false,
+                xaxis: {
+                    lines: {
+                        show: false
+                    }
+                }
+            },
+            dataLabels:{
+                enabled: false,
+            },
+            fill: {
+                opacity: 1
+            },
+            legend: {
+                show:false
+            },
+            states: {
+                hover: {
+                    filter: {
+                        type: 'darken',
+                        value: 1,
+                    }
+                }
+            },
+            colors:[zetaAdminConfig.primary,'#f4f6fd'],
+            yaxis: {
+                tickAmount: 3,
+                min: 0 ,
+                max: 800 ,
+
+                axisBorder:{
+                    show:false,
+                },
+                axisTicks:{
+                    show: false,
+                },
+            },
+            xaxis:{
+                categories:[
+                    'Muna','T','Weno','T','F','Sato'
+                ],
+                axisBorder:{
+                    show:false,
+                },
+                axisTicks:{
+                    show: false,
+                },
+            },
+            states: {
+                hover: {
+                    filter: {
+                        type: 'darken',
+                        value: 1,
+                    }
+                }
+            },
+            responsive: [
+                {
+                    breakpoint: 1661,
+                    options:{
+                        chart: {
+                            height: 420,
+                        }
+                    }
+                },
+                {
+                    breakpoint: 1366,
+                    options:{
+                        chart: {
+                            height: 435,
+                        }
+                    }
+                },
+                {
+                    breakpoint: 1101,
+                    options:{
+                        chart: {
+                            height: 250,
+                        }
+                    }
+                },
+                {
+                    breakpoint: 1007,
+                    options:{
+                        chart: {
+                            height: 435,
+                        }
+                    }
+                },
+                {
+                    breakpoint: 992,
+                    options:{
+                        chart: {
+                            height: 385,
+                        }
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    options:{
+                        chart:{
+                            height: 300,
+                        }
+                    }
+                },{
+                    breakpoint: 576,
+                    options:{
+                        chart:{
+                            height: 250,
+                        }
+                    }
+                }
+
+            ]
+        };
+        var chart = new ApexCharts(document.querySelector("#weekly-chart"), options);
+        chart.render();
+    </script>
+@endpush

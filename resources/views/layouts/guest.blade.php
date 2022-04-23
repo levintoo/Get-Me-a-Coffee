@@ -11,7 +11,6 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <!-- Google font-->
         <link rel="preconnect" href="https://fonts.googleapis.com/">
         <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
@@ -39,10 +38,11 @@
         @stack('styles')
         @livewireStyles
         <!-- Scripts -->
-        <script src="{{ mix('js/app.js') }}" defer></script>
+{{--        <script src="{{ mix('js/app.js') }}" defer></script>--}}
     </head>
     <body>
         {{ $slot }}
+
         <!-- latest jquery-->
         <script src="{{ asset('assets/dashboard/js/jquery-3.5.1.min.js') }}"></script>
         <!-- Bootstrap js-->
