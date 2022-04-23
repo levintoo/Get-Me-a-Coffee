@@ -27,9 +27,9 @@ var options = {
         toolbar: {
             show: false
         },
-      
+
     },
-   
+
     stroke: {
         curve: 'smooth',
         colors: [zetaAdminConfig.primary],
@@ -47,9 +47,9 @@ var options = {
               strokeColor: zetaAdminConfig.primary,
               radius: 3,
               strokeWidth: 3,
-            
+
             },
-           
+
           }
         ]
       },
@@ -65,19 +65,19 @@ var options = {
 
         },
     },
-    
+
     yaxis:{
         labels: {
-           
+
             show: false,
         },
     },
     xaxis: {
         type: "datetime",
-      
+
         show: false,
         labels: {
-           
+
             show: false,
         },
         tooltip: {
@@ -89,7 +89,7 @@ var options = {
         },
         crosshairs: {
             show: false,
-           
+
         },
     },
     legend: {
@@ -136,151 +136,151 @@ chart.render();
 
 
 // weekly chart start
-var options ={
-    series: [
-      {
-        name:'Statistics',
-        data:[500,600, 200, 700, 750, 500]
-      },
-      {
-        name: 'Statistics',
-        data: [800,800,800,800,800,800]
-      }
-    ],
-    chart:{
-      type:'bar',
-      height:230,
-      stacked:true,
-      stackType: '100%',
-      toolbar:{
-        show:false,
-      }
-    }, 
-    plotOptions: {
-      bar:{       
-        horizontal: false,
-        columnWidth: '20px',
-        borderRadius: 5,
-      },
-    }, 
-    grid: {
-      show:false,                  
-      xaxis: {
-        lines: {
-          show: false
-        }
-      }
-    },
-    dataLabels:{
-      enabled: false,
-    },
-    fill: {
-      opacity: 1
-    },
-    legend: {
-      show:false
-    },    
-    states: {          
-      hover: {
-        filter: {
-          type: 'darken',
-          value: 1,
-        }
-      }           
-    },
-    colors:[zetaAdminConfig.primary,'#f4f6fd'],
-    yaxis: {
-      tickAmount: 3,
-      min: 0 ,
-      max: 800 ,      
-      
-      axisBorder:{
-       show:false,
-     },
-      axisTicks:{
-        show: false,
-      },
-    },
-    xaxis:{     
-      categories:[
-        'M','T','W','T','F','S'
-      ],
-      axisBorder:{
-       show:false,
-     },
-    axisTicks:{
-        show: false,
-      },
-    },
-    states: {          
-      hover: {
-        filter: {
-          type: 'darken',
-          value: 1,
-        }
-      }           
-    },    
-    responsive: [
-        {
-          breakpoint: 1661,
-          options:{
-            chart: {
-                height: 420,
-            }
-          }
-        },
-        {
-          breakpoint: 1366,
-          options:{
-            chart: {
-                height: 435,
-            }
-          }
-        },
-        {
-          breakpoint: 1101,
-          options:{
-            chart: {
-                height: 250,
-            }
-          }
-        },
-        {
-          breakpoint: 1007,
-          options:{
-            chart: {
-                height: 435,
-            }
-          }
-        },
-        {
-          breakpoint: 992,
-          options:{
-            chart: {
-                height: 385,
-            }
-          }
-        },
-        {
-          breakpoint: 768,
-          options:{
-            chart:{
-                height: 300,
-            }
-          }
-        },{
-          breakpoint: 576,
-          options:{
-            chart:{
-                height: 250,
-            }
-          }
-        }
-
-      ]    
-  };
-  var chart = new ApexCharts(document.querySelector("#weekly-chart"), options);
-  chart.render();
+// var options ={
+//     series: [
+//         {
+//             name:'Statistics',
+//             data:[500,600, 200, 700, 750, 500]
+//         },
+//         {
+//             name: 'Statistics',
+//             data: [800,800,800,800,800,800]
+//         }
+//     ],
+//     chart:{
+//         type:'bar',
+//         height:230,
+//         stacked:true,
+//         stackType: '100%',
+//         toolbar:{
+//             show:false,
+//         }
+//     },
+//     plotOptions: {
+//         bar:{
+//             horizontal: false,
+//             columnWidth: '20px',
+//             borderRadius: 5,
+//         },
+//     },
+//     grid: {
+//         show:false,
+//         xaxis: {
+//             lines: {
+//                 show: false
+//             }
+//         }
+//     },
+//     dataLabels:{
+//         enabled: false,
+//     },
+//     fill: {
+//         opacity: 1
+//     },
+//     legend: {
+//         show:false
+//     },
+//     states: {
+//         hover: {
+//             filter: {
+//                 type: 'darken',
+//                 value: 1,
+//             }
+//         }
+//     },
+//     colors:[zetaAdminConfig.primary,'#f4f6fd'],
+//     yaxis: {
+//         tickAmount: 3,
+//         min: 0 ,
+//         max: 800 ,
+//
+//         axisBorder:{
+//             show:false,
+//         },
+//         axisTicks:{
+//             show: false,
+//         },
+//     },
+//     xaxis:{
+//         categories:[
+//             'M','T','W','T','F','S'
+//         ],
+//         axisBorder:{
+//             show:false,
+//         },
+//         axisTicks:{
+//             show: false,
+//         },
+//     },
+//     states: {
+//         hover: {
+//             filter: {
+//                 type: 'darken',
+//                 value: 1,
+//             }
+//         }
+//     },
+//     responsive: [
+//         {
+//             breakpoint: 1661,
+//             options:{
+//                 chart: {
+//                     height: 420,
+//                 }
+//             }
+//         },
+//         {
+//             breakpoint: 1366,
+//             options:{
+//                 chart: {
+//                     height: 435,
+//                 }
+//             }
+//         },
+//         {
+//             breakpoint: 1101,
+//             options:{
+//                 chart: {
+//                     height: 250,
+//                 }
+//             }
+//         },
+//         {
+//             breakpoint: 1007,
+//             options:{
+//                 chart: {
+//                     height: 435,
+//                 }
+//             }
+//         },
+//         {
+//             breakpoint: 992,
+//             options:{
+//                 chart: {
+//                     height: 385,
+//                 }
+//             }
+//         },
+//         {
+//             breakpoint: 768,
+//             options:{
+//                 chart:{
+//                     height: 300,
+//                 }
+//             }
+//         },{
+//             breakpoint: 576,
+//             options:{
+//                 chart:{
+//                     height: 250,
+//                 }
+//             }
+//         }
+//
+//     ]
+// };
+// var chart = new ApexCharts(document.querySelector("#weekly-chart"), options);
+// chart.render();
 // weekly chart end
 
 
@@ -341,16 +341,16 @@ var options = {
             right: 0,
             bottom: -10,
             left: 0
-        }, 
-      
-    },   
+        },
+
+    },
     yaxis: {
         show: false,
     },
     legend: {
         show: false,
     },
-    tooltip: {           
+    tooltip: {
         x: {
             formatter: function (val) {
                 return val
@@ -362,13 +362,13 @@ var options = {
             }
         }
     },
-    states:{          
+    states:{
       hover:{
         filter:{
           type: 'darken',
           value: 1,
         }
-      }           
+      }
     },
     xaxis: {
         position: 'top',
@@ -376,7 +376,7 @@ var options = {
         ],
         labels: {
             formatter: function (val) {
-                return Math.abs(Math.round(val)) 
+                return Math.abs(Math.round(val))
             },
             offsetX: 0,
             offsetY: 5,
@@ -405,8 +405,8 @@ var options = {
     //           }
     //         }
     //     ]
-    
-        
+
+
     };
 var chart = new ApexCharts(document.querySelector("#transaction-chart"), options);
 chart.render();
@@ -427,13 +427,13 @@ var options = {
             fillColor: "#fff",
             strokeColor: zetaAdminConfig.primary,
             radius: 2,
-          
+
           },
-         
+
         }
       ]
     },
-    
+
     chart: {
         toolbar: {
             show: false
@@ -452,7 +452,7 @@ var options = {
           zoom: {
             enabled: false
           },
-      
+
     },
     dataLabels: {
       enabled: false
@@ -473,16 +473,16 @@ var options = {
             show: false
         },
     },
-    
+
     colors: [zetaAdminConfig.primary],
    series: [
     {
       name: "Series 1",
       data: [
-        
-        [1486771200000, 1], 
-        [1486857600000, 12], 
-        [1486944000000, 8], 
+
+        [1486771200000, 1],
+        [1486857600000, 12],
+        [1486944000000, 8],
         [1487030400000, 20]
       ]
     }
@@ -545,9 +545,9 @@ var options = {
         }
       ]
   };
-  
+
   var chart = new ApexCharts(document.querySelector("#yearly-chart"), options);
-  
+
   chart.render();
 
-  // yearly chart end 
+  // yearly chart end
