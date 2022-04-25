@@ -10,6 +10,7 @@ use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\PaymentDetails;
 use App\Http\Livewire\DonationCredit;
 use App\Http\Livewire\TwoStepRegisterComponent;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,5 +56,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     });
 
 });
-
+Route::get('/now', function () {
+    return Carbon::now();
+});
+Route::get('/yesterday', function () {
+    return Carbon::yesterday();
+});
 Route::get('/{username}', HomeComponent::class);

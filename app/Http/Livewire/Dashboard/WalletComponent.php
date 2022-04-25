@@ -20,22 +20,54 @@ class WalletComponent extends Component
         }else{
             $account = "";
         }
+
         $user = User::where('userid',Auth::user()->userid)->first();
+
         $todayearning = DonationTransactions::whereDay('created_at','=',Carbon::now()->day)->where('userid','=',Auth::user()->userid)->where('purpose','=','donation')->where('type','=','credit')->get();
-        $todaywithdrawal = DonationTransactions::whereDay('created_at','=',Carbon::now()->day)->where('userid','=',Auth::user()->userid)->where('type','=','debit')->where('purpose','=','withdrawal')->get();
-        $withdrawals = DonationTransactions::where('userid','=',Auth::user()->userid)->where('type','=','debit')->where('purpose','=','withdrawal')->get();
         $todaysearning = 0;
-        $todayswithdrawal = 0;
-        $withdrawal = 0;
         foreach ($todayearning as $todayearning) {
             $todaysearning = $todaysearning + $todayearning->amount;
         }
+
+        $todaywithdrawal = DonationTransactions::whereDay('created_at','=',Carbon::now()->day)->where('userid','=',Auth::user()->userid)->where('type','=','debit')->where('purpose','=','withdrawal')->get();
+        $todayswithdrawal = 0;
         foreach ($todaywithdrawal as $todaywithdrawal) {
             $todayswithdrawal = $todayswithdrawal + $todaywithdrawal->amount;
         }
+
+        $withdrawals = DonationTransactions::where('userid','=',Auth::user()->userid)->where('type','=','debit')->where('purpose','=','withdrawal')->get();
+        $withdrawal = 0;
         foreach ($withdrawals as $withdrawals) {
             $withdrawal = $withdrawal + $withdrawals->amount;
         }
-        return view('livewire.dashboard.wallet-component',['account'=>$account->amount, 'user'=>$user, 'todaysearning'=>$todaysearning, 'todayswithdrawal'=>$todayswithdrawal, 'withdrawal'=>$withdrawal])->layout('layouts.app');
+
+        $yesterdayearning = DonationTransactions::where('userid','=',Auth::user()->userid)->whereDate('created_at','=',Carbon::yesterday())->where('type','=','credit')->where('purpose','=','donation')->get();
+        $yesterdaysearning = 0;
+        foreach ($yesterdayearning as $yesterdayearning) {
+            $yesterdaysearning = $yesterdaysearning + $yesterdayearning->amount;
+        }
+             if($todaysearning<$yesterdaysearning){
+                 $thanyesterdayamount = $yesterdaysearning - $todaysearning;
+                 $thanyesterdaypercent = $yesterdaysearning / $todaysearning * 100;
+
+             }elseif($todaysearning>$yesterdaysearning){
+                 $thanyesterdayamount = $todaysearning - $yesterdaysearning;
+                 $thanyesterdaypercent = $todaysearning / $yesterdaysearning * 100;
+
+             }else{
+                 $thanyesterdayamount = 0;
+                 $thanyesterdaypercent = 0;
+             }
+        return view('livewire.dashboard.wallet-component',
+            [
+                'account'=>$account->amount,
+                'user'=>$user,
+                'todaysearning'=>$todaysearning,
+                'todayswithdrawal'=>$todayswithdrawal,
+                'withdrawal'=>$withdrawal,
+                'yesterdaysearning'=>$yesterdaysearning,
+                'thanyesterdayamount'=>$thanyesterdayamount,
+                'thanyesterdaypercent'=>$thanyesterdaypercent
+            ])->layout('layouts.app');
     }
 }
