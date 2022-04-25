@@ -7,9 +7,9 @@
                 </div>
                 <div class="col-12 col-sm-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"> <a class="home-item" href="index-2.html"><i data-feather="home"></i></a></li>
-                        <li class="breadcrumb-item"> Dashboard</li>
-                        <li class="breadcrumb-item active"> Default {{$account}}</li>
+                        <li class="breadcrumb-item"> <a class="home-item" href="{{ route('/') }}"><i data-feather="home"></i></a></li>
+                        <li class="breadcrumb-item"> <a class="home-item" href="{{ route('dashboard') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item active"> Default</li>
                     </ol>
                 </div>
             </div>
@@ -40,6 +40,8 @@
                         <div class="earning-content"><img class="img-fluid" src="{{ asset('assets/dashboard/images/avatar.jpg' ) }}" alt=""><a href="blog-single.html">
                                 <h4>Today's Earning</h4></a><span>(Mon 15 - Sun 21)</span>
                             <h6>${{ number_format($todaysearning, 2)}}</h6>
+                            <span>Total Earning</span>
+                            <h6>${{ number_format($account ,0)}}</h6>
                             <div id="earning-chart"></div>
                         </div>
                     </div>

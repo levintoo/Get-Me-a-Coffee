@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/welcome', function () {
     return view('welcome');
 });
-Route::get('/', DonateComponent::class);
+Route::get('/', DonateComponent::class)->name('/');
 Route::post('/donation/amount', [HomeComponent::class, 'doSomething'])->name('amount');
 Route::get('/donation/details', DonationDetails::class)->name('donation-details');
 Route::post('/donation/details/store', [DonationDetails::class, 'store'])->name('donation-details.submit');
