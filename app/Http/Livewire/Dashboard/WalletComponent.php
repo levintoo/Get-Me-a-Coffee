@@ -12,19 +12,30 @@ use Livewire\Component;
 class WalletComponent extends Component
 {
     public function render()
-    {        $account = Accounts::where('userid',Auth::user()->userid)->first();
+    {
+        $account = Accounts::where('userid',Auth::user()->userid)->first();
         if ($account != "")
         {
 //            $account = "something";
         }else{
-            $account = "nothing";
+            $account = "";
         }
         $user = User::where('userid',Auth::user()->userid)->first();
-        $today = DonationTransactions::whereDay('created_at','=',Carbon::now()->day)->where('userid','=',Auth::user()->userid)->get();
+        $todayearning = DonationTransactions::whereDay('created_at','=',Carbon::now()->day)->where('userid','=',Auth::user()->userid)->where('purpose','=','donation')->where('type','=','credit')->get();
+        $todaywithdrawal = DonationTransactions::whereDay('created_at','=',Carbon::now()->day)->where('userid','=',Auth::user()->userid)->where('type','=','debit')->where('purpose','=','withdrawal')->get();
+        $withdrawals = DonationTransactions::where('userid','=',Auth::user()->userid)->where('type','=','debit')->where('purpose','=','withdrawal')->get();
         $todaysearning = 0;
-        foreach ($today as $todayamount) {
-            $todaysearning = $todaysearning + $todayamount->amount;
+        $todayswithdrawal = 0;
+        $withdrawal = 0;
+        foreach ($todayearning as $todayearning) {
+            $todaysearning = $todaysearning + $todayearning->amount;
         }
-        return view('livewire.dashboard.wallet-component',['account'=>$account->amount, 'user'=>$user, 'todaysearning'=>$todaysearning])->layout('layouts.app');
+        foreach ($todaywithdrawal as $todaywithdrawal) {
+            $todayswithdrawal = $todayswithdrawal + $todaywithdrawal->amount;
+        }
+        foreach ($withdrawals as $withdrawals) {
+            $withdrawal = $withdrawal + $withdrawals->amount;
+        }
+        return view('livewire.dashboard.wallet-component',['account'=>$account->amount, 'user'=>$user, 'todaysearning'=>$todaysearning, 'todayswithdrawal'=>$todayswithdrawal, 'withdrawal'=>$withdrawal])->layout('layouts.app');
     }
 }
