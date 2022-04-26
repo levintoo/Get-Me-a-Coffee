@@ -153,18 +153,20 @@
                         </div>
                     </div>
                     <div class="contact-form card-body">
-                        <form class="theme-form">
+                        <form class="theme-form" action="{{ route('mpesa.withdraw') }}" method="POST">
+                            @csrf
                             <div class="form-icon"><i class="icofont icofont-envelope-open"></i></div>
                             <div class="mb-3">
+                                <x-jet-validation-errors class="mb-3" />
                                 <label for="exampleInputAmount">Amount</label>
-                                <input class="form-control" id="exampleInputAmount" type="mumber" placeholder="500" data-bs-original-title="" title="">
+                                <input class="form-control" id="exampleInputAmount" name="inputAmount" type="number" placeholder="500" data-bs-original-title="" title=""  autofocus >
                             </div>
                             <div class="mb-3">
-                                <label class="col-form-label" for="exampleInputEmail1">Number</label>
-                                <input class="form-control" id="exampleInputEmail1" type="text" placeholder="+254700814223" data-bs-original-title="" title="">
+                                <label class="col-form-label" for="exampleInputPhone1">Number</label>
+                                <input class="form-control" id="exampleInputPhone1" type="text" name="inputPhone" :value="old('phone')" autocomplete="[phone]" type="text" placeholder="+254700814223" data-bs-original-title="" title="">
                             </div>
                             <div class="text-sm-end">
-                                <button class="btn btn-primary" data-bs-original-title="" title="">SEND IT</button>
+                                <button type="submit" class="btn btn-primary" data-bs-original-title="" title="">SEND IT</button>
                             </div>
                         </form>
                     </div>
@@ -183,8 +185,9 @@
                         <form class="theme-form">
                             <div class="form-icon"><i class="icofont icofont-envelope-open"></i></div>
                             <div class="mb-3">
+                                <x-jet-validation-errors class="mb-3" />
                                 <label for="exampleInputAmount">Amount</label>
-                                <input class="form-control" id="exampleInputAmount" type="mumber" placeholder="$500" data-bs-original-title="" title="">
+                                <input class="form-control" id="exampleInputAmount" type="number" placeholder="$500" data-bs-original-title="" title="">
                             </div>
                             <div class="mb-3">
                                 <label class="col-form-label" for="exampleInputEmail1">Email</label>
