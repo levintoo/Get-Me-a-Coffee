@@ -143,9 +143,61 @@
     <!-- Container-fluid starts-->
     <div class="container-fluid default-dash">
         <div class="row">
-            <div class="col-xl-3 col-md-6 dash-xl-50">
-                withdraw
+            <div class="col-sm-12 col-lg-6 col-xl-8 xl-50 col-md-12 box-col-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="media">
+                            <div class="media-body">
+                                <h5>Mpesa</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form card-body">
+                        <form class="theme-form">
+                            <div class="form-icon"><i class="icofont icofont-envelope-open"></i></div>
+                            <div class="mb-3">
+                                <label for="exampleInputAmount">Amount</label>
+                                <input class="form-control" id="exampleInputAmount" type="mumber" placeholder="500" data-bs-original-title="" title="">
+                            </div>
+                            <div class="mb-3">
+                                <label class="col-form-label" for="exampleInputEmail1">Number</label>
+                                <input class="form-control" id="exampleInputEmail1" type="text" placeholder="+254700814223" data-bs-original-title="" title="">
+                            </div>
+                            <div class="text-sm-end">
+                                <button class="btn btn-primary" data-bs-original-title="" title="">SEND IT</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
+            <div class="col-sm-12 col-lg-6 col-xl-8 xl-50 col-md-12 box-col-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="media">
+                            <div class="media-body">
+                                <h5>Paypal</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form card-body">
+                        <form class="theme-form">
+                            <div class="form-icon"><i class="icofont icofont-envelope-open"></i></div>
+                            <div class="mb-3">
+                                <label for="exampleInputAmount">Amount</label>
+                                <input class="form-control" id="exampleInputAmount" type="mumber" placeholder="$500" data-bs-original-title="" title="">
+                            </div>
+                            <div class="mb-3">
+                                <label class="col-form-label" for="exampleInputEmail1">Email</label>
+                                <input class="form-control" id="exampleInputEmail1" type="email" placeholder="Demo@gmail.com" data-bs-original-title="" title="">
+                            </div>
+                            <div class="text-sm-end">
+                                <button class="btn btn-primary" data-bs-original-title="" title="">SEND IT</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+{{--            start of balance details--}}
             <div class="col-xl-6 xl-100 box-col-12">
                 <div class="widget-joins card widget-arrow">
                     <div class="card-header pb-0">
