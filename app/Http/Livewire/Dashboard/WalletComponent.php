@@ -48,11 +48,19 @@ class WalletComponent extends Component
         }
              if($todaysearning<$yesterdaysearning){
                  $thanyesterdayamount = $yesterdaysearning - $todaysearning;
-                 $thanyesterdaypercent = $yesterdaysearning / $todaysearning * 100;
+                 if ($todaysearning<1){
+                     $thanyesterdaypercent = 0;
+                 }else{
+                     $thanyesterdaypercent = $yesterdaysearning / $todaysearning * 100;
+                 }
 
              }elseif($todaysearning>$yesterdaysearning){
                  $thanyesterdayamount = $todaysearning - $yesterdaysearning;
-                 $thanyesterdaypercent = $todaysearning / $yesterdaysearning * 100;
+                 if($yesterdaysearning<1){
+                     $thanyesterdaypercent = 0;
+                 }else{
+                     $thanyesterdaypercent = $todaysearning / $yesterdaysearning * 100;
+                 }
 
              }else{
                  $thanyesterdayamount = 0;
