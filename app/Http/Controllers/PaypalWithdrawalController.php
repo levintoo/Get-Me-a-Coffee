@@ -6,6 +6,7 @@ use App\Models\Accounts;
 use App\Models\DonationTransactions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class PaypalWithdrawalController extends Controller
 {
@@ -38,9 +39,15 @@ class PaypalWithdrawalController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'inputAmount' => ['required', 'numeric'],
-            'inputPhone' => ['required','regex:/^([0-9\s\-\+\(\)]*)$/','min:10', 'max:255'],
+            'inputAmount' => ['required', 'numeric', 'min:1'],
+            'inputEmail' => ['required', 'string', 'email', 'max:255'],
         ]);
+        $user = Accounts::select('amount')->where('userid', Auth::user()->userid)->first();
+        if($request->inputAmount>$user->amount)
+        {
+            session::flash('fail',"You do not have enough cash");
+            return redirect()->back();
+        }
 
         $transaction = new DonationTransactions();
         $transaction->userid = Auth::user()->userid;
@@ -53,6 +60,7 @@ class PaypalWithdrawalController extends Controller
         $transaction->status = '0';
         $transaction->save();
         $this->update($transaction);
+        session::flash('success',"You have withdrawn $transaction->amount from paypal");
         return redirect()->back();
 
     }

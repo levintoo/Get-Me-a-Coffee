@@ -6,6 +6,7 @@ use App\Models\Accounts;
 use App\Models\DonationTransactions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class MpesaWithdrawalController extends Controller
 {
@@ -38,9 +39,16 @@ class MpesaWithdrawalController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'inputAmount' => ['required', 'numeric'],
+            'inputAmount' => ['required', 'numeric', 'min:1'],
             'inputPhone' => ['required','regex:/^([0-9\s\-\+\(\)]*)$/','min:10', 'max:255'],
         ]);
+
+        $user = Accounts::select('amount')->where('userid', Auth::user()->userid)->first();
+        if($request->inputAmount>$user->amount)
+        {
+            session::flash('fail',"You do not have enough cash");
+            return redirect()->back();
+        }
 
         $transaction = new DonationTransactions();
         $transaction->userid = Auth::user()->userid;
@@ -53,6 +61,7 @@ class MpesaWithdrawalController extends Controller
         $transaction->status = '0';
         $transaction->save();
         $this->update($transaction);
+        session::flash('success',"You have withdrawn $transaction->amount from mpesa");
         return redirect()->back();
     }
 
