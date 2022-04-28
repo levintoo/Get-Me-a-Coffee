@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Accounts;
 use App\Models\DonationTransactions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -51,7 +52,7 @@ class MpesaWithdrawalController extends Controller
         $transaction->paymentMethod = 'mpesa';
         $transaction->status = '0';
         $transaction->save();
-
+        $this->update($transaction);
         return redirect()->back();
     }
 
@@ -84,9 +85,14 @@ class MpesaWithdrawalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($transaction)
     {
-        //
+        $user = Accounts::select('amount')->where('userid', $transaction->userid)->first();
+        $newamount = $user->amount - $transaction->amount;
+        Accounts::where('userid',$transaction->userid)->update([
+            'prev_amount' => $user->amount,
+            'amount' => $newamount
+        ]);
     }
 
     /**

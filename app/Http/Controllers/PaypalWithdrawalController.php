@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Accounts;
+use App\Models\DonationTransactions;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PaypalWithdrawalController extends Controller
 {
@@ -34,7 +37,24 @@ class PaypalWithdrawalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'inputAmount' => ['required', 'numeric'],
+            'inputPhone' => ['required','regex:/^([0-9\s\-\+\(\)]*)$/','min:10', 'max:255'],
+        ]);
+
+        $transaction = new DonationTransactions();
+        $transaction->userid = Auth::user()->userid;
+        $transaction->donorid = $request->inputEmail;
+        $transaction->amount = $request->inputAmount;
+        $transaction->type = 'debit';
+        $transaction->transaction_id = 'PPP1204WKS';
+        $transaction->purpose = 'withdrawal';
+        $transaction->paymentMethod = 'paypal';
+        $transaction->status = '0';
+        $transaction->save();
+        $this->update($transaction);
+        return redirect()->back();
+
     }
 
     /**
@@ -66,9 +86,14 @@ class PaypalWithdrawalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($transaction)
     {
-        //
+        $user = Accounts::select('amount')->where('userid', $transaction->userid)->first();
+        $newamount = $user->amount - $transaction->amount;
+        Accounts::where('userid',$transaction->userid)->update([
+            'prev_amount' => $user->amount,
+            'amount' => $newamount
+        ]);
     }
 
     /**

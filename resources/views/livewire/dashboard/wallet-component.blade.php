@@ -187,11 +187,11 @@
                             <div class="mb-3">
                                 <x-jet-validation-errors class="mb-3" />
                                 <label for="exampleInputAmount">Amount</label>
-                                <input class="form-control" id="exampleInputAmount" type="number" placeholder="$500" data-bs-original-title="" title="">
+                                <input class="form-control" id="exampleInputAmount" type="number" name="inputAmount"  placeholder="$500" data-bs-original-title="" title="">
                             </div>
                             <div class="mb-3">
                                 <label class="col-form-label" for="exampleInputEmail1">Email</label>
-                                <input class="form-control" id="exampleInputEmail1" type="email" placeholder="Demo@gmail.com" data-bs-original-title="" title="">
+                                <input class="form-control" id="exampleInputEmail1" type="email" name="inputEmail" placeholder="Demo@gmail.com" data-bs-original-title="" title="">
                             </div>
                             <div class="text-sm-end">
                                 <button class="btn btn-primary" data-bs-original-title="" title="">SEND IT</button>
