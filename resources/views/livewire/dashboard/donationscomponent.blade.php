@@ -81,8 +81,24 @@
                                             </div>
                                         </td>
                                         <td class="img-content-box">
-
-                                            <h6> {{ Carbon\Carbon::parse($donation->donated_at)->format('F j, Y') }}</h6><span>6 Days Ago</span>
+                                            <h6> {{ Carbon\Carbon::parse($donation->donated_at)->format('F j, Y') }}</h6><span>
+                                                @php
+                                                    $interval = Carbon\Carbon::now()->diff($donation->donated_at);
+                                                    if($interval->format('%y')>1){
+                                                        echo($interval->format('%y')." years ago");
+                                                    }elseif($interval->format('%m')>1){
+                                                        echo($interval->format('%m')." months ago");
+                                                    }elseif($interval->format('%d')>1){
+                                                        echo($interval->format('%d')." days ago");
+                                                    }elseif($interval->format('%h')>1){
+                                                        echo($interval->format('%h')." Hours ");
+                                                    }elseif($interval->format('%i')>1){
+                                                        echo($interval->format('%i')." Minutes");
+                                                    }elseif($interval->format('%s')>1){
+                                                        echo($interval->format('%s')." seconds ago");
+                                                    }
+                                                @endphp
+                                            </span>
                                         </td>
                                         <td>
                                             <h6>{{$donation->message}}</h6>
