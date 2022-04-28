@@ -437,7 +437,6 @@
         </div>
     </footer>
     </div>
-    </div>
 
     @stack('modals')
 
