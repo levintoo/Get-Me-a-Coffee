@@ -1,3 +1,11 @@
+@push('styles')
+<style>
+        .pagination{
+            margin-top: 10px;
+            float: right;
+        }
+    </style>
+@endpush
 <main id="main">
     <section id="sectionTop">
         <div class="section-inner">
@@ -65,17 +73,16 @@
                                                         </tr>
                                                     @endforeach
                                                 @endif
-
                                                 </tbody>
                                             </table>
                                             <div class="ps__rail-x" style="width: 297px; left: 0px; bottom: 0px;">
                                                 <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 108px;"></div>
                                             </div>
+                                        {!! $users->links() !!}
                                             <div class="ps__rail-y" style="top: 0px; right: 0px;">
                                                 <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
                                             </div>
                                         </div>
-
                                         <div class="form-group py-1 m-0">
                                             <button type="button" class="btn btn-link text-dark text-uppercase" data-toggle="modal" data-target="#faqModal"><u>FAQ</u></button>
                                         </div>
