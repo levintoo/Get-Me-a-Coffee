@@ -56,22 +56,12 @@
                                     <tr>
                                         <td>
                                             <div class="media">
-                                                @php
-                                                    $random = rand(1,4);
-                                                    if($random == '1' ){
-                                                        $randomImg = "boy.png";
-                                                    }elseif($random == '2' ){
-                                                        $randomImg = "girl.png";
-                                                    }elseif($random == '3' ){
-                                                        $randomImg = "man.png";
-                                                    }elseif($random == '4' ){
-                                                        $randomImg = "woman.png";
-                                                    }
-                                                @endphp
-                                                <div class="square-box me-2"><img class="img-fluid b-r-5" src="{{ asset('assets/dashboard/images/avtar/'.$randomImg) }}" alt=""></div>
+                                                <div class="square-box me-2">
+                                                    <img class="img-fluid b-r-5" src="{{ asset('assets/dashboard/images/avtar/'.$donation->randomImg) }}" alt="">
+                                                </div>
                                                 <div class="media-body ps-2">
                                                     <div class="avatar-details"><a href="#">
-                                                            {{$donation->randomImg}}
+                                                            
                                                             <h6>@if($donation->anonymous == '1')
                                                                     {{$donation->name}}
                                                                 @else

@@ -13,9 +13,4 @@ class Donationscomponent extends Component
         $donations = Donations::where('userid','=',Auth::user()->userid)->where('status','=',0)->get();
         return view('livewire.dashboard.donationscomponent',['donations'=>$donations]);
     }
-    public function allDonations()
-    {
-        $donations = Donations::where('userid','=',Auth::user()->userid)->where('status','=',0)->get();
-        return $donations;
-    }
 }

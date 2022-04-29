@@ -11,7 +11,7 @@ class Donations extends Model
 {
     use SoftDeletes;
     use HasFactory;
-    protected $appends = ['readbleDonatedAt','readbleDonated'];
+    protected $appends = ['readbleDonatedAt','readbleDonated','randomImg'];
     
     public function getReadbleDonatedAtAttribute()
     {
@@ -21,5 +21,18 @@ class Donations extends Model
     {
         $interval = Carbon::parse($this->donated_at)->diffForHumans();
         return $interval;
+    }
+    public function getRandomImgAttribute()
+    { $random = rand(1,4);
+        if($random == '1' ){
+            $randomImg = "boy.png";
+        }elseif($random == '2' ){
+            $randomImg = "girl.png";
+        }elseif($random == '3' ){
+            $randomImg = "man.png";
+        }elseif($random == '4' ){
+            $randomImg = "woman.png";
+        }
+        return $randomImg;
     }
 }
