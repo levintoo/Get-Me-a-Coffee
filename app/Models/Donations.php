@@ -19,7 +19,7 @@ class Donations extends Model
     }
     public function getReadbleDonatedAttribute()
     {
-        $interval = Carbon::parse(Carbon::now())->diffForHumans($this->donated_at);
+        $interval = Carbon::parse($this->donated_at)->diffForHumans();
         return $interval;
     }
 }
