@@ -50,6 +50,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('/wallet', WalletComponent::class)->name('wallet');
         Route::get('/transactions', Transactionscomponent::class)->name('transactions');
         Route::get('/donations', Donationscomponent::class)->name('donations');
+        Route::get('/alldonations', [Donationscomponent::class, 'allDonations']);
 
         Route::post('/mpesa/withdraw', [MpesaWithdrawalController::class, 'store'])->name('mpesa.withdraw');
         Route::post('/paypal/withdraw', [PaypalWithdrawalController::class, 'store'])->name('paypal.withdraw');
