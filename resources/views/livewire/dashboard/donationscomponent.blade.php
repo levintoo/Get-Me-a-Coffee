@@ -1,3 +1,11 @@
+@push('styles')
+<style>
+        .pagination{
+            float: right;
+            margin-top: 10px;
+        }
+    </style>
+@endpush
 <div class="page-body">
     <div class="container-fluid">
         <div class="page-title">
@@ -18,7 +26,7 @@
     <!-- Container-fluid starts-->
     <div class="container-fluid default-dash">
         <div class="row">
-           <div class="col-xl-4 col-md-6 dash-35 dash-xl-100">
+           <div class="col-xl-6 col-md-12 dash-35 dash-xl-100">
                 <div class="card ongoing-project">
                     <div class="card-header card-no-border">
                         <div class="media media-dashboard">
@@ -93,6 +101,7 @@
                                 </tbody>
                             </table>
                         </div>
+                    {!! $donations->links() !!}
                     </div>
                 </div>
             </div>
@@ -101,6 +110,6 @@
 </div>
 @push('scripts')
     <script>
-
+   
     </script>
 @endpush
