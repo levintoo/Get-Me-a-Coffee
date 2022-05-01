@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Dashboard;
 use App\Models\DonationTransactions;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Transactionscomponent extends Component
 {
@@ -15,14 +16,49 @@ class Transactionscomponent extends Component
     {
         $this->sorting = "default";
     }
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
     public function render()
     {
-        $transactions = DonationTransactions::where('userid','=',Auth::user()->userid)->where('status','=',0)->where('purpose','=','withdrawal')->orderBy('created_at','DESC')->paginate(10);
-
+        if($this->sorting == "default"){
+            $transactions = DonationTransactions::where('userid','=',Auth::user()->userid)->where('purpose','=','withdrawal')->orderBy('created_at','DESC')->paginate(10);
+        }
+        elseif ($this->sorting == "Initiated")
+        {
+            $transactions = DonationTransactions::where('userid','=',Auth::user()->userid)->where('status','=',0)->where('purpose','=','withdrawal')->orderBy('created_at','DESC')->paginate(10);
+        }
+        elseif ($this->sorting == "Pending")
+        {
+            $transactions = DonationTransactions::where('userid','=',Auth::user()->userid)->where('status','=',1)->where('purpose','=','withdrawal')->orderBy('created_at','DESC')->paginate(10);
+        }
+        elseif ($this->sorting == "Completed")
+        {
+            $transactions = DonationTransactions::where('userid','=',Auth::user()->userid)->where('status','=',2)->where('purpose','=','withdrawal')->orderBy('created_at','DESC')->paginate(10);
+        }
+        elseif ($this->sorting == "Cancelled")
+        {
+            $transactions = DonationTransactions::where('userid','=',Auth::user()->userid)->where('status','=',3)->where('purpose','=','withdrawal')->orderBy('created_at','DESC')->paginate(10);
+        }
         return view('livewire.dashboard.transactionscomponent',['transactions'=>$transactions]);
     }
-    public function donations(){
-        $transactions = DonationTransactions::where('userid','=',Auth::user()->userid)->where('status','=',0)->where('purpose','=','withdrawal')->first();
-return $transactions;
+    public function sortingDefault()
+    {
+        $this->sorting = "default";
+    }
+    public function sortingInitiated()
+    {
+       $this->sorting = "Initiated";
+    }
+    public function sortingPending()
+    {
+        $this->sorting = "Pending";
+    }
+    public function sortingCompleted()
+    {
+        $this->sorting = "Completed";
+    }
+    public function sortingCancelled()
+    {
+        $this->sorting = "Cancelled";
     }
 }

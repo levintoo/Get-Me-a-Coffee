@@ -37,12 +37,28 @@
                                 <div class="icon-box-show onhover-show-div">
                                     <ul>
                                         <li> <a>
-                                                Done</a></li>
+                                                Date</a></li>
                                         <li> <a>
-                                                Pending</a></li>
+                                                Status</a></li>
                                         <li> <a>
                                                 Rejected</a></li>
                                         <li> <a>In Progress</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="icon-box onhover-dropdown mx-1"><div class="badge badge-info">status</div>
+                                <div class="icon-box-show onhover-show-div">
+                                    <ul>
+                                        <li  wire:click="sortingDefault()"> <a>
+                                                All</a></li>
+                                        <li wire:click="sortingInitiated()"> <a>
+                                                Initiated</a></li>
+                                        <li wire:click="sortingPending()"> <a>
+                                                Pending</a></li>
+                                        <li wire:click="sortingCompleted()"> <a>
+                                                Completed</a></li>
+                                        <li wire:click="sortingCancelled()"> <a>
+                                                Cancelled</a></li>
                                     </ul>
                                 </div>
                             </div>
