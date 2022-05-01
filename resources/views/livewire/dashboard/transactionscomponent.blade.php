@@ -75,7 +75,13 @@
                                     <th> <span>Status   </span></th>
                                 </tr>
                                 </thead>
+                                @if(Session::has('message'))
+                                    <tr><td>
+                                            <h6 class="float-left">{{Session::get('message')}}</h6>
+                                        </td></tr>
+                                @endif
                                 <tbody>
+
                                 @foreach($transactions as $transaction)
                                     <tr>
                                         <td>
