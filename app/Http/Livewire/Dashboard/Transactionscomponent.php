@@ -21,4 +21,8 @@ class Transactionscomponent extends Component
 
         return view('livewire.dashboard.transactionscomponent',['transactions'=>$transactions]);
     }
+    public function donations(){
+        $transactions = DonationTransactions::where('userid','=',Auth::user()->userid)->where('status','=',0)->where('purpose','=','withdrawal')->first();
+return $transactions;
+    }
 }

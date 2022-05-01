@@ -11,13 +11,13 @@ class DonationTransactions extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $appends = ['readbleDonatedAt','readbleDonated','randomImg'];
+    protected $appends = ['readbleTransactedAt','readbleTransactedAgo','randomImg'];
 
-    public function getReadbleDonatedAtAttribute()
+    public function getReadbleTransactedAtAttribute()
     {
         return Carbon::parse($this->created_at)->format('F j, Y');
     }
-    public function getReadbleDonatedAttribute()
+    public function getreadbleTransactedAgoAttribute()
     {
         $interval = Carbon::parse($this->created_at)->diffForHumans();
         return $interval;
