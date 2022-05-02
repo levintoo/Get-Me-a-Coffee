@@ -87,7 +87,7 @@
                                         <td>
                                             <div class="media">
                                                 <div class="square-box me-2">
-                                                    <img class="img-fluid b-r-5" src="{{ asset('assets/dashboard/images/avtar/'.$transaction->randomImg) }}" alt="">
+                                                    <img class="img-fluid b-r-5" src="{{ asset('assets/dashboard/images/payment/'.$transaction->image) }}" alt="">
                                                 </div>
                                                 <div class="media-body ps-2">
                                                     <div class="avatar-details"><a href="#">

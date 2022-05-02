@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Dashboard;
 
-use App\Models\DonationTransactions;
+use App\Models\Transactions;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
@@ -22,35 +22,35 @@ class Transactionscomponent extends Component
     public function render()
     {
         if($this->sorting == "default"){
-            $transactions = DonationTransactions::where('userid','=',Auth::user()->userid)->where('purpose','=','withdrawal')->orderBy('created_at','DESC')->paginate(10);
+            $transactions = Transactions::where('userid','=',Auth::user()->userid)->where('purpose','=','withdrawal')->orderBy('created_at','DESC')->paginate(10);
             if($transactions->isEmpty()){
                 session::flash('message','Theres something to show here');
             }
         }
         elseif ($this->sorting == "Initiated")
         {
-            $transactions = DonationTransactions::where('userid','=',Auth::user()->userid)->where('status','=',0)->where('purpose','=','withdrawal')->orderBy('created_at','DESC')->paginate(10);
+            $transactions = Transactions::where('userid','=',Auth::user()->userid)->where('status','=',0)->where('purpose','=','withdrawal')->orderBy('created_at','DESC')->paginate(10);
             if($transactions->isEmpty()){
                 session::flash('message','Theres nothing to show here');
             }
         }
         elseif ($this->sorting == "Pending")
         {
-            $transactions = DonationTransactions::where('userid','=',Auth::user()->userid)->where('status','=',1)->where('purpose','=','withdrawal')->orderBy('created_at','DESC')->paginate(10);
+            $transactions = Transactions::where('userid','=',Auth::user()->userid)->where('status','=',1)->where('purpose','=','withdrawal')->orderBy('created_at','DESC')->paginate(10);
             if($transactions->isEmpty()){
                 session::flash('message','Theres nothing to show here');
             }
         }
         elseif ($this->sorting == "Completed")
         {
-            $transactions = DonationTransactions::where('userid','=',Auth::user()->userid)->where('status','=',2)->where('purpose','=','withdrawal')->orderBy('created_at','DESC')->paginate(10);
+            $transactions = Transactions::where('userid','=',Auth::user()->userid)->where('status','=',2)->where('purpose','=','withdrawal')->orderBy('created_at','DESC')->paginate(10);
             if($transactions->isEmpty()){
                 session::flash('message','Theres nothing to show here');
             }
         }
         elseif ($this->sorting == "Cancelled")
         {
-            $transactions = DonationTransactions::where('userid','=',Auth::user()->userid)->where('status','=',3)->where('purpose','=','withdrawal')->orderBy('created_at','DESC')->paginate(10);
+            $transactions = Transactions::where('userid','=',Auth::user()->userid)->where('status','=',3)->where('purpose','=','withdrawal')->orderBy('created_at','DESC')->paginate(10);
             if($transactions->isEmpty()){
                 session::flash('message','Theres nothing to show here');
             }

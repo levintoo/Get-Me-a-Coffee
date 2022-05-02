@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Dashboard;
 
 use App\Models\Accounts;
 use App\Models\DonationTransactions;
+use App\Models\Transactions;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -29,13 +30,13 @@ class WalletComponent extends Component
             $todaysearning = $todaysearning + $todayearning->amount;
         }
 
-        $todaywithdrawal = DonationTransactions::whereDay('created_at','=',Carbon::now()->day)->where('userid','=',Auth::user()->userid)->where('type','=','debit')->where('purpose','=','withdrawal')->get();
+        $todaywithdrawal = Transactions::whereDay('created_at','=',Carbon::now()->day)->where('userid','=',Auth::user()->userid)->where('type','=','debit')->where('purpose','=','withdrawal')->get();
         $todayswithdrawal = 0;
         foreach ($todaywithdrawal as $todaywithdrawal) {
             $todayswithdrawal = $todayswithdrawal + $todaywithdrawal->amount;
         }
 
-        $withdrawals = DonationTransactions::where('userid','=',Auth::user()->userid)->where('type','=','debit')->where('purpose','=','withdrawal')->get();
+        $withdrawals = Transactions::where('userid','=',Auth::user()->userid)->where('type','=','debit')->where('purpose','=','withdrawal')->get();
         $withdrawal = 0;
         foreach ($withdrawals as $withdrawals) {
             $withdrawal = $withdrawal + $withdrawals->amount;

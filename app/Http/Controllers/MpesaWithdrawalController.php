@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Accounts;
-use App\Models\DonationTransactions;
+use App\Models\Transactions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -50,9 +50,9 @@ class MpesaWithdrawalController extends Controller
             return redirect()->back();
         }
 
-        $transaction = new DonationTransactions();
+        $transaction = new Transactions();
         $transaction->userid = Auth::user()->userid;
-        $transaction->donorid = $request->inputPhone;
+        $transaction->paidTo = $request->inputPhone;
         $transaction->amount = $request->inputAmount;
         $transaction->type = 'debit';
         $transaction->transaction_id = 'QDO8VU2WKS';

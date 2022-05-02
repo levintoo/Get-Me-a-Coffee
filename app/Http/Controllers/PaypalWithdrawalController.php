@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Accounts;
-use App\Models\DonationTransactions;
+use App\Models\Transactions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -49,12 +49,12 @@ class PaypalWithdrawalController extends Controller
             return redirect()->back();
         }
 
-        $transaction = new DonationTransactions();
+        $transaction = new Transactions();
         $transaction->userid = Auth::user()->userid;
-        $transaction->donorid = $request->inputEmail;
+        $transaction->paidTo = $request->inputEmail;
         $transaction->amount = $request->inputAmount;
         $transaction->type = 'debit';
-        $transaction->transaction_id = 'PPP1204WKS';
+        $transaction->transaction_id = 'PPPPQDO8VU2WKS';
         $transaction->purpose = 'withdrawal';
         $transaction->paymentMethod = 'paypal';
         $transaction->status = '0';
