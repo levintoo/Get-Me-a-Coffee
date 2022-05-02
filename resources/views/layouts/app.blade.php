@@ -36,6 +36,8 @@
     <link id="color" rel="stylesheet" href="{{ asset('assets/dashboard/css/color-1.css') }}" media="screen">
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard/css/responsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard/js/icons/font-awesome/all.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard/js/icons/iconfont/icofont.min.css') }}" />
     @stack('styles')
     @livewireStyles
 
@@ -386,6 +388,9 @@
                                             </g>
                                         </svg>
                                         <span>Wallet</span></a></li>
+                                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ route('wallet') }}">
+                                        <i data-feather="airplay"></i>
+                                        <span>Wallet</span></a></li>
                                 <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ route('donations') }}">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <g>
@@ -478,6 +483,8 @@
     <!-- Theme js-->
     <script src="{{ asset('assets/dashboard/js/script.js') }}"></script>
     <script src="{{ asset('assets/dashboard/js/theme-customizer/customizer.js') }}"></script>
+    <script src="{{ asset('assets/dashboard/js/icons/font-awesome/all.min.js') }}"></script>
+
     <!-- login js-->
     <!-- Plugin used-->
     @stack('scripts')
