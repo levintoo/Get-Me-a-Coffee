@@ -24,25 +24,25 @@ class WalletComponent extends Component
 
         $user = User::where('userid',Auth::user()->userid)->first();
 
-        $todayearning = DonationTransactions::whereDay('created_at','=',Carbon::now()->day)->where('userid','=',Auth::user()->userid)->where('purpose','=','donation')->where('type','=','credit')->get();
+        $todayearning = DonationTransactions::whereDay('created_at','=',Carbon::now()->day)->where('userid','=',Auth::user()->userid)->where('type','=','credit')->get();
         $todaysearning = 0;
         foreach ($todayearning as $todayearning) {
             $todaysearning = $todaysearning + $todayearning->amount;
         }
 
-        $todaywithdrawal = Transactions::whereDay('created_at','=',Carbon::now()->day)->where('userid','=',Auth::user()->userid)->where('type','=','debit')->where('purpose','=','withdrawal')->get();
+        $todaywithdrawal = Transactions::whereDay('created_at','=',Carbon::now()->day)->where('userid','=',Auth::user()->userid)->where('type','=','debit')->get();
         $todayswithdrawal = 0;
         foreach ($todaywithdrawal as $todaywithdrawal) {
             $todayswithdrawal = $todayswithdrawal + $todaywithdrawal->amount;
         }
 
-        $withdrawals = Transactions::where('userid','=',Auth::user()->userid)->where('type','=','debit')->where('purpose','=','withdrawal')->get();
+        $withdrawals = Transactions::where('userid','=',Auth::user()->userid)->where('type','=','debit')->get();
         $withdrawal = 0;
         foreach ($withdrawals as $withdrawals) {
             $withdrawal = $withdrawal + $withdrawals->amount;
         }
 
-        $yesterdayearning = DonationTransactions::where('userid','=',Auth::user()->userid)->whereDate('created_at','=',Carbon::yesterday())->where('type','=','credit')->where('purpose','=','donation')->get();
+        $yesterdayearning = DonationTransactions::where('userid','=',Auth::user()->userid)->whereDate('created_at','=',Carbon::yesterday())->where('type','=','credit')->get();
         $yesterdaysearning = 0;
         foreach ($yesterdayearning as $yesterdayearning) {
             $yesterdaysearning = $yesterdaysearning + $yesterdayearning->amount;
