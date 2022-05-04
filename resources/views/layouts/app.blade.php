@@ -323,7 +323,7 @@
                                 <li><a href="{{ route('wallet') }}"><i data-feather="credit-card"></i><span>Wallet</span></a></li>
                                 <li><a href="{{ route('transactions') }}"><i data-feather="file-text"></i><span>Transactions</span></a></li>
                                 <li><a href="{{ route('donations') }}"><i data-feather="activity"></i><span>Donations</span></a></li>
-                                <li><a href="edit-profile.html"><i data-feather="settings"></i><span>Settings</span></a></li>
+                                <li><a href="{{ route('settings') }}"><i data-feather="settings"></i><span>Settings</span></a></li>
                                 <li><a  href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i data-feather="log-in"> </i><span>Log out</span></a></li>
                                 <form method="POST" id="logout-form" action="{{ route('logout') }}">
                                     @csrf
@@ -389,7 +389,7 @@
                                         </svg>
                                         <span>Wallet</span></a></li>
                                 <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ route('wallet') }}">
-                                        <i data-feather="airplay"></i>
+                                        <i class=" fa-wallet"></i>
                                         <span>Wallet</span></a></li>
                                 <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ route('donations') }}">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -8,6 +8,6 @@ class SettingsComponent extends Component
 {
     public function render()
     {
-        return view('livewire.dashboard.settings-component');
+        return view('livewire.dashboard.settings-component')->layout('layouts.app');
     }
 }
