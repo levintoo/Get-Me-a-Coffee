@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Dashboard;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
 class SettingsComponent extends Component
@@ -62,6 +61,17 @@ class SettingsComponent extends Component
             'city' => 'required|string',
             'about' => 'required|string',
         ]);
+        $user = User::where('userid',Auth::user()->userid)->first();
+        $user->name = $this->name;
+        $user->username = $this->username;
+        $user->phone = $this->phone;
+        $user->category = $this->category;
+        $user->about = $this->about;
+        $user->country = $this->country;
+        $user->company = $this->company;
+        $user->city = $this->city;
+        $user->email = $this->email;
+        $user->save();
         session()->flash('message', 'Post successfully updated.');
     }
 }

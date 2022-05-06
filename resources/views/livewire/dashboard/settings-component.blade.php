@@ -36,7 +36,7 @@
                                         <div class="media">                        <img class="img-70 rounded-circle" alt="" src="{{ asset('assets/dashboard/images/user/7.jpg') }}">
                                             <div class="media-body">
                                                 <h3 class="mb-1 f-20 txt-primary">{{$this->name}}</h3>
-                                                <p class="f-12">DESIGNER</p>
+                                                <p class="f-12">{{$this->category}}</p>
                                             </div>
                                         </div>
                                     </div>
