@@ -391,6 +391,9 @@
                                 <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ route('wallet') }}">
                                         <i class=" fa-wallet"></i>
                                         <span>Wallet</span></a></li>
+                                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ route('settings') }}">
+                                        <i class=" fa-wallet"></i>
+                                        <span>Settings</span></a></li>
                                 <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ route('donations') }}">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <g>
