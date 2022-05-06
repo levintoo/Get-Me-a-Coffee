@@ -86,7 +86,8 @@
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="form-label">Company</label>
-                                        <input class="form-control" type="text" placeholder="Company" wire:model="company">
+                                        <p class="text-info">{{$this->company}}</p>
+{{--                                        <input class="form-control" type="text" placeholder="Company" wire:model="company">--}}
                                         @error('company') <span class="error text-danger">{{ $message }}</span> @enderror
 
                                     </div>
