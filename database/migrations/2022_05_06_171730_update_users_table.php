@@ -17,6 +17,7 @@ class UpdateUsersTable extends Migration
             $table->string('city',255)->after('about')->nullable();
             $table->string('country',255)->after('city')->nullable();
             $table->string('company',255)->after('country')->nullable();
+            $table->string('photo')->after('company')->nullable();
         });
     }
 

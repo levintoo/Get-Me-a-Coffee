@@ -18,10 +18,11 @@ class SettingsComponent extends Component
     public $city;
     public $email;
     public $user;
+    public $photo;
 
     public function mount()
     {
-        $user = User::select('name','username','phone','category','about','country','company','city','email')->where('userid', Auth::user()->userid)->first();
+        $user = User::select('name','username','phone','category','about','country','company','city','email','photo')->where('userid', Auth::user()->userid)->first();
         $this->name = $user->name;
         $this->username = $user->username;
         $this->phone = $user->phone;
@@ -31,6 +32,11 @@ class SettingsComponent extends Component
         $this->company = $user->company;
         $this->city = $user->city;
         $this->email = $user->email;
+        if(is_null($user->photo) || $user->photo === ""){
+            $this->photo = 'rand.jpg';
+        }else{
+            $this->photo = $user->photo;
+        }
     }
 
     public function render()

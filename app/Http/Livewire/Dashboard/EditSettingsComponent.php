@@ -91,8 +91,12 @@ class EditSettingsComponent extends Component
     public function save()
     {
         $imageName = md5(Auth::user()->userid).Carbon::now()->timestamp . '.' . $this->photo->extension();
-//        $this->photo->storeAs('users', $imageName);
-//        $this->photo->storeAs(public_path('images'),$imageName,'real_public');
         $this->photo->storeAs('/assets/images/users/', $imageName,['disk' => 'real_public']);
+
+        $user = User::where('userid',Auth::user()->userid)->first();
+        $user->photo = $imageName;
+        $user->save();
+        session()->flash('message', 'Image successfully updated');
+        return redirect()->route('settings');
     }
 }
