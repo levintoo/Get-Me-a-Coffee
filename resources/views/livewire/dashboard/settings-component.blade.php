@@ -6,14 +6,14 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-sm-6">
-                    <h3>Settings</h3>
+                    <h3>Profile</h3>
                 </div>
                 <div class="col-12 col-sm-6">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a class="home-item" href="index-2.html"><i data-feather="home"></i></a>
                         </li>
                         <li class="breadcrumb-item"> Dashboard</li>
-                        <li class="breadcrumb-item active"> profile</li>
+                        <li class="breadcrumb-item active"> Settings</li>
                     </ol>
                 </div>
 
@@ -46,7 +46,7 @@
                                     <p class="txt-primary">{{$this->email}}</p>
                                 </div>
                                 <div class="form-footer">
-                                    <button class="btn btn-primary btn-block">Edit</button>
+                                    <button class="btn btn-primary btn-block" wire:click="openEdit">Edit</button>
                                 </div>
                                 <br><br><br><br>
                             </form>
@@ -55,7 +55,7 @@
                 </div>
                 <div class="col-xl-8">
 
-                    <form class="card" wire:submit.prevent="updateUserdetails">
+                    <form class="card">
                         <div class="card-header pb-0">
                             <h4 class="card-title mb-0">Profile Details</h4>
                             <div class="card-options"><a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a></div>
@@ -63,15 +63,15 @@
 
                         <div class="card-body">
                             <div class="row">
-                                @if (session()->has('message'))
-                                <div class="col-md-12">
-                                    <div class="mb-3">
-                                            <div class="alert alert-success">
-                                                {{ session('message') }}
-                                            </div>
-                                    </div>
-                                </div>
-                                @endif
+{{--                                @if (session()->has('message'))--}}
+{{--                                <div class="col-md-12">--}}
+{{--                                    <div class="mb-3">--}}
+{{--                                            <div class="alert alert-success">--}}
+{{--                                                {{ session('message') }}--}}
+{{--                                            </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                @endif--}}
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="form-label">Company</label>
@@ -119,7 +119,7 @@
                             </div>
                         </div>
                         <div class="card-footer text-end">
-                            <button class="btn btn-primary" type="submit">Edit</button>
+                            <button class="btn btn-primary" type="button" wire:click="openEdit">Edit</button>
                         </div>
                     </form>
                     <!-- Container-fluid Ends-->
@@ -154,6 +154,8 @@
     <script src="{{ asset('assets/dashboard/js/sweet-alert/app.js') }}"></script>
     <script src="{{ asset('assets/dashboard/js/sweet-alert/sweetalert.min.js') }}"></script>
     <script>
-
+        @if (session()->has('message'))
+        swal("Good job!", "{{ session('message') }}!", "success");
+        @endif
     </script>
 @endpush

@@ -71,6 +71,7 @@ class EditSettingsComponent extends Component
         $user->city = $this->city;
         $user->email = $this->email;
         $user->save();
-        session()->flash('message', 'Post successfully updated.');
+        session()->flash('message', 'Profile successfully updated');
+        return redirect()->route('settings');
     }
 }

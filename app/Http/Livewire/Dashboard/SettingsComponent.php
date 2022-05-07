@@ -37,4 +37,9 @@ class SettingsComponent extends Component
     {
         return view('livewire.dashboard.settings-component')->layout('layouts.app');
     }
+
+    public function openEdit()
+    {
+        return redirect()->route('settings.edit');
+    }
 }

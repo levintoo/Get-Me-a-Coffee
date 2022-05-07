@@ -6,14 +6,14 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-sm-6">
-                    <h3>Settings</h3>
+                    <h3>Edit Profile</h3>
                 </div>
                 <div class="col-12 col-sm-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a class="home-item" href="index-2.html"><i data-feather="home"></i></a>
+                        <li class="breadcrumb-item"><a class="home-item" href="{{route('dashboard')}}"><i data-feather="home"></i></a>
                         </li>
-                        <li class="breadcrumb-item"> Dashboard</li>
-                        <li class="breadcrumb-item active"> profile</li>
+                        <li class="breadcrumb-item"> <a class="home-item" href="{{route('settings')}}">Profile</a></li>
+                        <li class="breadcrumb-item active"> Edit</li>
                     </ol>
                 </div>
 
@@ -86,8 +86,7 @@
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="form-label">Company</label>
-                                        <p class="text-info">{{$this->company}}</p>
-                                        {{--                                        <input class="form-control" type="text" placeholder="Company" wire:model="company">--}}
+                                        <input class="form-control" type="text" placeholder="Company" wire:model="company">
                                         @error('company') <span class="error text-danger">{{ $message }}</span> @enderror
 
                                     </div>
@@ -127,9 +126,9 @@
                                         <label class="form-label">Country</label>
                                         <select class="form-control btn-square" wire:model="country">
                                             <option value="{{$this->city}}">--Select--</option>
-                                            <option value="1">Kenya</option>
-                                            <option value="2">Uganda</option>
-                                            <option value="3">Tanzania</option>
+                                            <option value="Kenya">Kenya</option>
+                                            <option value="Uganda">Uganda</option>
+                                            <option value="Tanzania">Tanzania</option>
                                         </select>
                                         @error('country') <span class="error text-danger">{{ $message }}</span> @enderror
                                     </div>
