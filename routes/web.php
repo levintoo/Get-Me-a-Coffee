@@ -4,6 +4,7 @@ use App\Http\Controllers\MpesaWithdrawalController;
 use App\Http\Controllers\PaypalWithdrawalController;
 use App\Http\Livewire\Dashboard\DashboardComponent;
 use App\Http\Livewire\Dashboard\Donationscomponent;
+use App\Http\Livewire\Dashboard\EditSettingsComponent;
 use App\Http\Livewire\Dashboard\SettingsComponent;
 use App\Http\Livewire\Dashboard\Transactionscomponent;
 use App\Http\Livewire\Dashboard\WalletComponent;
@@ -54,6 +55,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::post('/mpesa/withdraw', [MpesaWithdrawalController::class, 'store'])->name('mpesa.withdraw');
         Route::post('/paypal/withdraw', [PaypalWithdrawalController::class, 'store'])->name('paypal.withdraw');
         Route::get('/settings', SettingsComponent::class)->name('settings');
+        Route::get('/settings/edit', EditSettingsComponent::class)->name('settings.edit');
 
         Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard2', function () {
             return view('dashboard');

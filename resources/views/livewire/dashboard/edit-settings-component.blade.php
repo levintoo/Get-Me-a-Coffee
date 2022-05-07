@@ -41,14 +41,25 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="mb-2">
+                                <div class="mb-3">
                                     <label class="form-label">Email-Address</label>
-                                    <p class="txt-primary">{{$this->email}}</p>
+                                    <input class="form-control" placeholder="your-email@domain.com" wire:model="email">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">New Email-Address</label>
+                                    <input class="form-control" placeholder="your-email@domain.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Password</label>
+                                    <input class="form-control" type="password" value="password">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">New Password</label>
+                                    <input class="form-control" type="password" value="password">
                                 </div>
                                 <div class="form-footer">
-                                    <button class="btn btn-primary btn-block">Edit</button>
+                                    <button class="btn btn-primary btn-block">Save</button>
                                 </div>
-                                <br><br><br><br>
                             </form>
                         </div>
                     </div>
@@ -57,49 +68,56 @@
 
                     <form class="card" wire:submit.prevent="updateUserdetails">
                         <div class="card-header pb-0">
-                            <h4 class="card-title mb-0">Profile Details</h4>
+                            <h4 class="card-title mb-0">Edit Profile</h4>
                             <div class="card-options"><a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a></div>
                         </div>
 
                         <div class="card-body">
                             <div class="row">
                                 @if (session()->has('message'))
-                                <div class="col-md-12">
-                                    <div class="mb-3">
+                                    <div class="col-md-12">
+                                        <div class="mb-3">
                                             <div class="alert alert-success">
                                                 {{ session('message') }}
                                             </div>
+                                        </div>
                                     </div>
-                                </div>
                                 @endif
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="form-label">Company</label>
-                                        <p class="txt-primary">{{$this->company}}</p>
+                                        <p class="text-info">{{$this->company}}</p>
+                                        {{--                                        <input class="form-control" type="text" placeholder="Company" wire:model="company">--}}
+                                        @error('company') <span class="error text-danger">{{ $message }}</span> @enderror
+
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="form-label">Category</label>
-                                        <p class="txt-primary">{{$this->category}}</p>
+                                        <input class="form-control" type="text" placeholder="Category" wire:model="category">
+                                        @error('category') <span class="error text-danger">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                                 <div class="col-sm-4 col-md-4">
                                     <div class="mb-3">
                                         <label class="form-label">Username</label>
-                                        <p class="txt-primary">{{$this->username}}</p>
+                                        <input class="form-control" type="text" placeholder="Username" wire:model="username">
+                                        @error('username') <span class="error text-danger">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="mb-3">
                                         <label class="form-label">Name</label>
-                                        <p class="txt-primary">{{$this->name}}</p>
+                                        <input class="form-control" type="text" placeholder="Home Address" wire:model="name">
+                                        @error('name') <span class="error text-danger">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">City</label>
-                                        <p class="txt-primary">{{$this->city}}</p>
+                                        <input class="form-control" type="text" placeholder="City" wire:model="city">
+                                        @error('city') <span class="error text-danger">{{ $message }}</span> @enderror
 
                                     </div>
                                 </div>
@@ -107,19 +125,27 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Country</label>
-                                        <p class="txt-primary">{{$this->country}}</p>
+                                        <select class="form-control btn-square" wire:model="country">
+                                            <option value="{{$this->city}}">--Select--</option>
+                                            <option value="1">Kenya</option>
+                                            <option value="2">Uganda</option>
+                                            <option value="3">Tanzania</option>
+                                        </select>
+                                        @error('country') <span class="error text-danger">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div>
                                         <label class="form-label">About Me</label>
-                                        <p class="txt-primary">{{$this->about}}</p>
+                                        <textarea class="form-control" rows="5" placeholder="Enter About your description" wire:model="about"></textarea>
+                                        @error('about') <span class="error text-danger">{{ $message }}</span> @enderror
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="card-footer text-end">
-                            <button class="btn btn-primary" type="submit">Edit</button>
+                            <button class="btn btn-primary" type="submit">Update Profile</button>
                         </div>
                     </form>
                     <!-- Container-fluid Ends-->
