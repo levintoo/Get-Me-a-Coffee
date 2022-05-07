@@ -3,11 +3,16 @@
 namespace App\Http\Livewire\Dashboard;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class EditSettingsComponent extends Component
 {
+    use WithFileUploads;
+
+    public $photo;
     public $name;
     public $username;
     public $phone;
@@ -60,6 +65,7 @@ class EditSettingsComponent extends Component
             'city' => 'required|string',
             'about' => 'required|string',
         ]);
+
         $user = User::where('userid',Auth::user()->userid)->first();
         $user->name = $this->name;
         $user->username = $this->username;
@@ -73,5 +79,20 @@ class EditSettingsComponent extends Component
         $user->save();
         session()->flash('message', 'Profile successfully updated');
         return redirect()->route('settings');
+    }
+
+    public function updatedPhoto()
+    {
+        $this->validate([
+            'photo' => 'image|max:1024',
+        ]);
+    }
+
+    public function save()
+    {
+        $imageName = md5(Auth::user()->userid).Carbon::now()->timestamp . '.' . $this->photo->extension();
+//        $this->photo->storeAs('users', $imageName);
+//        $this->photo->storeAs(public_path('images'),$imageName,'real_public');
+        $this->photo->storeAs('/assets/images/users/', $imageName,['disk' => 'real_public']);
     }
 }

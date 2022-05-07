@@ -61,6 +61,24 @@
                                     <button class="btn btn-primary btn-block">Save</button>
                                 </div>
                             </form>
+                            <form wire:submit.prevent="save">
+                                @if ($photo)
+                                    <div class="row mb-2">
+                                        <div class="profile-title">
+                                            <div class="media">
+                                                <p class="f-12">Photo preview</p>
+                                                <img class="img-70 rounded-circle" alt="" src="{{ $photo->temporaryUrl() }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+
+                                <input type="file" wire:model="photo">
+
+                                @error('photo') <span class="error">{{ $message }}</span> @enderror
+
+                                <button type="submit">Save Photo</button>
+                            </form>
                         </div>
                     </div>
                 </div>
