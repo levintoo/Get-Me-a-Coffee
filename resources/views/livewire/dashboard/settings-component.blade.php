@@ -33,7 +33,7 @@
                             <form>
                                 <div class="row mb-2">
                                     <div class="profile-title">
-                                        <div class="media">                        <img class="img-70 rounded-circle" alt="" src="{{ asset('assets/images/users/'.$this->photo) }}">
+                                        <div class="media">                        <img class="img-70 rounded-circle" alt="avatar" src="{{ asset('assets/images/users/'.$this->photo) }}">
                                             <div class="media-body">
                                                 <h3 class="mb-1 f-20 txt-primary">{{$this->name}}</h3>
                                                 <p class="f-12">{{$this->category}}</p>

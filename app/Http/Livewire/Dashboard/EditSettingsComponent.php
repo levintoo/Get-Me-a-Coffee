@@ -12,6 +12,7 @@ class EditSettingsComponent extends Component
 {
     use WithFileUploads;
 
+    public $oldphoto;
     public $photo;
     public $name;
     public $username;
@@ -26,7 +27,7 @@ class EditSettingsComponent extends Component
 
     public function mount()
     {
-        $user = User::select('name','username','phone','category','about','country','company','city','email')->where('userid', Auth::user()->userid)->first();
+        $user = User::select('name','username','phone','category','about','country','company','city','email','photo')->where('userid', Auth::user()->userid)->first();
         $this->name = $user->name;
         $this->username = $user->username;
         $this->phone = $user->phone;
@@ -36,6 +37,16 @@ class EditSettingsComponent extends Component
         $this->company = $user->company;
         $this->city = $user->city;
         $this->email = $user->email;
+        if(is_null($user->photo) || $user->photo === ""){
+            $this->oldphoto = 'rand.jpg';
+        }else{
+            $file = public_path('assets/images/users/'.$user->photo);
+            if( file_exists($file)){
+                $this->oldphoto = $user->photo;
+            }else{
+            $this->oldphoto = 'rand.jpg';
+            }
+        }
     }
 
     public function render()
@@ -95,9 +106,22 @@ class EditSettingsComponent extends Component
         $this->photo->storeAs('/assets/images/users/', $imageName,['disk' => 'real_public']);
 
         $user = User::where('userid',Auth::user()->userid)->first();
+
+        $file = public_path('assets/images/users/'.$user->photo);
+        if( file_exists($file)){
+            unlink(public_path('assets/images/users'.'/'.$user->photo));
+        }
+
         $user->photo = $imageName;
         $user->save();
+
         session()->flash('message', 'Image successfully updated');
+        return redirect()->route('settings');
+    }
+
+    public function sendjoke()
+    {
+        session()->flash('message', 'it didnt work though');
         return redirect()->route('settings');
     }
 }

@@ -64,7 +64,7 @@
                                         <div class="profile-title">
                                             <div class="media">
                                                 <label for="upload-photo">
-                                                    <img class="img-70 rounded-circle" alt="" src="{{ asset('assets/dashboard/images/user/7.jpg') }}">
+                                                    <img class="img-70 rounded-circle" alt="avatar" src="{{ asset('assets/images/users/'.$this->oldphoto) }}">
                                                 </label>
                                                 <input type="file" name="photo" id="upload-photo" wire:model="photo"/>
                                                 <div class="media-body">
@@ -78,14 +78,13 @@
                                 @endif
                             </form>
 
-                            <form>
-                            <div class="mb-3">
+                            <form wire:submit.prevent="sendjoke">
+                                <div class="mb-3">
+                                @if (session()->has('joke'))
+                                    <label class="form-label">{{ session('joke') }}</label>
+                                @endif
                                     <label class="form-label">Email-Address</label>
                                     <input class="form-control" placeholder="your-email@domain.com" wire:model="email">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">New Email-Address</label>
-                                    <input class="form-control" placeholder="your-email@domain.com">
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Password</label>
@@ -96,7 +95,7 @@
                                     <input class="form-control" type="password" value="password">
                                 </div>
                                 <div class="form-footer">
-                                    <button class="btn btn-primary btn-block">Save</button>
+                                    <button class="btn btn-primary btn-block" type="submit">Save</button>
                                 </div>
                             </form>
                         </div>
@@ -217,6 +216,8 @@
     <script src="{{ asset('assets/dashboard/js/sweet-alert/app.js') }}"></script>
     <script src="{{ asset('assets/dashboard/js/sweet-alert/sweetalert.min.js') }}"></script>
     <script>
-
+        @if (session()->has('message'))
+        swal("LOL!", "{{ session('message') }}!", "success");
+        @endif
     </script>
 @endpush

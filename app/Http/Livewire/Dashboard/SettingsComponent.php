@@ -32,10 +32,16 @@ class SettingsComponent extends Component
         $this->company = $user->company;
         $this->city = $user->city;
         $this->email = $user->email;
+
         if(is_null($user->photo) || $user->photo === ""){
             $this->photo = 'rand.jpg';
         }else{
-            $this->photo = $user->photo;
+            $file = public_path('assets/images/users'.'/'.$user->photo);
+            if( file_exists($file)){
+                $this->photo = $user->photo;
+            }else{
+            $this->photo = 'rand.jpg';
+            }
         }
     }
 
