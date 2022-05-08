@@ -1,5 +1,16 @@
 @push('styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard/css/vendors/sweetalert2.css') }}">
+    <style>
+        label {
+            cursor: pointer;
+            /* Style as you please, it will become the visible UI component. */
+        }
+        #upload-photo {
+            opacity: 0;
+            position: absolute;
+            z-index: -1;
+        }
+    </style>
 @endpush
 <div class="page-body">
     <div class="container-fluid">
@@ -30,18 +41,45 @@
                             <div class="card-options"><a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a></div>
                         </div>
                         <div class="card-body">
-                            <form>
-                                <div class="row mb-2">
-                                    <div class="profile-title">
-                                        <div class="media">                        <img class="img-70 rounded-circle" alt="" src="{{ asset('assets/dashboard/images/user/7.jpg') }}">
-                                            <div class="media-body">
-                                                <h3 class="mb-1 f-20 txt-primary">{{$this->name}}</h3>
-                                                <p class="f-12">{{$this->category}}</p>
+
+                            <form wire:submit.prevent="save">
+                                @if ($photo)
+                                    <div class="row mb-2">
+                                        <div class="profile-title">
+                                            <div class="media">
+                                                <img class="img-70 rounded-circle" alt="" src="{{ $photo->temporaryUrl() }}">
+                                                <div class="media-body">
+                                                    <h3 class="mb-1 f-20 txt-primary">{{$this->name}}</h3>
+                                                    @error('photo')<p class="f-12 text-danger">{{ $message }}</p>@enderror
+
+                                                </div>
+                                                <div class="m-2">
+                                                    <button class="btn btn-primary btn-block" type="submit">Save Photo</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="mb-3">
+                                @else
+                                    <div class="row mb-2">
+                                        <div class="profile-title">
+                                            <div class="media">
+                                                <label for="upload-photo">
+                                                    <img class="img-70 rounded-circle" alt="" src="{{ asset('assets/dashboard/images/user/7.jpg') }}">
+                                                </label>
+                                                <input type="file" name="photo" id="upload-photo" wire:model="photo"/>
+                                                <div class="media-body">
+                                                    <h3 class="mb-1 f-20 txt-primary">{{$this->name}}</h3>
+                                                    @error('photo')<p class="f-12 text-danger">{{ $message }}</p>@enderror
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            </form>
+
+                            <form>
+                            <div class="mb-3">
                                     <label class="form-label">Email-Address</label>
                                     <input class="form-control" placeholder="your-email@domain.com" wire:model="email">
                                 </div>
@@ -60,24 +98,6 @@
                                 <div class="form-footer">
                                     <button class="btn btn-primary btn-block">Save</button>
                                 </div>
-                            </form>
-                            <form wire:submit.prevent="save">
-                                @if ($photo)
-                                    <div class="row mb-2">
-                                        <div class="profile-title">
-                                            <div class="media">
-                                                <p class="f-12">Photo preview</p>
-                                                <img class="img-70 rounded-circle" alt="" src="{{ $photo->temporaryUrl() }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
-
-                                <input type="file" wire:model="photo">
-
-                                @error('photo') <span class="error">{{ $message }}</span> @enderror
-
-                                <button type="submit">Save Photo</button>
                             </form>
                         </div>
                     </div>

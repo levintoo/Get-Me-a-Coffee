@@ -52,6 +52,7 @@ class EditSettingsComponent extends Component
             'category' => 'required|string',
             'city' => 'required|string',
             'about' => 'required|string',
+            'photo' => 'image|max:1024',
         ]);
     }
     public function updateUserdetails()
