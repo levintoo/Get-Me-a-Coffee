@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
-use Spatie\Permission\Models\Role;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -34,7 +33,7 @@ class CreateNewUser implements CreatesNewUsers
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
         $uid = Helper::IDGenerator(new User(),'userid',4,'GMAC');
-        $user =  User::create([
+        return User::create([
             'userid' => $uid,
             'name' => $input['name'],
             'username'=> $input['username'],
@@ -47,6 +46,5 @@ class CreateNewUser implements CreatesNewUsers
             'status' => '0',
             'password' => Hash::make($input['password']),
         ]);
-        $user->assignRole($role3);
     }
 }

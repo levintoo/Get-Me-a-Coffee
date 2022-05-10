@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\MpesaWithdrawalController;
 use App\Http\Controllers\PaypalWithdrawalController;
-use App\Http\Livewire\Dashboard\Admin\AdminHomeComponent;
 use App\Http\Livewire\Dashboard\DashboardComponent;
 use App\Http\Livewire\Dashboard\Donationscomponent;
 use App\Http\Livewire\Dashboard\EditSettingsComponent;
@@ -57,13 +56,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::post('/paypal/withdraw', [PaypalWithdrawalController::class, 'store'])->name('paypal.withdraw');
         Route::get('/settings', SettingsComponent::class)->name('settings');
         Route::get('/settings/edit', EditSettingsComponent::class)->name('settings.edit');
-        Route::get('/admin', AdminHomeComponent::class)->name('admin.home');
 
-//        Route::group(['middleware' => ['role:admin']], function () {
-//            Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard2', function () {
-//                return view('dashboard');
-//            })->name('dashboard2');
-//        });
+        Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard2', function () {
+            return view('dashboard');
+        })->name('dashboard2');
 
     });
 
