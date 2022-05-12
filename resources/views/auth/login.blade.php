@@ -39,7 +39,7 @@
                             <div class="checkbox">
                                 <input id="checkbox1" type="checkbox" name="remember" >
                                 <label for="checkbox1">Remember password</label>
-                            </div><a class="link" href="forget-password.html">Forgot password?</a>
+                            </div><a class="link" href="{{ route('password.request') }}">Forgot password?</a>
                         </div>
                         <div class="form-group">
                             <input class="btn btn-primary btn-block" value="Sign in" type="submit"/>

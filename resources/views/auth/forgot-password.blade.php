@@ -1,37 +1,39 @@
+@push('title')
+    <title>Forgot Passsword</title>
+@endpush
 <x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="col-12">
+                <div class="login-card">
 
-        <div class="card-body">
+                    <form class="theme-form login-form" method="POST" action="/forgot-password">
+                        @csrf
 
-            <div class="mb-3">
-                {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+                        <h6>Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.</h6>
+                        <x-jet-validation-errors class="mb-3 rounded-0" />
+
+                        @if (session('status'))
+                            <div class="alert alert-success mb-3 rounded-0" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <div class="input-group"><span class="input-group-text"><i class="icon-email"></i></span>
+                                <input class="form-control" type="email" name="email" :value="old('email')" required autofocus >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input class="btn btn-primary btn-block" value="Email Password Reset Link" type="submit"/>
+                        </div>
+                        <p>Don't have account?<a class="ms-2" href="{{route('register')}}">Create Account</a></p>
+                    </form>
+                </div>
             </div>
-
-            @if (session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
-                </div>
-            @endif
-
-            <x-jet-validation-errors class="mb-3" />
-
-            <form method="POST" action="/forgot-password">
-                @csrf
-
-                <div class="mb-3">
-                    <x-jet-label value="Email" />
-                    <x-jet-input type="email" name="email" :value="old('email')" required autofocus />
-                </div>
-
-                <div class="d-flex justify-content-end mt-4">
-                    <x-jet-button>
-                        {{ __('Email Password Reset Link') }}
-                    </x-jet-button>
-                </div>
-            </form>
         </div>
-    </x-jet-authentication-card>
+    </div>
+
 </x-guest-layout>
+

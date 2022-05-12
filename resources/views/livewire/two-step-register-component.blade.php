@@ -1,45 +1,40 @@
+@push('title')
+    <title>Otp Validation</title>
+@endpush
 <x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo/>
-        </x-slot>
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="col-12">
+                <div class="login-card">
+                    <form class="theme-form login-form" method="POST" action="{{route('validateOTP')}}">
+                        @csrf
+                        @if (session('status'))
+                            <div class="alert alert-success mb-3 rounded-0" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                        @if (session('message'))
+                            <div class="alert alert-danger mb-3 rounded-0" role="alert">
+                                {{ session('message') }}
+                            </div>
+                        @endif
+                        <div class="form-group">
+                            <label>Otp</label>
+                            <div class="input-group"><span class="input-group-text"><i class="icon-email"></i></span>
+                                <input class="form-control" {{ $errors->has('otp') ? ' is-invalid' : '' }}
+                                       type="number"
+                                       name="otp" autocomplete="current-otp">
 
-        <div class="card-body">
-
-            <x-jet-validation-errors class="mb-3 rounded-0"/>
-
-            @if (session('status'))
-                <div class="alert alert-success mb-3 rounded-0" role="alert">
-                    {{ session('status') }}
-                </div>
-            @endif
-            @if (session('message'))
-                <div class="alert alert-danger mb-3 rounded-0" role="alert">
-                    {{ session('message') }}
-                </div>
-            @endif
-
-            <form method="POST" action="{{route('validateOTP')}}">
-                @csrf
-                <div class="mb-3">
-                    <x-jet-label value="{{ __('Otp') }}"/>
-
-                    <x-jet-input class="form-control{{ $errors->has('otp') ? ' is-invalid' : '' }}" type="number"
-                                 name="otp" autocomplete="current-otp"/>
-                    <x-jet-input-error for="otp"></x-jet-input-error>
-                </div>
-                <div class="mb-0">
-                    <div class="d-flex justify-content-end align-items-baseline">
-                        <x-jet-button>
-                            {{ __('Verify') }}
-                        </x-jet-button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-primary btn-block" value="Verify" type="submit"/>
+                        </div>
+                        <p>Didnt receive code?<a class="ms-2" type="submit" wire:click.preventdefault="generateOTP">Resend</a></p>
+                    </form>
                     </div>
                 </div>
-            </form>
-            <form method="POST" action="{{route('generateOTP')}}">
-                @csrf
-                <input type="submit" value="{{ __('Didnt receive code?') }}" class="text-muted me-3" href="">
-            </form>
+            </div>
         </div>
-    </x-jet-authentication-card>
+
 </x-guest-layout>
