@@ -1,112 +1,173 @@
+@push('title')
+    <title>Register</title>
+@endpush
 <x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
-
-        <x-jet-validation-errors class="mb-3" />
-
-        <div class="card-body">
-            <form method="POST" action="{{ route('register') }}">
-                @csrf
-
-                <div class="mb-3">
-                    <x-jet-label value="{{ __('Name') }}" />
-
-                    <x-jet-input class="{{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name"
-                                 :value="old('name')" required autofocus autocomplete="name" />
-                    <x-jet-input-error for="name"></x-jet-input-error>
-                </div>
-
-                <div class="mb-3">
-                    <x-jet-label value="{{ __('Userame') }}" />
-
-                    <x-jet-input class="{{ $errors->has('username') ? 'is-invalid' : '' }}" type="text" name="username"
-                                 :value="old('username')" required autofocus autocomplete="username" />
-                    <x-jet-input-error for="username"></x-jet-input-error>
-                </div>
-
-                <div class="mb-3">
-                    <x-jet-label value="{{ __('Phone') }}" />
-
-                    <x-jet-input class="{{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone"
-                                 :value="old('phone')" required autofocus autocomplete="[phone]" />
-                    <x-jet-input-error for="phone"></x-jet-input-error>
-                </div>
-
-                <div class="mb-3">
-                    <x-jet-label value="{{ __('ID') }}" />
-
-                    <x-jet-input class="{{ $errors->has('national_id') ? 'is-invalid' : '' }}" type="number" name="national_id"
-                                 :value="old('national_id')" required autofocus autocomplete="national_id" />
-                    <x-jet-input-error for="national_id"></x-jet-input-error>
-                </div>
-
-                <div class="mb-3">
-                    <x-jet-label value="{{ __('About') }}" />
-
-                    <x-jet-input class="{{ $errors->has('about') ? 'is-invalid' : '' }}" type="text" name="about"
-                                 :value="old('about')" required autofocus autocomplete="about" />
-                    <x-jet-input-error for="about"></x-jet-input-error>
-                </div>
-
-                <div class="mb-3">
-                    <x-jet-label value="{{ __('Category') }}" />
-
-                    <x-jet-input class="{{ $errors->has('category') ? 'is-invalid' : '' }}" type="text" name="category"
-                                 :value="old('category')" required autofocus autocomplete="category" />
-                    <x-jet-input-error for="category"></x-jet-input-error>
-                </div>
-
-
-                <div class="mb-3">
-                    <x-jet-label value="{{ __('Email') }}" />
-
-                    <x-jet-input class="{{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email"
-                                 :value="old('email')" required />
-                    <x-jet-input-error for="email"></x-jet-input-error>
-                </div>
-
-                <div class="mb-3">
-                    <x-jet-label value="{{ __('Password') }}" />
-
-                    <x-jet-input class="{{ $errors->has('password') ? 'is-invalid' : '' }}" type="password"
-                                 name="password" required autocomplete="new-password" />
-                    <x-jet-input-error for="password"></x-jet-input-error>
-                </div>
-
-                <div class="mb-3">
-                    <x-jet-label value="{{ __('Confirm Password') }}" />
-
-                    <x-jet-input class="form-control" type="password" name="password_confirmation" required autocomplete="new-password" />
-                </div>
-
-                @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                    <div class="mb-3">
-                        <div class="custom-control custom-checkbox">
-                            <x-jet-checkbox id="terms" name="terms" />
-                            <label class="custom-control-label" for="terms">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                            'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'">'.__('Terms of Service').'</a>',
-                                            'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'">'.__('Privacy Policy').'</a>',
-                                    ]) !!}
-                            </label>
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="col-12">
+                <div class="login-card h-auto">
+                    <form class="theme-form login-form m-auto" method="POST" action="{{ route('register') }}">
+                        @csrf
+                        <h4>Create Account</h4>
+                        @if (session('status'))
+                            <div class="alert alert-success mb-3 rounded-0" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                        <div class="form-group">
+                            <label>Name</label>
+                            <div class="input-group"><span class="input-group-text"><i class="fa fa-camera-retro"></i></span>
+                                <input type="text" class="form-control" {{ $errors->has('name') ? 'is-invalid' : '' }}
+                                       name="name"
+                                       :value="old('name')"
+                                       placeholder="John Doe"
+                                       autofocus autocomplete="name">
+                                @error('name')
+                                <div class="input-group">
+                                <p class="text-danger">{{ $message }}</p>
+                                </div>
+                                @enderror
+                            </div>
                         </div>
-                    </div>
-                @endif
-
-                <div class="mb-0">
-                    <div class="d-flex justify-content-end align-items-baseline">
-                        <a class="text-muted me-3 text-decoration-none" href="{{ route('login') }}">
-                            {{ __('Already registered?') }}
-                        </a>
-
-                        <x-jet-button>
-                            {{ __('Register') }}
-                        </x-jet-button>
-                    </div>
+                        <div class="form-group">
+                            <label>Username</label>
+                            <div class="input-group"><span class="input-group-text"><i class="fa fa-camera-retro"></i></span>
+                                <input type="text" class="form-control" {{ $errors->has('username') ? 'is-invalid' : '' }}
+                                name="username"
+                                       :value="old('name')"
+                                       placeholder="JohnDoe"
+                                       autofocus autocomplete="username">
+                                @error('username')
+                                <div class="input-group">
+                                    <p class="text-danger">{{ $message }}</p>
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <div class="input-group"><span class="input-group-text"><i class="fa fa-camera-retro"></i></span>
+                                <input class="form-control" {{ $errors->has('phone') ? 'is-invalid' : '' }} type="text" name="phone"
+                                :value="old('phone')" placeholder="+254700123456"  autofocus autocomplete="[phone]">
+                                @error('phone')
+                                <div class="input-group">
+                                    <p class="text-danger">{{ $message }}</p>
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>ID</label>
+                            <div class="input-group"><span class="input-group-text"><i class="fa fa-camera-retro"></i></span>
+                                <input class="form-control"  {{ $errors->has('national_id') ? 'is-invalid' : '' }} type="number" name="national_id"
+                                       :value="old('national_id')" placeholder="12345678"  autofocus autocomplete="national_id" >
+                                @error('national_id')
+                                <div class="input-group">
+                                    <p class="text-danger">{{ $message }}</p>
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>About</label>
+                            <span class="input-group-text"><i class="fa fa-camera-retro"></i></span>
+                            <div class="input-group">
+                                <textarea type="text" class="form-control" {{ $errors->has('about') ? 'is-invalid' : '' }}
+                                name="about"
+                                       :value="old('name')"
+                                       placeholder="SHort description of John Doe"
+                                       autofocus autocomplete="about"></textarea>
+                                @error('about')
+                                <div class="input-group">
+                                    <p class="text-danger">{{ $message }}</p>
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Category</label>
+                            <div class="input-group"><span class="input-group-text"><i class="fa fa-camera-retro"></i></span>
+                                <input type="text" class="form-control" {{ $errors->has('category') ? 'is-invalid' : '' }}
+                                name="category"
+                                       :value="old('category')"
+                                       placeholder="youtuber"
+                                       autofocus autocomplete="category">
+                                @error('category')
+                                <div class="input-group">
+                                    <p class="text-danger">{{ $message }}</p>
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <div class="input-group"><span class="input-group-text"><i class="fa fa-envelope-o" ></i></span>
+                                <input class="form-control"class="fa fa-envelope-o"
+                                       type="email" {{ $errors->has('email') ? 'is-invalid' : '' }}
+                                       placeholder="Test@gmail.com"
+                                       name="email" :value="old('email')">
+                                <x-jet-input-error for="email"></x-jet-input-error>
+                                @error('email')
+                                <div class="input-group">
+                                    <p class="text-danger">{{ $message }}</p>
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <div class="input-group"><span class="input-group-text"><i class="icon-lock"></i></span>
+                                <input placeholder="*********"
+                                       class="form-control" {{ $errors->has('password') ? ' is-invalid' : '' }}
+                                       type="password"
+                                       name="password" autocomplete="current-password">
+                                <div class="show-hide"><span class="show">                         </span></div>
+                                @error('password')
+                                <div class="input-group">
+                                    <p class="text-danger">{{ $message }}</p>
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm Password</label>
+                            <div class="input-group"><span class="input-group-text"><i class="icon-lock"></i></span>
+                                <input placeholder="*********"
+                                       class="form-control" {{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}
+                                       type="password" name="password_confirmation"  autocomplete="new-password">
+                                <div class="show-hide"><span class="show">                         </span></div>
+                                @error('password_confirmation')
+                                <div class="input-group">
+                                    <p class="text-danger">{{ $message }}</p>
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p>Already registered?<a class="ms-2" href="{{ route('login') }}">Log In</a></p>
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-primary btn-block" value="Register" type="submit"/>
+                        </div>
+                        <div class="login-social-title">
+                            <h5>Sign in with</h5>
+                        </div>
+                        <div class="form-group">
+                            <ul class="login-social">
+                                <li><a href="https://www.linkedin.com/" target="_blank"><i data-feather="linkedin"></i></a>
+                                </li>
+                                <li><a href="https://twitter.com/" target="_blank"><i data-feather="twitter"></i></a>
+                                </li>
+                                <li><a href="https://www.facebook.com/" target="_blank"><i data-feather="facebook"></i></a>
+                                </li>
+                                <li><a href="https://www.instagram.com/" target="_blank"><i
+                                            data-feather="instagram"> </i></a></li>
+                            </ul>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
-    </x-jet-authentication-card>
+    </div>
+
 </x-guest-layout>

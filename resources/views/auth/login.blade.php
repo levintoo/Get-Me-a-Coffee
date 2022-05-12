@@ -23,7 +23,7 @@
                             <div class="input-group"><span class="input-group-text"><i class="icon-email"></i></span>
                                 <input class="form-control" type="email {{ $errors->has('email') ? 'text-danger' : '' }}" placeholder="Test@gmail.com"
                                        name="email" :value="old('email')" >
-                                <x-jet-input-error for="email"></x-jet-input-error>
+
                             </div>
                         </div>
                         <div class="form-group">
@@ -32,7 +32,7 @@
                                 <input placeholder="*********"  class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password"
                                        name="password" autocomplete="current-password">
                                 <div class="show-hide"><span class="show">                         </span></div>
-                                <x-jet-input-error for="password"></x-jet-input-error>
+
                             </div>
                         </div>
                         <div class="form-group">
@@ -55,7 +55,7 @@
                                 <li><a href="https://www.instagram.com/" target="_blank"><i data-feather="instagram">                  </i></a></li>
                             </ul>
                         </div>
-                        <p>Don't have account?<a class="ms-2" href="/register">Create Account</a></p>
+                        <p>Don't have account?<a class="ms-2" href="{{route('register')}}">Create Account</a></p>
                     </form>
                 </div>
             </div>
