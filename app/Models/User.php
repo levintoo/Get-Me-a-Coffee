@@ -35,7 +35,8 @@ class User extends Authenticatable
         'about',
         'utype',
         'email',
-        'password'
+        'password',
+        'status',
     ];
 
     /**
@@ -66,5 +67,36 @@ class User extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
+        'readableStatus',
+        'imgname',
     ];
+    public function getReadableStatusAttribute()
+    {
+        if($this->status == '0' ){
+            $readableStatus = "created";
+        }elseif($this->status == '1' ){
+            $readableStatus = "activated";
+        }elseif($this->status == '2' ){
+            $readableStatus = "deleted";
+        }elseif($this->status == '3' ){
+            $readableStatus = "suspended";
+        }else {
+            $readableStatus = "else";
+        }
+        return $readableStatus;
+    }
+    public function getImgnameAttribute()
+    {
+        if(is_null($this->photo) || $this->photo === ""){
+            $this->photo = 'rand.jpg';
+        }else{
+            $file = public_path('assets/images/users/'.$this->photo);
+            if( file_exists($file)){
+                $this->photo = $this->photo;
+            }else{
+                $this->photo = 'rand.jpg';
+            }
+        }
+        return $this->photo;
+    }
 }

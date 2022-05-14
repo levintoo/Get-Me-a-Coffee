@@ -12,7 +12,7 @@ class Donations extends Model
     use SoftDeletes;
     use HasFactory;
     protected $appends = ['readbleDonatedAt','readbleDonated','randomImg'];
-    
+
     public function getReadbleDonatedAtAttribute()
     {
         return Carbon::parse($this->donated_at)->format('F j, Y');
@@ -34,5 +34,16 @@ class Donations extends Model
             $randomImg = "woman.png";
         }
         return $randomImg;
+
+        if(is_null($user->photo) || $user->photo === ""){
+            $this->photo = 'rand.jpg';
+        }else{
+            $file = public_path('assets/images/users/'.$user->photo);
+            if( file_exists($file)){
+                $this->photo = $user->photo;
+            }else{
+                $this->photo = 'rand.jpg';
+            }
+        }
     }
 }

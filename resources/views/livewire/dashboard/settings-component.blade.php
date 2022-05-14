@@ -31,16 +31,29 @@
                         </div>
                         <div class="card-body">
                             <form>
-                                <div class="row mb-2">
-                                    <div class="profile-title">
-                                        <div class="media">                        <img class="img-70 rounded-circle" alt="avatar" src="{{ asset('assets/images/users/'.$this->photo) }}">
-                                            <div class="media-body">
-                                                <h3 class="mb-1 f-20 txt-primary">{{$this->name}}</h3>
-                                                <p class="f-12">{{$this->category}}</p>
+                               @forelse($user as $user)
+                                    <div class="row mb-2">
+                                        <div class="profile-title">
+                                            <div class="media">                        <img class="img-70 rounded-circle" alt="avatar" src="{{ asset('assets/images/users/'.$this->photo) }}">
+                                                <div class="media-body">
+                                                    <h3 class="mb-1 f-20 txt-primary">{{$this->name}}</h3>
+                                                    <p class="f-12">{{$this->category}}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                    @else
+                                        <div class="row mb-2">
+                                            <div class="profile-title">
+                                                <div class="media">                        <img class="img-70 rounded-circle" alt="avatar" src="{{ asset('assets/images/users/'.$this->photo) }}">
+                                                    <div class="media-body">
+                                                        <h3 class="mb-1 f-20 txt-primary">{{$this->name}}</h3>
+                                                        <p class="f-12">{{$this->category}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endforelse
                                 <div class="mb-2">
                                     <label class="form-label">Email-Address</label>
                                     <p class="txt-primary">{{$this->email}}</p>

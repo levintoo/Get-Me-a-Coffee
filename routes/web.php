@@ -15,7 +15,6 @@ use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\PaymentDetails;
 use App\Http\Livewire\DonationCredit;
 use App\Http\Livewire\TwoStepRegisterComponent;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,15 +57,17 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('/settings', SettingsComponent::class)->name('settings');
         Route::get('/settings/edit', EditSettingsComponent::class)->name('settings.edit');
         Route::middleware(['auth_admin'])->prefix('admin')->group(function () {
-            Route::get('/', AdminHomeComponent::class)->name('admin.home');
+            // admin routes go here
         });
+        Route::get('/admin/', AdminHomeComponent::class)->name('admin.home');
+
     });
 
 });
 Route::get('/now', function () {
-    return Carbon::now();
+    return Carbon\Carbon::now();
 });
 Route::get('/yesterday', function () {
-    return Carbon::yesterday();
+    return Carbon\Carbon::yesterday();
 });
 Route::get('/{username}', HomeComponent::class);
