@@ -162,7 +162,7 @@
                                     <div class="mb-3">
                                         <label class="form-label">Country</label>
                                         <select class="form-control btn-square" wire:model="country">
-                                            <option value="{{$this->city}}">--Select--</option>
+                                            <option value="">--Select--</option>
                                             <option value="Kenya">Kenya</option>
                                             <option value="Uganda">Uganda</option>
                                             <option value="Tanzania">Tanzania</option>

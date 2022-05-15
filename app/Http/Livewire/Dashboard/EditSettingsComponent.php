@@ -58,10 +58,10 @@ class EditSettingsComponent extends Component
         $this->validateOnly($fields,[
             'name' => 'string|required',
             'username' => 'string|required',
-            'company' => 'required|string',
-            'country' => 'required|string',
+            'company' => 'string',
+            'country' => 'string',
             'category' => 'required|string',
-            'city' => 'required|string',
+            'city' => 'string',
             'about' => 'required|string',
             'photo' => 'image|max:1024',
         ]);
@@ -71,10 +71,10 @@ class EditSettingsComponent extends Component
         $this->validate([
             'name' => 'string|required',
             'username' => 'string|required',
-            'company' => 'required|string',
-            'country' => 'required|string',
+            'company' => 'string',
+            'country' => 'string',
             'category' => 'required|string',
-            'city' => 'required|string',
+            'city' => 'string',
             'about' => 'required|string',
         ]);
 
