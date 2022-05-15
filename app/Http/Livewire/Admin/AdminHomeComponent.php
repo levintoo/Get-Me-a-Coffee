@@ -8,6 +8,7 @@ use Livewire\Component;
 class AdminHomeComponent extends Component
 {
     public $user;
+    public $usernamedetail;
     public function mount()
     {
         $user = User::select('name','username','category','email','photo','status','utype')->orderBy('created_at','DESC')->get();

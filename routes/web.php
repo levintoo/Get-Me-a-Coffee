@@ -3,6 +3,7 @@
 use App\Http\Controllers\MpesaWithdrawalController;
 use App\Http\Controllers\PaypalWithdrawalController;
 use App\Http\Livewire\Admin\AdminHomeComponent;
+use App\Http\Livewire\Admin\UsersDetailComponent;
 use App\Http\Livewire\Dashboard\DashboardComponent;
 use App\Http\Livewire\Dashboard\Donationscomponent;
 use App\Http\Livewire\Dashboard\EditSettingsComponent;
@@ -28,9 +29,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
 Route::get('/', DonateComponent::class)->name('/');
 Route::post('/donation/amount', [HomeComponent::class, 'doSomething'])->name('amount');
 Route::get('/donation/details', DonationDetails::class)->name('donation-details');
@@ -40,8 +38,8 @@ Route::post('/donation/payment/store', [PaymentDetails::class, 'store'])->name('
 Route::post('/donation/payment/back', [PaymentDetails::class, 'goBack'])->name('donation-payment.back');
 Route::get('/donation/credit', DonationCredit::class)->name('donation.credits');
 Route::get('/register/step-two', TwoStepRegisterComponent::class)->name('resgister-step-two');
-Route::post('/register/otp-generate', [TwoStepRegisterComponent::class , 'generateOTP'])->name('generateOTP');
-Route::post('/register/otp-validate', [TwoStepRegisterComponent::class , 'validateOTP'])->name('validateOTP');
+Route::post('/register/otp-generate', [TwoStepRegisterComponent::class, 'generateOTP'])->name('generateOTP');
+Route::post('/register/otp-validate', [TwoStepRegisterComponent::class, 'validateOTP'])->name('validateOTP');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
@@ -56,10 +54,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::post('/paypal/withdraw', [PaypalWithdrawalController::class, 'store'])->name('paypal.withdraw');
         Route::get('/settings', SettingsComponent::class)->name('settings');
         Route::get('/settings/edit', EditSettingsComponent::class)->name('settings.edit');
+
         Route::middleware(['auth_admin'])->prefix('admin')->group(function () {
-            // admin routes go here
+            Route::get('/', AdminHomeComponent::class)->name('admin.home');
+            Route::get('/user/{username}', UsersDetailComponent::class)->name('admin.user.detail');
         });
-        Route::get('/admin/', AdminHomeComponent::class)->name('admin.home');
 
     });
 

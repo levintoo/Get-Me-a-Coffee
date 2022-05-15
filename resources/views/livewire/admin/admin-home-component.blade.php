@@ -38,22 +38,24 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+
                                 @foreach($user as $user)
                                     <tr class="m-3">
-                                        <td><a href="product-page.html"><img class="my-2" src="{{ asset('assets/images/users/'.$user->imgname) }}" alt=""></a></td>
-                                        <td><a href="product-page.html">
-                                                <p class="f-10"> {{$user->category}} </p></a><span>{{$user->name}}</span></td>
+                                        <td><a href="#"><img class="my-3" src="{{ asset('assets/images/users/'.$user->imgname) }}" alt=""></a></td>
+                                        <td><a href="{{route('admin.user.detail',['username'=>$user->username])}}">
+                                                <h6 class=""> {{$user->category}} </h6></a><span>{{$user->name}}</span></td>
                                         <td>{{$user->username}}</td>
                                         <td class="font-success">{{$user->readableStatus}}</td>
-                                        <td>{{$user->utype}}</td>
+                                        <td >{{$user->utype}}</td>
                                         <td>
                                             <button class="btn btn-danger btn-xs" type="button" data-original-title="btn btn-danger btn-xs" title="">Delete</button>
-                                            <button class="btn btn-primary btn-xs" type="button" data-original-title="btn btn-danger btn-xs" title="">Edit</button>
+                                            <button class="btn btn-primary btn-xs" type="button" data-original-title="btn btn-danger btn-xs" title="" >Edit</button>
                                         </td>
+
                                     </tr>
                                     @endforeach
                                 <tr>
-                                    <td><a href="product-page.html"><img src="../assets/images/ecommerce/product-table-2.png" alt=""></a></td>
+                                    <td><a href="product-page.html"><img src="{{ asset('assets/dashboard/images/ecommerce/product-table-2.png') }}" alt=""></a></td>
                                     <td><a href="product-page.html">
                                             <h6> Pink Lipstick </h6></a>
                                         <p>Interchargebla lens Digital Camera with APS-C-X Trans CMOS Sens</p>
