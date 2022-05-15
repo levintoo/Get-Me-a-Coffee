@@ -20,7 +20,7 @@
                         @endif
                         <div class="form-group">
                             <label>Otp</label>
-                            <div class="input-group"><span class="input-group-text"><i class="icon-email"></i></span>
+                            <div class="input-group"><span class="input-group-text"><i class="fa fa-phone-square" aria-hidden="true"></i></span>
                                 <input class="form-control" {{ $errors->has('otp') ? ' is-invalid' : '' }}
                                        type="number"
                                        name="otp" autocomplete="current-otp">
