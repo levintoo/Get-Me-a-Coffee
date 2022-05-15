@@ -38,8 +38,8 @@
                     <div class="card-header earning-back"></div>
                     <div class="card-body p-0">
                         <div class="earning-content"><img class="img-fluid" src="{{ asset('assets/dashboard/images/avatar.jpg' ) }}" alt=""><a href="blog-single.html">
-                                <h4>Today's Earning</h4></a><span>(Mon 15 - Sun 21)</span>
-                            <h6>${{ number_format($todaysearning, 2)}}</h6>
+                                <h4>Today's Earning</h4></a><span>({{$this->todaysdate}})</span>
+                            <h6>${{$todaysearning}}</h6>
                             <div id="earning-chart"></div>
                         </div>
                     </div>
@@ -335,24 +335,15 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xsl-6 col-lg-12 dash-xl-100">
+            <div class="col-xl-4 col-md-6 dash-31 dash-xl-50">
                 <div class="card total-transactions">
                     <div class="row m-0">
-                        <div class="col-md-6 col-sm-6 p-0">
-                            <div class="card-header card-no-border">
-                                <h5>Total Transactions</h5>
-                            </div>
-                            <div class="card-body pt-0">
-                                <div>
-                                    <div id="transaction-chart"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6 p-0 report-sec">
+
+                        <div class="col-md-12 col-sm-12 p-0 report-sec">
                             <div class="card-header card-no-border">
                                 <div class="header-top">
                                     <h5 class="m-0">Report</h5>
-                                    <div class="icon-box onhover-dropdown"><i data-feather="more-horizontal"></i>
+                                    <div class="icon-box onhover-dropdown"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
                                         <div class="icon-box-show onhover-show-div">
                                             <ul>
                                                 <li> <a>
@@ -409,49 +400,6 @@
                     <div class="card-body pt-0">
                         <div>
                             <div id="yearly-chart"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6 dash-xl-50">
-                <div class="card bg-primary premium-access">
-                    <div class="card-body">
-                        <h6 class="f-22">Premium Access!</h6>
-                        <p>We add 20+ new features and update community in your project We add 20+ new features</p><a class="btn btn-outline-white_color" href="blog-single.html"> Try now for free</a>
-                    </div>
-                    <!-- Root element of PhotoSwipe. Must have class pswp.-->
-                    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-                        <div class="pswp__bg"></div>
-                        <div class="pswp__scroll-wrap">
-                            <div class="pswp__container">
-                                <div class="pswp__item"></div>
-                                <div class="pswp__item"></div>
-                                <div class="pswp__item"></div>
-                            </div>
-                            <div class="pswp__ui pswp__ui--hidden">
-                                <div class="pswp__top-bar">
-                                    <div class="pswp__counter"></div>
-                                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                                    <button class="pswp__button pswp__button--share" title="Share"></button>
-                                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                                    <div class="pswp__preloader">
-                                        <div class="pswp__preloader__icn">
-                                            <div class="pswp__preloader__cut">
-                                                <div class="pswp__preloader__donut"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                                    <div class="pswp__share-tooltip"></div>
-                                </div>
-                                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-                                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
-                                <div class="pswp__caption">
-                                    <div class="pswp__caption__center"></div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
